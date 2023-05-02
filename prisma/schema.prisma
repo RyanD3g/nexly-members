@@ -1,0 +1,172 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// --------- Student Models ---------
+
+model Student {
+  id String @id @default(uuid())
+
+  name     String?
+  lastname String?
+  email    String  @unique
+  password String
+  cpf      String? @unique
+  phone    String? @unique
+  sex      String?
+  photo    String?
+  bio      String?
+  student  Boolean @default(true)
+
+  code     String?
+  codeDate String?
+
+  address Address_By_Student?
+  courses Courses_Student[]
+  tags    Tags_by_liking[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Address_By_Student {
+  id String @id @default(uuid())
+
+  codeStreet String
+  street     String
+  number     String
+  complement String?
+  city       String
+  uf         String
+
+  student   Student @relation(fields: [studentId], references: [id])
+  studentId String  @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Courses_Student {
+  id String @id @default(uuid())
+
+  lastSeen  String  @default("00:00:00")
+  completed Boolean @default(false)
+
+  student          Student @relation(fields: [studentCoursesId], references: [id])
+  studentCoursesId String
+
+  course Courses_Producer[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Tags_by_liking {
+  id String @id @default(uuid())
+
+  categoryName String
+
+  student   Student @relation(fields: [studentId], references: [id])
+  studentId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// --------- Producer Models ---------
+
+model Producer {
+  id String @id @default(uuid())
+
+  name            String?
+  lastname        String?
+  email           String  @unique
+  password        String
+  identity        String? @unique
+  phone           String? @unique
+  sex             String?
+  photo           String?
+  isProducer      Boolean @default(true)
+  isAccountActive Boolean @default(true)
+
+  code     String?
+  codeDate String?
+
+  courses Courses_Producer[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Courses_Producer {
+  id String @id @default(uuid())
+
+  name           String
+  urlThumbCourse String
+  description    String
+  categoryTag    String
+  duration       String
+  cretificate    Boolean @default(true)
+
+  producer   Producer @relation(fields: [producerId], references: [id])
+  producerId String
+
+  student   Courses_Student @relation(fields: [studentId], references: [id])
+  studentId String
+
+  modules Modules_Courses[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Modules_Courses {
+  id String @id @default(uuid())
+
+  name        String
+  description String?
+  duration    String
+
+  course   Courses_Producer @relation(fields: [courseId], references: [id])
+  courseId String
+
+  movies Movies_Modules[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Movies_Modules {
+  id String @id @default(uuid())
+
+  name            String
+  urlMovie        String
+  urlMaterial     String?
+  description     String?
+  duration        String?
+  Comments_movies Comments_movies[]
+
+  module   Modules_Courses @relation(fields: [moduleId], references: [id])
+  moduleId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Comments_movies {
+  id String @id @default(uuid())
+
+  nameStudent String
+  comment     String
+
+  movie   Movies_Modules @relation(fields: [movieId], references: [id])
+  movieId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
