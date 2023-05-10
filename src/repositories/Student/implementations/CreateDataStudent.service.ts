@@ -9,6 +9,21 @@ export class CreateDataStudentImplementation implements ACreateDataForRegister {
     constructor(
         private prisma:PrismaService,
     ){};
+    
+    async findByPhone(phone: string): Promise<Student> {
+        const searchByPhone = await this.prisma.student.findUnique({
+            where:{ phone, }
+        });
+
+        return searchByPhone;
+    };
+    async findByIdentity(identity: string): Promise<Student> {
+        const searchByIdentity = await this.prisma.student.findUnique({
+            where:{ cpf:identity, },
+        });
+
+        return searchByIdentity;
+    };
 
     async create(
         {
@@ -21,6 +36,7 @@ export class CreateDataStudentImplementation implements ACreateDataForRegister {
             studentId,
         }
         :IDataByStudent): Promise<Object>{
+            console.log("AQUI:", cpf)
         const created = await this.prisma.student.update({
             where:{ id:studentId },
 

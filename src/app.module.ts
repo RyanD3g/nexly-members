@@ -10,9 +10,23 @@ import { ChangeTagsModule } from './useCases/students/changeTags/ChangeTags.modu
 import { CreateAddressModule } from './useCases/students/createAddress/CreateAddress.module';
 import { GetFullStudentDataModule } from './useCases/students/getFullStudent/FullStudent.module';
 import { UpdateAddressModule } from './useCases/students/updateAddress/UpdateAddress.module';
+import { RegisterProducerModule } from './useCases/producer/createProducer/RegisterProducer.module';
+import { LoginProducerModule } from './useCases/producer/loginProducer/LoginProducer.module';
+import { RecoverPassModuleProducer } from './useCases/producer/recoverPass/RecoverPassProducer.module';
+import { ValidateCodeAndDateModuleProducer } from './useCases/producer/validateCode/ValidateCode.module';
+import { CreateAddressModuleProducer } from './useCases/producer/createAddress/CreateAddress.module';
+import { UpdateAddressModuleProducer } from './useCases/producer/updateAddress/UpdateAddress.module';
+import { ProfileImageModuleProducer } from './useCases/producer/uploadImageProfile/ProfileImage.module';
+import { GetFullProducerDataModule } from './useCases/producer/getFullProducer/FullProducer.module';
+import { CreateDataProducerModule } from './useCases/producer/createDataForRegister/CreateData.module';
+import { CreateModuleCourseModule } from './useCases/producer/createModulesForACourse/CreateModule.module';
+import { CreateCourseModule } from './useCases/producer/createACourse/CreateCourse.module';
+import { CreateLessonModule } from './useCases/producer/createLesson/CreateLesson.module';
+import { GetAllCoursesModule } from './useCases/producer/getAllCourse/getAllCourse.module';
 
 @Module({
   imports: [
+    //Student Modules
     RegisterStudentModule,
     LoginStudentModule,
     RecoverPassModule,
@@ -24,6 +38,23 @@ import { UpdateAddressModule } from './useCases/students/updateAddress/UpdateAdd
     CreateAddressModule,
     GetFullStudentDataModule,
     UpdateAddressModule,
+
+    //Producer Modules 
+    RegisterProducerModule,
+    LoginProducerModule,
+    RecoverPassModuleProducer,
+    ValidateCodeAndDateModuleProducer,
+    CreateAddressModuleProducer,
+    UpdateAddressModuleProducer,
+    ProfileImageModuleProducer,
+    GetFullProducerDataModule,
+    CreateDataProducerModule,
+    CreateCourseModule,
+    CreateModuleCourseModule,
+    CreateLessonModule,
+
+    //Outers modules
+    GetAllCoursesModule,
   ],
   controllers: [],
   providers: [],

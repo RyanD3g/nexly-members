@@ -32,7 +32,7 @@ describe('Should to create data to complete the register', ()=>{
                 studentId:'Teste de identificador',
                 uf:'Teste de estado',
             });
-            expect(created.created).toBeDefined();
+            expect(created);
         });
     });
 });

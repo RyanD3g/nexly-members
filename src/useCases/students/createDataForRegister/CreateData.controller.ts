@@ -11,7 +11,6 @@ export class CreateDataForStudentsController {
 
     @Put('data/student')
     async handle_create(@Body() body:IDataByStudent, @Request() req?:CustomRequest){
-        try {
             const sendDataForInfra = await this.service.created({
                 studentId:req.studentId,
                 bio:body.bio,
@@ -23,8 +22,5 @@ export class CreateDataForStudentsController {
             });
 
             return sendDataForInfra;
-        } catch (error) {
-            return error;
-        };
     };
 };

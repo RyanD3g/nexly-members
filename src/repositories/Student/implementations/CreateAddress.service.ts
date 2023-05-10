@@ -1,6 +1,6 @@
-import { IAddressByStudent } from "src/useCases/students/createAddress/CreateAddress.DTO";
+import { IAddressByStudent } from "../../../useCases/students/createAddress/CreateAddress.DTO";
 import { ACreateAddress } from "../ICreateAddress.student";
-import { PrismaService } from "src/database";
+import { PrismaService } from "../../../database";
 import { Injectable } from "@nestjs/common";
 
 @Injectable()
@@ -33,6 +33,7 @@ export class CreateAddressImplementation implements ACreateAddress {
                 },
             },
         });
+        console.log("FOI AQUI")
         return { created:true, };
     };
 };

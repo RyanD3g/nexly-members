@@ -32,7 +32,7 @@ describe('Should to create data to complete the register', ()=>{
                 sex:'Masculino',
                 studentId:'24bbab80-9236-431c-85a0-bee140922ef4'
             });
-            expect(created.created).toBeDefined();
+            expect(created).toEqual({ created:true });
         });
     });
 });

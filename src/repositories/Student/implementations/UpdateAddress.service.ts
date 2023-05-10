@@ -18,7 +18,7 @@ export class UpdateAddressImplementation implements AUpdateAddress {
         addressId,
         uf,
     }: IUpdateAddress): Promise<Object> {
-        const updatedAddress =  await this.prisma.address_By_Student.update({
+        const updatedAddress =  await this.prisma.address.update({
             where:{ id:addressId, },
             data:{
                 city,

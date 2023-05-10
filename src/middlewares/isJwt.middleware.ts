@@ -5,7 +5,10 @@ import { CustomRequest } from "src/interfaces/Request.interface";
 
 interface Payload {
     student:boolean;
+    producerId:string;
     id:string;
+    isProducer:boolean;
+    signed:boolean;
     iat: number;
     exp: number;
 };
@@ -36,9 +39,12 @@ export class IsJwtMiddleware implements NestMiddleware{
 
         try {
             const decoded_token = verify(token, 'djkfhkjgbsjkçdgbw4iuegfupreghp48973y4tn4kejptbg34ip');
-            const { student, id } = decoded_token as Payload;
+            const { student, id, producerId, isProducer, signed } = decoded_token as Payload;
             req.studentId = id;
+            req.producerId = producerId;
             req.isStudent = student;
+            req.isProducer = isProducer;
+            req.signed = signed;
             return next();
         } catch (error) {
             return res.status(500).json({token:false, message:'Erro de autorização, faça login!'});

@@ -9,18 +9,16 @@ import { Request, Response } from 'express';
 const s3_ = new S3Client({
     region: 'us-east-1',
     credentials:{
-        accessKeyId: 'AKIAZNOBTDBO5PQTTGVH',
-        secretAccessKey: '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'
+        accessKeyId: 'AKIAW56V7J5TPFJPWHGN',
+        secretAccessKey: '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'
     },
 });
-
-console.log("Chegou aqui")
 
 export default{
     dest: './',
     storage: multer_s3({
         s3: s3_,
-        bucket: 'lessons-apollo',
+        bucket: 'images-for-profile',
         contentType: multer_s3.AUTO_CONTENT_TYPE,
         acl: 'public-read',
         key: (req, file, callback) =>{
