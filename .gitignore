@@ -12,6 +12,7 @@ yarn-error.log*
 lerna-debug.log*
 Tag Plans.txt 
 Tag Plans
+Plans.md
 vitest.config.ts
 
 # OS

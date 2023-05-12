@@ -1,4 +1,4 @@
-import { Body, Controller, Put, Request } from "@nestjs/common";
+import { Body, Controller, Put, Request, Res, Response } from "@nestjs/common";
 import { CreateDataForProducerService } from "./CreateData.service";
 import { CustomRequest } from "src/interfaces/Request.interface";
 import { IDataByProducer } from "./CreateData.DTO";
@@ -10,7 +10,11 @@ export class CreateDataForProducerController {
     ){};
 
     @Put('data/producer')
-    async handle_create(@Body() body:IDataByProducer, @Request() req?:CustomRequest){
+    async handle_create(
+        @Body() body:IDataByProducer,
+        @Request() req?:CustomRequest,
+        @Response() res?,
+        ){
         try {
             const sendDataForInfra = await this.service.created({
                 producerId:req.producerId,
@@ -23,7 +27,7 @@ export class CreateDataForProducerController {
 
             return sendDataForInfra;
         } catch (error) {
-            return error;
+            return res.status(500).json({ erro:error?.message });
         };
     };
 };

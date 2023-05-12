@@ -23,6 +23,10 @@ import { CreateModuleCourseModule } from './useCases/producer/createModulesForAC
 import { CreateCourseModule } from './useCases/producer/createACourse/CreateCourse.module';
 import { CreateLessonModule } from './useCases/producer/createLesson/CreateLesson.module';
 import { GetAllCoursesModule } from './useCases/producer/getAllCourse/getAllCourse.module';
+import { BuyCourseModule } from './useCases/students/BuyCourse/BuyCourse.module';
+import { MyCourseModule } from './useCases/students/getCoursesByStudent/myCourse.module';
+import { ChangeFavoriteModule } from './useCases/students/changeFavoriteLesson/ChangeFavorite.module';
+import { MyNotificationsModule } from './useCases/students/getMyNotifications/MyNotifications.module';
 
 @Module({
   imports: [
@@ -38,6 +42,10 @@ import { GetAllCoursesModule } from './useCases/producer/getAllCourse/getAllCour
     CreateAddressModule,
     GetFullStudentDataModule,
     UpdateAddressModule,
+    BuyCourseModule,
+    MyCourseModule,
+    ChangeFavoriteModule,
+    MyNotificationsModule,
 
     //Producer Modules 
     RegisterProducerModule,

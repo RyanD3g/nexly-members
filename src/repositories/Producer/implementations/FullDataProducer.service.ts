@@ -15,7 +15,7 @@ export class GetFullDataProducer implements AFullProducer {
             include:{ address:true }, 
          });
 
-         const valueAddress = validate_Is_not.address;
+         const valueAddress = validate_Is_not?.address;
 
          return valueAddress;
     };

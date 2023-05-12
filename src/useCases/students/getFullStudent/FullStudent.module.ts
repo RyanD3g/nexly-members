@@ -12,7 +12,7 @@ import { IsJwtMiddleware } from "src/middlewares/isJwt.middleware";
         PrismaService,
         GetFullDataStudent,
         getDataAndValidateFullStudentService,
-        IsJwtMiddleware,
+        IsJwtMiddleware
     ],
 })
 export class GetFullStudentDataModule implements NestModule {

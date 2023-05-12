@@ -15,7 +15,7 @@ export class GetFullDataStudent implements AFullStudent {
             include:{ address:true }, 
          });
 
-         const valueAddress = validate_Is_not.address;
+         const valueAddress = validate_Is_not?.address;
 
          return valueAddress;
     };
@@ -24,6 +24,7 @@ export class GetFullDataStudent implements AFullStudent {
             where:{ id:data.studentId },
             include:{ address:true },
         });
+        console.log("OLHE AQUI -------------------------------------", getData)
         return getData;
     };
 };

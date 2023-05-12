@@ -3,5 +3,5 @@ import { IFullStudent } from "src/useCases/students/getFullStudent/FullStudent.D
 
 export abstract class AFullStudent {
     abstract isComplete(data:IFullStudent): Promise<Address>;
-    abstract getAllDataStudent(data:IFullStudent): Promise<Student>;
+    abstract getAllDataStudent(data:IFullStudent): Promise<Student | Object>;
 };

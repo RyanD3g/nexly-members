@@ -12,6 +12,7 @@ import { IsJwtMiddleware } from "src/middlewares/isJwt.middleware";
         PrismaService,
         CreateDataForStudentsService,
         CreateDataStudentImplementation,
+        IsJwtMiddleware,
     ]    
 })
 export class CreateDataStudentModule implements NestModule {

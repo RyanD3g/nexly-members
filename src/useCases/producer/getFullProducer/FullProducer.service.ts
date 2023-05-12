@@ -10,7 +10,7 @@ export class getDataAndValidateFullProducerService {
 
     async validate_and_get(data:IFullProducer){
         const validate = await this.implementation.isComplete(data);
-        if(validate.id === undefined || !validate.id || validate.id === null){
+        if(!validate){
             throw new HttpException('Perfil incompleto!', HttpStatus.BAD_REQUEST);
         };
 

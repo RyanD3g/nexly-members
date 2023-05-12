@@ -10,13 +10,9 @@ export class getDataFullStudentController {
 
     @Get('student/all')
     async getFullStudent(@Request() req?:CustomRequest){
-        try {
             const geted = await this.service.validate_and_get({
                 studentId:req.studentId,
             });
             return geted;
-        } catch (error) {
-            return error;          
-        };
     };
 };
