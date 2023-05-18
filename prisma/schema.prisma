@@ -56,13 +56,12 @@ model Address {
 model Courses_Student {
   id String @id @default(uuid())
 
-  lastSeen  String  @default("00:00:00")
-  completed Boolean @default(false)
+  lastSeen  String   @default("00:00:00")
+  completed Boolean  @default(false)
+  coursesId String[]
 
   student          Student @relation(fields: [studentCoursesId], references: [id])
   studentCoursesId String
-
-  course Courses_Producer[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -96,9 +95,10 @@ model Favorites {
 model Notifications_Students {
   id String @id @default(uuid())
 
-  title   String
-  content String
-  read    Boolean @default(false)
+  title    String
+  content  String
+  read     Boolean @default(false)
+  timeLife String
 
   student   Student @relation(fields: [studentId], references: [id])
   studentId String
@@ -126,8 +126,9 @@ model Producer {
   code     String?
   codeDate String?
 
-  courses Courses_Producer[]
-  address AddressForProducers?
+  courses       Courses_Producer[]
+  notifications Notifications_Producer[]
+  address       AddressForProducers?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -150,6 +151,21 @@ model AddressForProducers {
   updatedAt DateTime @updatedAt
 }
 
+model Notifications_Producer {
+  id String @id @default(uuid())
+
+  title    String
+  content  String
+  isRead   Boolean?
+  timeLife String
+
+  producer   Producer @relation(fields: [producerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  producerId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 model Courses_Producer {
   id String @id @default(uuid())
 
@@ -158,13 +174,10 @@ model Courses_Producer {
   description    String
   categorysTag   String[] @default(["outros"])
   duration       String
-  cretificate    Boolean  @default(true)
+  cretificate    Boolean  @default(false)
 
   producer   Producer? @relation(fields: [producerId], references: [id])
   producerId String?
-
-  student   Courses_Student? @relation(fields: [studentId], references: [id])
-  studentId String?
 
   modules Modules_Courses[]
 
@@ -196,6 +209,7 @@ model Movies_Modules {
   urlMaterial     String?
   description     String?
   duration        String?
+  like            Int?
   Comments_movies Comments_movies[]
 
   module   Modules_Courses @relation(fields: [moduleId], references: [id])

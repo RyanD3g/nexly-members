@@ -9,6 +9,7 @@ export class getMyCoursesInMemory implements AGetMyCourse {
         id:'123',
         completed:false, 
         lastSeen:'00:00:00',
+        coursesId:['3232'],
         studentCoursesId:'123',
         createdAt:new Date(),
         updatedAt:new Date(),

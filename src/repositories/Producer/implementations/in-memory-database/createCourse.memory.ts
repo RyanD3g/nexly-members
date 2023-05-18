@@ -25,7 +25,6 @@ export class CreateCourseInMemory implements ACreateCourse {
             createdAt:new Date(),
             updatedAt:new Date(),
             name,
-            studentId:null,
             producerId,
             urlThumbCourse,
         });

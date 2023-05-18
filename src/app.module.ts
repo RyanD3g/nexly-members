@@ -27,6 +27,8 @@ import { BuyCourseModule } from './useCases/students/BuyCourse/BuyCourse.module'
 import { MyCourseModule } from './useCases/students/getCoursesByStudent/myCourse.module';
 import { ChangeFavoriteModule } from './useCases/students/changeFavoriteLesson/ChangeFavorite.module';
 import { MyNotificationsModule } from './useCases/students/getMyNotifications/MyNotifications.module';
+import { GiveLikeModule } from './useCases/students/giveLike/GiveLike.module';
+import { SearchCourseModule } from './useCases/students/searchByCourse/SearchCourse.module';
 
 @Module({
   imports: [
@@ -46,6 +48,8 @@ import { MyNotificationsModule } from './useCases/students/getMyNotifications/My
     MyCourseModule,
     ChangeFavoriteModule,
     MyNotificationsModule,
+    GiveLikeModule,
+    SearchCourseModule,
 
     //Producer Modules 
     RegisterProducerModule,

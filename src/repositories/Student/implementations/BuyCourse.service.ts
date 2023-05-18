@@ -17,11 +17,7 @@ export class BuyCourseImplementation implements ABuyCourse {
             data:{
                 courses:{
                     create:{
-                        course:{
-                            connect:{
-                                id:myCourseBuyed.id,
-                            },
-                        },
+                        coursesId:data.courseId,
                     },
                 },
             },

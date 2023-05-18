@@ -11,25 +11,27 @@
 - [ x ] Os alunos podem ver todos os cursos da plataforma
 - [ x ] Os alunos podem ter cursos favoritos
 - [ x ] Os alunos podem escolher tags 
-- [ ] Os alunos podem dar like nos videos
+- [ x ] Os alunos podem dar like nos videos
+- [ x ] Os alunos podem ter notificações 
+- [ x ] Os alunos podem pesquisar qualquer curso 
+
 - [ ] Os alunos podem ter certificado
-- [ ] Os alunos podem pesquisar qualquer curso
 - [ ] Os alunos podem alterar a velocidade e a qualidade do video
-- [ ] Os alunos podem ter notificações 
 
 ### RN
 - [ x ] Os alunos não podem se cadastrar com um email existente
 - [ x ] Os alunos tem que estar com o cadastro completo para poder avançar na plataforma
 - [ x ] Os alunos tem que colocar um email existente para fazer login
 - [ - ] Os alunos não podem perder o curso comprado 
-- [ ] Os alunos não podem compartilhar seu curso
 - [ x ] Ao adicionar como "favoritos", ele deve ter o direito de "desfavoritar"
-- [ ] Caso um aluno não escolha as tags, tem que ser salvo como "Outros"
+- [ x ] As notificações tem que serem mostradas se lidas ou não
 - [ x ] Caso a Tag não esteja disponivel, ele deve salvar como outros
+- [ x ] Ao pesquisar pelo curso, ele pode filtrar por "Produtor", "Tag", ou o "nome do curso"
+- [ x ] Caso um aluno não escolha as tags, tem que ser salvo como "Outros"
+
+- [ ] Os alunos não podem compartilhar seu curso
 - [ ] Os recomendados devem ser baseado nas tags
 - [ ] O certificado tem que ser liberado ao final de cada curso (Completo)
-- [ ] Ao pesquisar pelo curso, ele pode filtrar por "Produtor", "Tag", ou o "nome do curso"
-- [ ] As notificações tem que serem mostradas se lidas ou não
 
 ***
 ## Planos para produtores:
@@ -41,7 +43,9 @@
 - [ x ] Os produtores podem criar um curso
 - [ x ] Os produtores podem escolher tags de cada curso
 - [ x ] Os produtores podem ver todos os cursos da plataforma
-- [ ] Os produtores podem ver os likes nos videos
+
+- [ ] Os produtores podem ter notificações
+
 - [ ] Os produtores podem criar certificados para seus cursos
 - [ ] Os produtores podem pesquisar qualquer curso
 - [ ] Os produtores podem alterar a velocidade e a qualidade do video
@@ -55,15 +59,18 @@
 - [ x ] Os produtores precisam estar com a assinatura em dia para fazer qualquer coisa na plataforma
 - [ x ] Os produtores tem que colocar um email existente para fazer login
 - [ x ] Os produtores só podem criar um curso se a conta não estiver suspensa
-- [ ] As Tags do curso se não cadastradas, podem ser "outros"
-- [ ] Os likes nos seus cursos tem que aparecer apenas para o dono do curso, não pros demais. Como notifição.
+- [ x ] As Tags do curso se não cadastradas, podem ser "outros"
+
+- [ ] Apenas os produtores podem ver suas notificações.
+- [ ] Quando ele ler a notificação, tem que ir para o campo de "lidas".
+
 - [ ] Se tem certificado, ou não, tem que aparecer no dash do curso
 - [ ] As notificações dos produtores devem servir para: Situação da conta, Likes, Comentários e afins...
 - [ ] Apenas o produtor do curso e seus alunos devem poder comentar naquele curso 
 
 
 ### RNF
-- [ ] O banco de dados tem que abrir e fechar a conexão sempre
+- [ x ] O banco de dados tem que abrir e fechar a conexão sempre
 - [ ] Ao usar a recuperação de senha, use o REDIS, para verificar a qntdade de tentativas
 - [ ] Os cursos presentes na plataforma tem que estar de 5 em 5min no REDIS para evitar congestionamento 
 - [ ] A aplicação tem que se proteger de XSS e DDoS

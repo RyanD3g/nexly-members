@@ -13,11 +13,7 @@ export class getMyCoursesImplementation implements AGetMyCourse {
         const getCourse= await this.prisma.student.findUnique({
             where: { id:data.studentId, },
             include:{
-                courses:{
-                    include:{
-                        course:true,
-                    },
-                },
+                courses:true,
             },
         });
         return getCourse;
