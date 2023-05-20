@@ -28,9 +28,12 @@
 - [ x ] Caso a Tag não esteja disponivel, ele deve salvar como outros
 - [ x ] Ao pesquisar pelo curso, ele pode filtrar por "Produtor", "Tag", ou o "nome do curso"
 - [ x ] Caso um aluno não escolha as tags, tem que ser salvo como "Outros"
+- [ x ] As notificações antigas tem que ser apagadas.
+- [ x ] As notificações tem q serem marcadas como lidas.
+
+- [ ] Os recomendados devem ser baseado nas tags
 
 - [ ] Os alunos não podem compartilhar seu curso
-- [ ] Os recomendados devem ser baseado nas tags
 - [ ] O certificado tem que ser liberado ao final de cada curso (Completo)
 
 ***
@@ -43,13 +46,12 @@
 - [ x ] Os produtores podem criar um curso
 - [ x ] Os produtores podem escolher tags de cada curso
 - [ x ] Os produtores podem ver todos os cursos da plataforma
+- [ x ] Os produtores podem ter notificações
+- [ x ] Os produtores podem pesquisar qualquer curso
 
-- [ ] Os produtores podem ter notificações
+- [ ] Os produtores podem alterar a velocidade e a qualidade do video
 
 - [ ] Os produtores podem criar certificados para seus cursos
-- [ ] Os produtores podem pesquisar qualquer curso
-- [ ] Os produtores podem alterar a velocidade e a qualidade do video
-- [ ] Os produtores podem ter notificações 
 - [ ] Os produtores podem ver e responder os comentários feitos
 - [ ] O material do curso pode ser disponibilizados para seus alunos 
 
@@ -60,9 +62,9 @@
 - [ x ] Os produtores tem que colocar um email existente para fazer login
 - [ x ] Os produtores só podem criar um curso se a conta não estiver suspensa
 - [ x ] As Tags do curso se não cadastradas, podem ser "outros"
-
-- [ ] Apenas os produtores podem ver suas notificações.
-- [ ] Quando ele ler a notificação, tem que ir para o campo de "lidas".
+- [ x ] Apenas os produtores podem ver suas notificações.
+- [ x ] Quando ele ler a notificação, tem que ir para o campo de "lidas".
+- [ x ] Cada notificação tem um tempo de vida para ser apagada.
 
 - [ ] Se tem certificado, ou não, tem que aparecer no dash do curso
 - [ ] As notificações dos produtores devem servir para: Situação da conta, Likes, Comentários e afins...
@@ -76,3 +78,4 @@
 - [ ] A aplicação tem que se proteger de XSS e DDoS
 - [ ] Sempre renderizar os erros de forma correta 
 - [ ] Refatorar todos os controllers com Try/Catch
+- [ ] Troque as senhas de banco e etc.

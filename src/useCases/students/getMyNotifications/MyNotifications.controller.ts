@@ -16,7 +16,7 @@ export class MyNotificationsController {
         @Request() req?:CustomRequest,
     ){
         const getNewsNotifications = await this.service.getNotifications({
-            studentId:req?.studentId,
+            studentId:req?.studentId || body.studentId,
         }, isTest);
         return getNewsNotifications;
     };

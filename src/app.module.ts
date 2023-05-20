@@ -29,6 +29,7 @@ import { ChangeFavoriteModule } from './useCases/students/changeFavoriteLesson/C
 import { MyNotificationsModule } from './useCases/students/getMyNotifications/MyNotifications.module';
 import { GiveLikeModule } from './useCases/students/giveLike/GiveLike.module';
 import { SearchCourseModule } from './useCases/students/searchByCourse/SearchCourse.module';
+import { NotificationsModule } from './useCases/producer/notifications/MyNotifications.module';
 
 @Module({
   imports: [
@@ -64,6 +65,7 @@ import { SearchCourseModule } from './useCases/students/searchByCourse/SearchCou
     CreateCourseModule,
     CreateModuleCourseModule,
     CreateLessonModule,
+    NotificationsModule,
 
     //Outers modules
     GetAllCoursesModule,

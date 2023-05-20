@@ -25,7 +25,7 @@ describe('Should to get data about notifications', ()=>{
     describe('Should to get data about notifications of users', ()=>{
         it('should to get notifications', async()=>{
             const getting = await ControllerTest.geted({
-                studentId:'123',
+                studentId:'456',
             }, true);
             
             expect(getting[0].content).toBeDefined();

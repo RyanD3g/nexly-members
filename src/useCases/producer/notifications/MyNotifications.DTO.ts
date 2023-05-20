@@ -1,3 +1,3 @@
-export class INotificationsDTO {
+export class INotificationsProducerDTO {
     producerId:string;
 };

@@ -14,6 +14,7 @@ Tag Plans.txt
 Tag Plans
 Plans.md
 vitest.config.ts
+/coverage
 
 # OS
 .DS_Store
