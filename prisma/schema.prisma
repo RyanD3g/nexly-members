@@ -224,9 +224,26 @@ model Comments_movies {
 
   nameStudent String
   comment     String
+  likes       Int?
+
+  replyComment Reply_Comment[]
 
   movie   Movies_Modules @relation(fields: [movieId], references: [id])
   movieId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Reply_Comment {
+  id String @id @default(uuid())
+
+  nameUser String
+  comment  String
+  likes    Int?
+
+  comment_  Comments_movies @relation(fields: [commentId], references: [id])
+  commentId String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

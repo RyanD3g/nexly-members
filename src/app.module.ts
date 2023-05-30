@@ -30,6 +30,9 @@ import { MyNotificationsModule } from './useCases/students/getMyNotifications/My
 import { GiveLikeModule } from './useCases/students/giveLike/GiveLike.module';
 import { SearchCourseModule } from './useCases/students/searchByCourse/SearchCourse.module';
 import { NotificationsModule } from './useCases/producer/notifications/MyNotifications.module';
+import { CommentInLessonModule } from './useCases/students/CommentInACourse/Comments.module';
+import { ReplyCommentModule } from './useCases/producer/replyComment/ReplyComment.module';
+import { LikeCOmmentModule } from './useCases/anyone/likeAComment/Like.module';
 
 @Module({
   imports: [
@@ -51,6 +54,7 @@ import { NotificationsModule } from './useCases/producer/notifications/MyNotific
     MyNotificationsModule,
     GiveLikeModule,
     SearchCourseModule,
+    CommentInLessonModule,
 
     //Producer Modules 
     RegisterProducerModule,
@@ -69,6 +73,8 @@ import { NotificationsModule } from './useCases/producer/notifications/MyNotific
 
     //Outers modules
     GetAllCoursesModule,
+    ReplyCommentModule,
+    LikeCOmmentModule,
   ],
   controllers: [],
   providers: [],

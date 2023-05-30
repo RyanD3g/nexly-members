@@ -4,6 +4,9 @@
 ## Planos para alunos:
 
 ### RF 
+
+<!-- Lembrar de mexer na parte de notificação do estudante -->
+
 - [ x ] Os alunos podem se cadastrar 
 - [ x ] Os alunos podem concluir o cadastro dos dados (Endereço, informações pessoais)
 - [ x ] Os alunos podem fazer login com a conta cadastrada 
@@ -14,9 +17,15 @@
 - [ x ] Os alunos podem dar like nos videos
 - [ x ] Os alunos podem ter notificações 
 - [ x ] Os alunos podem pesquisar qualquer curso 
+- [ x ] Os alunos podem comentar
+- [ x ] Os alunos podem dar likes nos comentários, ou ter likes
+
+- [ ] Os alunos podem alterar a velocidade e a qualidade do video
 
 - [ ] Os alunos podem ter certificado
-- [ ] Os alunos podem alterar a velocidade e a qualidade do video
+- [ ] Os alunos podem apagar conta na plataforma
+- [ ] Os alunos podem mudar os dados pessoais
+- [ ] Os alunos podem fazer checkout
 
 ### RN
 - [ x ] Os alunos não podem se cadastrar com um email existente
@@ -30,12 +39,12 @@
 - [ x ] Caso um aluno não escolha as tags, tem que ser salvo como "Outros"
 - [ x ] As notificações antigas tem que ser apagadas.
 - [ x ] As notificações tem q serem marcadas como lidas.
+- [ x ] Os alunos só podem comentar se fazerem parte do curso 
 
 - [ ] Os recomendados devem ser baseado nas tags
-
 - [ ] Os alunos não podem compartilhar seu curso
 - [ ] O certificado tem que ser liberado ao final de cada curso (Completo)
-
+- [ ] Os alunos tem que ser avisados caso um curso seja deletado
 ***
 ## Planos para produtores:
 
@@ -48,13 +57,15 @@
 - [ x ] Os produtores podem ver todos os cursos da plataforma
 - [ x ] Os produtores podem ter notificações
 - [ x ] Os produtores podem pesquisar qualquer curso
-
-- [ ] Os produtores podem alterar a velocidade e a qualidade do video
+- [ x ] Os produtores podem ver e responder os comentários feitos
+- [ x ] O produtor pode dar like no comentário, ou receber like
 
 - [ ] Os produtores podem criar certificados para seus cursos
-- [ ] Os produtores podem ver e responder os comentários feitos
 - [ ] O material do curso pode ser disponibilizados para seus alunos 
 
+- [ ] Os produtores podem apagar suas contas
+- [ ] Os produtores podem alterar os dados dos cursos (Módulos, aulas, e cursos....)
+- [ ] Os produtores podem aoagar os dados dos cursos (Módulos, aulas, e cursos....)
 ### RN
 - [ x ] Os produtores não podem se cadastrar com um email existente
 - [ x ] Os produtores tem que estar com o cadastro completo para poder avançar na plataforma
@@ -65,11 +76,16 @@
 - [ x ] Apenas os produtores podem ver suas notificações.
 - [ x ] Quando ele ler a notificação, tem que ir para o campo de "lidas".
 - [ x ] Cada notificação tem um tempo de vida para ser apagada.
+- [ x ] O produtor não pode ver um comentário apagado e responder
+
+- [ ] Apenas o produtor do curso e seus alunos devem poder comentar naquele curso 
+- [ ] Apenas o produtor pode alterar os dados do curso 
 
 - [ ] Se tem certificado, ou não, tem que aparecer no dash do curso
 - [ ] As notificações dos produtores devem servir para: Situação da conta, Likes, Comentários e afins...
-- [ ] Apenas o produtor do curso e seus alunos devem poder comentar naquele curso 
-
+- [ ] Se alterar algo, como aulas, o aluno tem que ser notificado
+- [ ] Se uma aula for apagada, todos os relacionamentos da mesma, será apagada tbm
+- [ ] Se apagar uma conta, os cursos tem que ficar disponivel ainda para o aluno.
 
 ### RNF
 - [ x ] O banco de dados tem que abrir e fechar a conexão sempre
