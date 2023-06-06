@@ -6,7 +6,7 @@ export class ICreateLesson {
     @IsNotEmpty()
     name:string;
 
-    @IsNotEmpty()
+    // @IsNotEmpty()
     urlMovie:string;
     
     urlMaterial?:string;

@@ -19,17 +19,22 @@ export class SearchCourseImplementation implements AFindForCourse{
             {
                 where:{
                     name:data.filterForCourseName,
-                    categorysTag: data.filterForTag === null? undefined: {
-                        has:data.filterForTag,
-                    },
                 },
             },
         );
 
-        if(findForCourse.length === 0){
+        const findForTag = await this.prisma.courses_Producer.findMany({
+            where:{ 
+                categorysTag:{
+                    has:data.filterForTag,
+                }, 
+            },
+        });
+
+        if(findForCourse.length === 0 && findProducer.length === 0 && findForTag.length === 0){
             throw new HttpException('Nada encontrado', HttpStatus.NOT_FOUND);
         };
         await this.prisma.$disconnect();
-        return { courses: findForCourse, producers:findProducer, };
+        return { courses: findForCourse, producers:findProducer, tags:findForTag };
     };
 };

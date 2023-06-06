@@ -16,6 +16,7 @@ export class CreateModuleController {
         @Param('courseId') courseId?:string,
         @Request() req?:CustomRequest,
     ){
+        console.log("AQUI", body.name);
         const created = await this.service.createModuleBasedInCourse({
             name:body.name,
             description:body.description,

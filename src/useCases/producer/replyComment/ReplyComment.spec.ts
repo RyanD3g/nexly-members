@@ -4,6 +4,7 @@ import { ReplyCommentService } from "./ReplyComment.service";
 import { ReplyCommentInMemory } from "../../../repositories/Producer/implementations/in-memory-database/replyComment.memory";
 import { ReplyCommentImplementation } from "../../../repositories/Producer/implementations/ReplyComment.service";
 import { PrismaService } from "../../../database";
+import { IsDeleteCourseImplementation } from "../../../repositories/anyone/implementations/IsDeleteCourse.service";
 
 describe('Aqui será testado a funcionalidade de responder um comentário', ()=>{
     let replyController:ReplyCommentController;
@@ -16,6 +17,7 @@ describe('Aqui será testado a funcionalidade de responder um comentário', ()=>
                 ReplyCommentImplementation,
                 ReplyCommentInMemory,
                 ReplyCommentService,
+                IsDeleteCourseImplementation,
             ],
         }).compile();
         replyController = moduleRef.get<ReplyCommentController>(ReplyCommentController);

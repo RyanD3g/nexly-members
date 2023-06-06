@@ -33,6 +33,10 @@ import { NotificationsModule } from './useCases/producer/notifications/MyNotific
 import { CommentInLessonModule } from './useCases/students/CommentInACourse/Comments.module';
 import { ReplyCommentModule } from './useCases/producer/replyComment/ReplyComment.module';
 import { LikeCOmmentModule } from './useCases/anyone/likeAComment/Like.module';
+import { ToWatchLessonModule } from './useCases/anyone/toWatchLesson/toWatchLesson.module';
+import { CertificateModule } from './useCases/students/myCertificate/Certificate.module';
+import { CompleteCourseModule } from './useCases/students/courseComplete/CourseComplete.module';
+import { DeleteCourseModel } from './useCases/producer/deleteCourse/DeleteCourse.module';
 
 @Module({
   imports: [
@@ -55,6 +59,8 @@ import { LikeCOmmentModule } from './useCases/anyone/likeAComment/Like.module';
     GiveLikeModule,
     SearchCourseModule,
     CommentInLessonModule,
+    CertificateModule,
+    CompleteCourseModule,
 
     //Producer Modules 
     RegisterProducerModule,
@@ -70,11 +76,13 @@ import { LikeCOmmentModule } from './useCases/anyone/likeAComment/Like.module';
     CreateModuleCourseModule,
     CreateLessonModule,
     NotificationsModule,
+    DeleteCourseModel,
 
     //Outers modules
     GetAllCoursesModule,
     ReplyCommentModule,
     LikeCOmmentModule,
+    // ToWatchLessonModule,
   ],
   controllers: [],
   providers: [],

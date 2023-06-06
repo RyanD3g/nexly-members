@@ -5,6 +5,7 @@ import { BuyCourseImplementation } from "src/repositories/Student/implementation
 import { BuyCourseService } from "./BuyCourse.service";
 import { BuyCourseInMemory } from "src/repositories/Student/implementations/in-memory-database/buyCourse.memory";
 import { IsJwtMiddleware } from "src/middlewares/isJwt.middleware";
+import { IsDeleteCourseImplementation } from "src/repositories/anyone/implementations/IsDeleteCourse.service";
 
 @Module({
     imports: [],
@@ -14,6 +15,7 @@ import { IsJwtMiddleware } from "src/middlewares/isJwt.middleware";
         BuyCourseImplementation,
         BuyCourseService,
         BuyCourseInMemory,
+        IsDeleteCourseImplementation,
         IsJwtMiddleware,
     ],
 })

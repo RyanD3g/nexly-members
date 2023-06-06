@@ -5,6 +5,7 @@ import { CommentInLessonService } from "./Comment.service";
 import { CommentInMemory } from "src/repositories/Student/implementations/in-memory-database/comment.memory";
 import { IsJwtMiddleware } from "src/middlewares/isJwt.middleware";
 import { CommentInLessonController } from "./Comment.controller";
+import { IsDeleteCourseImplementation } from "src/repositories/anyone/implementations/IsDeleteCourse.service";
 
 @Module({
     imports: [],
@@ -14,6 +15,7 @@ import { CommentInLessonController } from "./Comment.controller";
         CommentInLessonImplementation,
         CommentInLessonService,
         CommentInMemory,
+        IsDeleteCourseImplementation,
         IsJwtMiddleware,
     ],
 })

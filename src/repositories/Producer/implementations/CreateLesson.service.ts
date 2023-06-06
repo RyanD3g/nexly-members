@@ -18,6 +18,7 @@ export class CreateLessonImplementation implements ACreateLesson {
     }: ICreateLesson): Promise<Object> {
         const created_lesson = await this.prisma.modules_Courses.update({
             where:{ id:moduleId, },
+            include:{ movies:true },
 
             data:{
                 movies:{
@@ -31,6 +32,6 @@ export class CreateLessonImplementation implements ACreateLesson {
                 },
             },
         });
-        return { created:true };
+        return created_lesson;
     };
 };

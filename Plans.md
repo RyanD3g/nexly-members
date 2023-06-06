@@ -7,7 +7,7 @@
 
 <!-- Lembrar de mexer na parte de notificação do estudante -->
 
-- [ x ] Os alunos podem se cadastrar 
+<!-- - [ x ] Os alunos podem se cadastrar 
 - [ x ] Os alunos podem concluir o cadastro dos dados (Endereço, informações pessoais)
 - [ x ] Os alunos podem fazer login com a conta cadastrada 
 - [ x ] Os alunos podem comprar cursos
@@ -18,14 +18,14 @@
 - [ x ] Os alunos podem ter notificações 
 - [ x ] Os alunos podem pesquisar qualquer curso 
 - [ x ] Os alunos podem comentar
-- [ x ] Os alunos podem dar likes nos comentários, ou ter likes
+- [ x ] Os alunos podem dar likes nos comentários, ou ter likes -->
+- [ x ] Os alunos podem ter certificado
 
-- [ ] Os alunos podem alterar a velocidade e a qualidade do video
-
-- [ ] Os alunos podem ter certificado
 - [ ] Os alunos podem apagar conta na plataforma
 - [ ] Os alunos podem mudar os dados pessoais
+
 - [ ] Os alunos podem fazer checkout
+- [ ] Os alunos podem alterar a velocidade e a qualidade do video
 
 ### RN
 - [ x ] Os alunos não podem se cadastrar com um email existente
@@ -40,16 +40,17 @@
 - [ x ] As notificações antigas tem que ser apagadas.
 - [ x ] As notificações tem q serem marcadas como lidas.
 - [ x ] Os alunos só podem comentar se fazerem parte do curso 
+- [ x ] O certificado tem que ser liberado ao final de cada curso (Completo)
+
+- [ ] Os alunos tem que ser avisados caso um curso seja deletado
 
 - [ ] Os recomendados devem ser baseado nas tags
 - [ ] Os alunos não podem compartilhar seu curso
-- [ ] O certificado tem que ser liberado ao final de cada curso (Completo)
-- [ ] Os alunos tem que ser avisados caso um curso seja deletado
 ***
 ## Planos para produtores:
 
 ### RF 
-- [ x ] Os produtores podem se cadastrar 
+<!-- - [ x ] Os produtores podem se cadastrar 
 - [ x ] Os produtores podem concluir o cadastro dos dados (Endereço, informações pessoais)
 - [ x ] Os produtores podem fazer login com a conta cadastrada 
 - [ x ] Os produtores podem criar um curso
@@ -58,9 +59,9 @@
 - [ x ] Os produtores podem ter notificações
 - [ x ] Os produtores podem pesquisar qualquer curso
 - [ x ] Os produtores podem ver e responder os comentários feitos
-- [ x ] O produtor pode dar like no comentário, ou receber like
+- [ x ] O produtor pode dar like no comentário, ou receber like -->
 
-- [ ] Os produtores podem criar certificados para seus cursos
+- [ x ] Os produtores podem criar certificados para seus cursos
 - [ ] O material do curso pode ser disponibilizados para seus alunos 
 
 - [ ] Os produtores podem apagar suas contas
@@ -77,13 +78,12 @@
 - [ x ] Quando ele ler a notificação, tem que ir para o campo de "lidas".
 - [ x ] Cada notificação tem um tempo de vida para ser apagada.
 - [ x ] O produtor não pode ver um comentário apagado e responder
+- [ x ] Apenas o produtor do curso e seus alunos devem poder comentar naquele curso 
 
-- [ ] Apenas o produtor do curso e seus alunos devem poder comentar naquele curso 
 - [ ] Apenas o produtor pode alterar os dados do curso 
-
-- [ ] Se tem certificado, ou não, tem que aparecer no dash do curso
 - [ ] As notificações dos produtores devem servir para: Situação da conta, Likes, Comentários e afins...
 - [ ] Se alterar algo, como aulas, o aluno tem que ser notificado
+
 - [ ] Se uma aula for apagada, todos os relacionamentos da mesma, será apagada tbm
 - [ ] Se apagar uma conta, os cursos tem que ficar disponivel ainda para o aluno.
 

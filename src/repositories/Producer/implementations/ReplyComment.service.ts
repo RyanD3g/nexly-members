@@ -25,6 +25,7 @@ export class ReplyCommentImplementation implements AReplyComment {
         };
         const sendComment = await this.prisma.comments_movies.update({
             where:{ id:data.commentId },
+            include:{ replyComment:true },
 
             data:{
                 replyComment:{

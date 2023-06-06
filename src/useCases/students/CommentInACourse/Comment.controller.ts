@@ -9,16 +9,18 @@ export class CommentInLessonController {
         private service:CommentInLessonService,
     ){};
 
-    @Post('lesson/:lessonId')
+    @Post('lesson/:courseId/:lessonId')
     async handle_comment(
         @Body() body:ICommentDTO,
         isTest:boolean = false,
         @Request() req?:CustomRequest,
         @Param('lessonId') lessonIdParam?:string,
+        @Param('courseId') courseIdParam?:string,
     ){
         try {
             const commented = await this.service.createComment({
                 lessonId:lessonIdParam || body.lessonId,
+                courseId:courseIdParam || body.courseId,
                 commentContent:body.commentContent,
                 studentId:req?.studentId || body.studentId,
             }, isTest);

@@ -4,6 +4,7 @@ import { BuyCourseImplementation } from "../../../repositories/Student/implement
 import { BuyCourseService } from "./BuyCourse.service";
 import { BuyCourseInMemory } from "../../../repositories/Student/implementations/in-memory-database/buyCourse.memory";
 import { Test } from "@nestjs/testing";
+import { IsDeleteCourseImplementation } from "../../../repositories/anyone/implementations/IsDeleteCourse.service";
 
 describe('Should buy a course', ()=>{
     let createBuyControllerTest:BuyCourseController;
@@ -16,6 +17,7 @@ describe('Should buy a course', ()=>{
                 BuyCourseImplementation,
                 BuyCourseService,
                 BuyCourseInMemory,
+                IsDeleteCourseImplementation,
             ],
         }).compile();
 

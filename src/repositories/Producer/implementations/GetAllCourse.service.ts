@@ -18,6 +18,7 @@ export class GetAllCoursesImplementation implements AGetAllCourse {
                 },
             },
         });
+        await this.prisma.$disconnect();
         return allCourses;
     };
 };

@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.1.x"]
 }
 
 datasource db {
@@ -56,9 +57,9 @@ model Address {
 model Courses_Student {
   id String @id @default(uuid())
 
-  lastSeen  String   @default("00:00:00")
-  completed Boolean  @default(false)
-  coursesId String[]
+  lastSeen  String  @default("00:00:00")
+  completed Boolean @default(false)
+  coursesId String
 
   student          Student @relation(fields: [studentCoursesId], references: [id])
   studentCoursesId String
@@ -174,7 +175,8 @@ model Courses_Producer {
   description    String
   categorysTag   String[] @default(["outros"])
   duration       String
-  cretificate    Boolean  @default(false)
+  cretificate    Boolean  @default(true)
+  delDate        String?
 
   producer   Producer? @relation(fields: [producerId], references: [id])
   producerId String?

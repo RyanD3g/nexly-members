@@ -9,12 +9,14 @@ export class CommentInLessonImplementation implements ACommentInLesson{
     constructor(
         private prisma:PrismaService,
     ){};
-    async isMycourse(data: ICommentDTO): Promise<Courses_Student> {
-        const ismyCourse = await this.prisma.courses_Student.findFirst({
-            where:{ studentCoursesId:data.studentId },
+    async isMycourse(data: ICommentDTO): Promise<boolean> {
+        const ismyCourse2 = await this.prisma.student.findUnique({
+            where:{ id:data.studentId },
+            include:{ courses:true },
         });
-
-        return ismyCourse;
+        const verify = ismyCourse2.courses.some(e => e.coursesId === data.courseId);
+        await this.prisma.$disconnect();
+        return verify;
     };
     async comment(data: ICommentDTO): Promise<Movies_Modules> {
         const findbyStudent = await this.prisma.student.findUnique({
@@ -23,6 +25,7 @@ export class CommentInLessonImplementation implements ACommentInLesson{
 
         const comment = await this.prisma.movies_Modules.update({
             where:{ id:data.lessonId },
+            include:{ Comments_movies:true },
 
             data:{
                 Comments_movies:{

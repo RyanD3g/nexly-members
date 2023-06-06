@@ -16,6 +16,8 @@ export class CreateModuleImplementation implements ACreateModule{
     }: ICreateModuleDTO): Promise<Object> {
         const created = await this.prisma.courses_Producer.update({
             where:{ id:courseId, },
+            include:{ modules:true },
+
             data:{
                 modules:{
                   create:{
@@ -27,6 +29,6 @@ export class CreateModuleImplementation implements ACreateModule{
             },
         });
 
-        return { createdModule:true };
+        return created;
     };
 };

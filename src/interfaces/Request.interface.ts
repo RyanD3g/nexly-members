@@ -6,4 +6,5 @@ export interface CustomRequest extends Request{
     isStudent?:boolean;
     isProducer?:boolean;
     signed?:boolean;
+    urlVideo?:string;
 };

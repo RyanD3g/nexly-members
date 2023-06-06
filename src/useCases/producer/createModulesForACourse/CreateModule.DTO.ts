@@ -1,14 +1,14 @@
-import { IsEmpty } from "class-validator";
+import { IsEmpty, IsNotEmpty } from "class-validator";
 
 export class ICreateModuleDTO {
     courseId:string;
 
-    @IsEmpty()
+    @IsNotEmpty()
     name:string;
     
-    @IsEmpty()
+    @IsNotEmpty()
     description:string;
 
-    @IsEmpty()
+    @IsNotEmpty()
     duration:string;
 };

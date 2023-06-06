@@ -5,6 +5,7 @@ import { ReplyCommentImplementation } from "src/repositories/Producer/implementa
 import { ReplyCommentInMemory } from "src/repositories/Producer/implementations/in-memory-database/replyComment.memory";
 import { ReplyCommentService } from "./ReplyComment.service";
 import { PrismaService } from "src/database";
+import { IsDeleteCourseImplementation } from "src/repositories/anyone/implementations/IsDeleteCourse.service";
 
 @Module({
     imports: [],
@@ -14,6 +15,7 @@ import { PrismaService } from "src/database";
         ReplyCommentImplementation,
         ReplyCommentInMemory,
         ReplyCommentService,
+        IsDeleteCourseImplementation,
         IsJwtMiddleware,
     ],
 })

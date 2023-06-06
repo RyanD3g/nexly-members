@@ -13,7 +13,7 @@ export class BuyCourseInMemory implements ABuyCourse {
             completed:false,
             lastSeen:'00:00:00',
             studentCoursesId:'123',
-            coursesId:['4343'],
+            coursesId:'4343',
             createdAt:new Date(),
             updatedAt:new Date(),
         });

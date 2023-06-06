@@ -10,13 +10,13 @@ export class CommentInMemory implements ACommentInLesson {
         completed:false,
         lastSeen:'12:00:00',
         studentCoursesId:'456',
-        coursesId:['432'],
+        coursesId:'432',
         createdAt:new Date(),
         updatedAt:new Date(),
     }];
     private CommentModel__InMemory: Comments_movies[] = [];
     async isMycourse(data: ICommentDTO): Promise<boolean> {
-        const verifyIsStudent = this.CourseModel_InMemory.some(e => e.studentCoursesId === data.studentId);
+        const verifyIsStudent = this.CourseModel_InMemory.some(e => e.coursesId === data.courseId);
         return verifyIsStudent;
     };
     async comment(data: ICommentDTO): Promise<Comments_movies> {
