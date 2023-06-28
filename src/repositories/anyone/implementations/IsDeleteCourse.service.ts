@@ -17,7 +17,7 @@ export class IsDeleteCourseImplementation implements ACourseIsDelete {
             },
         });
         const searchForDeletes = deleted.map(async val =>{
-            if(dayjs(dateNow, 'DD/MM/YYYY').diff(val.delDate, 'day') >= 10){
+            if(dayjs(dateNow, 'YYYY-MM-DD').diff(val.delDate, 'day') >= 10){
                 await this.prisma.courses_Producer.deleteMany({
                     where:{ id:val.id },
                 });

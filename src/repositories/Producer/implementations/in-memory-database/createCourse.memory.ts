@@ -22,6 +22,7 @@ export class CreateCourseInMemory implements ACreateCourse {
             description,
             duration,
             id:'123',
+            delDate:null,
             createdAt:new Date(),
             updatedAt:new Date(),
             name,

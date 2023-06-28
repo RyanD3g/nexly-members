@@ -42,7 +42,7 @@ export class DeleteCourseInMemory implements ADeleteCourse {
         if(setDateForDelete[0].delDate != null){
             throw new Error(`Curso já programado para deleção no dia ${setDateForDelete[0].delDate}`);
         };
-        const setDate = setDateForDelete[0].delDate = dayjs().format('DD/MM/YYYY');
+        const setDate = setDateForDelete[0].delDate = dayjs().format('YYYY-MM-DD');
         const isMyCourseStudent = this.coursesStudent.filter(e => e.coursesId == data.courseId);
         if(isMyCourseStudent != null || isMyCourseStudent != undefined){
            const sendNotificationStudent = this.nortificationsStudent.push(
@@ -52,7 +52,7 @@ export class DeleteCourseInMemory implements ADeleteCourse {
                 content:`O curso ${setDateForDelete[0].name} será deletado em 10 dias.`,
                 read:false,
                 studentId:isMyCourseStudent[0].studentCoursesId,
-                timeLife:dayjs().format('DD/MM/YYYY'),
+                timeLife:dayjs().format('YYYY-MM-DD'),
                 createdAt:new Date(),
                 updatedAt:new Date(),
             },

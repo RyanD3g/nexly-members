@@ -15,7 +15,7 @@ export class NotificationsProducerImplementation implements AGetMyNotificationsP
             include:{ notifications:true, },
         });
         const verify = await allNotifications.notifications.map(async v =>{
-            if(dayjs(dateNow, 'DD/MM/YYYY').diff(v.timeLife, 'day') >= 10 && v.isRead === true){
+            if(dayjs(dateNow, 'YYYY-MM-DD').diff(v.timeLife, 'day') >= 10 && v.isRead === true){
                const forDelete = await this.prisma.notifications_Producer.delete({
                     where:{ id:v.id },
                });

@@ -24,6 +24,7 @@ export class CourseCompleteInMemory implements ACourseComplete {
             categorysTag:['T.I', 'Programação'],
             cretificate:true,
             duration:'23h',
+            delDate:null,
             urlThumbCourse:'Teste.com',
             producerId:'4343',
             createdAt:new Date(),

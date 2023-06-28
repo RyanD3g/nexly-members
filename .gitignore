@@ -10,11 +10,7 @@ pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
-Tag Plans.txt 
-Tag Plans
-Plans.md
 vitest.config.ts
-/coverage
 
 # OS
 .DS_Store
@@ -38,3 +34,9 @@ vitest.config.ts
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# Markdown
+obrigações.md
+Plans.md
+Tag Plans.txt 
+Tag Plans

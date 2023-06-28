@@ -33,10 +33,18 @@ import { NotificationsModule } from './useCases/producer/notifications/MyNotific
 import { CommentInLessonModule } from './useCases/students/CommentInACourse/Comments.module';
 import { ReplyCommentModule } from './useCases/producer/replyComment/ReplyComment.module';
 import { LikeCOmmentModule } from './useCases/anyone/likeAComment/Like.module';
-import { ToWatchLessonModule } from './useCases/anyone/toWatchLesson/toWatchLesson.module';
 import { CertificateModule } from './useCases/students/myCertificate/Certificate.module';
 import { CompleteCourseModule } from './useCases/students/courseComplete/CourseComplete.module';
 import { DeleteCourseModel } from './useCases/producer/deleteCourse/DeleteCourse.module';
+import { CancelDeleteCourseModule } from './useCases/producer/cancelDeleteCourse/CancelDelete.module';
+import { DeleteAccountModule } from './useCases/producer/deleteAccount/DeleteAccount.module';
+import { DeleteAccountStudentModule } from './useCases/students/setDateForDelete/DeleteAccount.module';
+import { AddMaterialModule } from './useCases/producer/addMaterialInLesson/AddMaterial.module';
+import { DeleteMaterialModule } from './useCases/producer/deleteMaterial/DeleteMaterialLesson.module';
+import { SwapLessonModule } from './useCases/producer/swapLesson/SwapLesson.module';
+import { UnfavoriteModule } from './useCases/students/unfavoriteLesson/Unfavorite.module';
+import { CreateTicketModule } from './useCases/students/createTicket/CreateTicket.module';
+import { WatchLessonModule } from './useCases/anyone/toWatchLesson/Watch.module';
 
 @Module({
   imports: [
@@ -61,6 +69,9 @@ import { DeleteCourseModel } from './useCases/producer/deleteCourse/DeleteCourse
     CommentInLessonModule,
     CertificateModule,
     CompleteCourseModule,
+    DeleteAccountStudentModule,
+    UnfavoriteModule,
+    CreateTicketModule,
 
     //Producer Modules 
     RegisterProducerModule,
@@ -77,11 +88,17 @@ import { DeleteCourseModel } from './useCases/producer/deleteCourse/DeleteCourse
     CreateLessonModule,
     NotificationsModule,
     DeleteCourseModel,
+    CancelDeleteCourseModule,
+    DeleteAccountModule,
+    AddMaterialModule,
+    DeleteMaterialModule,
+    SwapLessonModule,
 
     //Outers modules
     GetAllCoursesModule,
     ReplyCommentModule,
     LikeCOmmentModule,
+    WatchLessonModule,
     // ToWatchLessonModule,
   ],
   controllers: [],

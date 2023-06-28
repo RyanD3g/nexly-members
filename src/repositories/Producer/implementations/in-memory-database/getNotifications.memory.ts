@@ -13,7 +13,7 @@ export class NotificationsProducerInMemory implements AGetMyNotificationsProduce
         title:'Exemplo de titulo',
         content:'Exemplo de conteúdo',
         isRead:false,
-        timeLife:'30/05/2023',
+        timeLife:'2023-05-30',
         createdAt:new Date(),
         updatedAt:new Date(),
     },
@@ -23,7 +23,7 @@ export class NotificationsProducerInMemory implements AGetMyNotificationsProduce
         title:'Exemplo de titulo 2',
         content:'Exemplo de conteúdo 2',
         isRead:false,
-        timeLife:dayjs().format('DD/MM/YYYY'),
+        timeLife:dayjs().format('YYYY-MM-DD'),
         createdAt:new Date(),
         updatedAt:new Date(),
     },
@@ -31,7 +31,7 @@ export class NotificationsProducerInMemory implements AGetMyNotificationsProduce
 ]
     async getLifeByNotification(dateNow: string): Promise<Object> {
         const verify = await this.notificationsModel__InMemory.map(v =>{
-            if(dayjs(dateNow, 'DD/MM/YYYY').diff(v.timeLife, 'day') >= 10 && v.isRead === true){
+            if(dayjs(dateNow, 'YYYY-MM-DD').diff(v.timeLife, 'day') >= 10 && v.isRead === true){
                const forDelete = this.notificationsModel__InMemory.indexOf(v);
                delete this.notificationsModel__InMemory[forDelete];
             };

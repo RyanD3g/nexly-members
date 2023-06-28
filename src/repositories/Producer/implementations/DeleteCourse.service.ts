@@ -50,7 +50,7 @@ export class DeleteCourseImplementation implements ADeleteCourse {
                     notifications:{
                         create:{
                             title:'Seu Curso será deletado!',
-                            timeLife:dayjs().format('DD/MM/YYYY'),
+                            timeLife:dayjs().format('YYYY-MM-DD'),
                             content:`O curso ${setDateForDelete.name} será apagado em breve!!`,
                         },
                     },

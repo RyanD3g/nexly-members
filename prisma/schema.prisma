@@ -8,7 +8,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// --------- Student Models ---------
+// --------- S-Models ---------
 
 model Student {
   id String @id @default(uuid())
@@ -24,14 +24,16 @@ model Student {
   bio      String?
   student  Boolean @default(true)
 
+  delDate  String?
   code     String?
   codeDate String?
 
-  address         Address?
-  courses         Courses_Student[]
-  tags            Tags_by_liking[]
-  favoriteLessons Favorites[]
-  notifications   Notifications_Students[]
+  address              Address?
+  courses              Courses_Student[]
+  tags                 Tags_by_liking[]
+  favoriteLessons      Favorites[]
+  notifications        Notifications_Students[]
+  TicketSuport_Student TicketSuport_Student[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -108,7 +110,7 @@ model Notifications_Students {
   updatedAt DateTime @updatedAt
 }
 
-// --------- Producer Models ---------
+// --------- P-Models ---------
 
 model Producer {
   id String @id @default(uuid())
@@ -124,6 +126,7 @@ model Producer {
   isProducer      Boolean @default(true)
   isAccountActive Boolean @default(true)
 
+  delDate  String?
   code     String?
   codeDate String?
 
@@ -166,6 +169,8 @@ model Notifications_Producer {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+// --------- C-Models ---------
 
 model Courses_Producer {
   id String @id @default(uuid())
@@ -246,6 +251,23 @@ model Reply_Comment {
 
   comment_  Comments_movies @relation(fields: [commentId], references: [id])
   commentId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model TicketSuport_Student {
+  id String @id @default(uuid())
+
+  name        String
+  number      String
+  description String
+  category    String
+  priority    String
+  status      String @default("Em aberto")
+
+  comment_  Student @relation(fields: [studentId], references: [id])
+  studentId String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

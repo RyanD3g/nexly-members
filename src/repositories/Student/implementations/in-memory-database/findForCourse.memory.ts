@@ -11,6 +11,7 @@ export class SearchCourseInMemory implements AFindForCourse{
         description:'Teste de descrição',
         cretificate:true,
         duration: '10h',
+        delDate:null,
         categorysTag:["teste de tag"],
         producerId:'1234',
         urlThumbCourse:'urlThumb.com',
