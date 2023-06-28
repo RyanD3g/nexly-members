@@ -14,14 +14,14 @@ export class CreateDataStudentImplementation implements ACreateDataForRegister {
         const searchByPhone = await this.prisma.student.findUnique({
             where:{ phone, }
         });
-
+        await this.prisma.$disconnect();
         return searchByPhone;
     };
     async findByIdentity(identity: string): Promise<Student> {
         const searchByIdentity = await this.prisma.student.findUnique({
             where:{ cpf:identity, },
         });
-
+        await this.prisma.$disconnect();
         return searchByIdentity;
     };
 

@@ -13,6 +13,7 @@ export class CompleteCourseImplementation implements ACourseComplete {
         const isExistsOrNo = await this.prisma.courses_Producer.findUnique({
             where:{ id:courseId, },
         });
+        await this.prisma.$disconnect();
         return isExistsOrNo;
     };
     async complete(data: ICompleteCourseDTO): Promise<Courses_Student> {
@@ -22,6 +23,7 @@ export class CompleteCourseImplementation implements ACourseComplete {
                 completed:true,
             },
         });
+        await this.prisma.$disconnect();
         return changeComplete;
     };
 };

@@ -16,7 +16,7 @@ export class GetFullDataStudent implements AFullStudent {
          });
 
          const valueAddress = validate_Is_not?.address;
-
+         await this.prisma.$disconnect();
          return valueAddress;
     };
     async getAllDataStudent(data: IFullStudent): Promise<Student> {
@@ -24,7 +24,7 @@ export class GetFullDataStudent implements AFullStudent {
             where:{ id:data.studentId },
             include:{ address:true },
         });
-        console.log("OLHE AQUI -------------------------------------", getData)
+        await this.prisma.$disconnect();
         return getData;
     };
 };

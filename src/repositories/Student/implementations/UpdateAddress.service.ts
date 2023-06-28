@@ -29,6 +29,7 @@ export class UpdateAddressImplementation implements AUpdateAddress {
                 uf,
             }
         });
+        await this.prisma.$disconnect();
         return { updated:true, };
     };
 };

@@ -18,7 +18,8 @@ export class FavoriteLessonImplementation implements AFavoriteLesson {
                     },
                 },
             },
-        })
+        });
+        await this.prisma.$disconnect();
         return { favorited: true };
     };
 };

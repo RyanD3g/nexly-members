@@ -16,7 +16,7 @@ export class RegisterStudentImplementation implements ARegisterStudent {
         const findByEmailInDB = this.prisma.student.findUnique(
             { where: { email } },
         ); 
-
+        await this.prisma.$disconnect();
         return findByEmailInDB;
     };
 

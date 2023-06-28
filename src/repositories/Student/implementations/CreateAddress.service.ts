@@ -33,7 +33,7 @@ export class CreateAddressImplementation implements ACreateAddress {
                 },
             },
         });
-        console.log("FOI AQUI")
+        await this.prisma.$disconnect();
         return { created:true, };
     };
 };

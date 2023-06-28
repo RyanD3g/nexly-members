@@ -19,9 +19,11 @@ export class ProfileImageStudentImplementation implements AProfileImage {
                     photo:data.urlPhoto,
                 },
             });
+            await this.prisma.$disconnect();
             return { updated:true };
         }else{
             await this.updateImageProfile(data);
+            await this.prisma.$disconnect();
         };
 
     }
@@ -32,6 +34,7 @@ export class ProfileImageStudentImplementation implements AProfileImage {
                 photo:data.urlPhoto,
             },
         });
+        await this.prisma.$disconnect();
         return { updated:true };
     };
 

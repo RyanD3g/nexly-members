@@ -15,6 +15,7 @@ export class DeleteAccountStudentImplementation implements ADeleteAccountStudent
             where:{ id:studentId, },
         });
         const isSetDelDate = findForStudent.delDate !== null;
+        await this.prisma.$disconnect();
         return isSetDelDate;
     };
     async deleteAccount(data: IDeleteAccountStudentDTO): Promise<Student> {
@@ -24,7 +25,7 @@ export class DeleteAccountStudentImplementation implements ADeleteAccountStudent
                 delDate:dayjs().format('DD/MM/YYYY'),
             },
         });
-
+        await this.prisma.$disconnect();
         return findForStudent;
     };
 };

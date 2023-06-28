@@ -260,6 +260,7 @@ model TicketSuport_Student {
   id String @id @default(uuid())
 
   name        String
+  identity    String @unique
   number      String
   description String
   category    String

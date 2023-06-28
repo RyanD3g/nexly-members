@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { AGetMyCourse } from "../IGetMyCourse.producer";
-import { Courses_Student, Student } from "@prisma/client";
+import { Student } from "@prisma/client";
 import { IMyCourseDTO } from "../../../useCases/students/getCoursesByStudent/myCourse.DTO";
 import { PrismaService } from "../../../database";
 
@@ -16,6 +16,7 @@ export class getMyCoursesImplementation implements AGetMyCourse {
                 courses:true,
             },
         });
+        await this.prisma.$disconnect();
         return getCourse;
     };
 };

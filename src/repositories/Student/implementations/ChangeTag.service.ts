@@ -18,7 +18,7 @@ export class ChangeTagImplementation implements AChangeTags {
                 },
             },
         });
-
+        await this.prisma.$disconnect();
         return { created:true };
     };
 };

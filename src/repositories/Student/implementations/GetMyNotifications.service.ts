@@ -22,6 +22,7 @@ export class GetMyNotificationsImplementations implements AGetNotifications {
                });
             };
         });
+        await this.prisma.$disconnect();
         return { deleted:true, };
     };
     async myNotifications(data: IMyNotificationsDTO): Promise<Student> {
@@ -42,6 +43,7 @@ export class GetMyNotificationsImplementations implements AGetNotifications {
                 read:true,
             },
         });
+        await this.prisma.$disconnect();
         return getNotificationsNotRead;
     };
 };

@@ -18,6 +18,7 @@ export class CertificatesImplementations implements ACertificateStudent {
                 where:{ id:val.id },
             });
         });
+        await this.prisma.$disconnect();
         return { courses:sendByThisCourses };
     };
 };

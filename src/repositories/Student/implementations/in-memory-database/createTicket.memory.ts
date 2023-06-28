@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { ACreateTicket } from "../../ICreateTicket.student";
 import { ICreateTicketDTO } from "../../../../useCases/students/createTicket/CreateTicket.DTO";
 import { TicketSuport_Student } from "@prisma/client";
-
+import { v4 } from 'uuid';
 @Injectable()
 export class CreateTicketInMemory implements ACreateTicket {
     private TicketModel:TicketSuport_Student[] = [];
@@ -22,6 +22,7 @@ export class CreateTicketInMemory implements ACreateTicket {
                 category,
                 priority,
                 description,
+                identity:v4(),
                 status:null,
                 studentId,
                 updatedAt:new Date(),

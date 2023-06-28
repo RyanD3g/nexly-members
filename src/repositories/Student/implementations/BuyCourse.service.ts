@@ -22,6 +22,7 @@ export class BuyCourseImplementation implements ABuyCourse {
                 },
             },
         });
+        await this.prisma.$disconnect();
         return { buyed:true };
     };
 };
