@@ -14,11 +14,11 @@ export class NotificationsService {
     async readNotifications(data:INotificationsProducerDTO, isTest:boolean){
         if(isTest){
             const myNotificationsInMemory = await this.InMemory.notifications(data);
-            const deleteLeftReadInMemory = await this.InMemory.getLifeByNotification(dayjs().format('DD/MM/YYYY'));
+            const deleteLeftReadInMemory = await this.InMemory.getLifeByNotification(dayjs().format('YYYY-MM-DD'));
             return myNotificationsInMemory;    
         };
         const myNotifications = await this.implementation.notifications(data);
-        const deleteLeftRead = await this.implementation.getLifeByNotification(dayjs().format('DD/MM/YYYY'), data.producerId);
+        const deleteLeftRead = await this.implementation.getLifeByNotification(dayjs().format('YYYY-MM-DD'), data.producerId);
         return myNotifications;
     };
 };

@@ -16,7 +16,7 @@ export class GetMyNotificationsImplementations implements AGetNotifications {
             include:{ notifications:true, },
         });
         const verify = await allNotifications.notifications.map(async v =>{
-            if(dayjs(dateNow, 'DD/MM/YYYY').diff(v.timeLife, 'day') >= 10 && v.read === true){
+            if(dayjs(dateNow, 'YYYY-MM-DD').diff(v.timeLife, 'day') >= 10 && v.read === true){
                const forDelete = await this.prisma.notifications_Students.delete({
                     where:{ id:v.id },
                });
@@ -41,6 +41,7 @@ export class GetMyNotificationsImplementations implements AGetNotifications {
             },
             data:{
                 read:true,
+                timeLife:dayjs().format('YYYY-MM-DD')
             },
         });
         await this.prisma.$disconnect();

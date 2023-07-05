@@ -29,7 +29,7 @@ export class DeleteCourseImplementation implements ADeleteCourse {
         const setDate = await this.prisma.courses_Producer.update({
             where:{ id:data.courseId },
             data:{
-                delDate:dayjs().format('DD/MM/YYYY'),
+                delDate:dayjs().format('YYYY-MM-DD'),
             },
         });
         const sendNotificationsForStudents = await this.prisma.student.findMany({
@@ -50,7 +50,7 @@ export class DeleteCourseImplementation implements ADeleteCourse {
                     notifications:{
                         create:{
                             title:'Seu Curso será deletado!',
-                            timeLife:dayjs().format('YYYY-MM-DD'),
+                            timeLife:null,
                             content:`O curso ${setDateForDelete.name} será apagado em breve!!`,
                         },
                     },

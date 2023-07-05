@@ -25,17 +25,20 @@ export class NotificationsProducerImplementation implements AGetMyNotificationsP
     };
     async notifications(data: INotificationsProducerDTO){
         const filtred = await this.prisma.producer.findUnique({
-            where:{ id:data.producerId },
+            where:{ id:data.producerId, },
             include:{ notifications:true },
         });
 
         const maped = await filtred.notifications.map(async n =>{
-            await this.prisma.notifications_Producer.update({
-                where:{ id:n.id, },
-                data:{
-                    isRead:true,
-                },
-            });
+            if(n.isRead == false){
+                await this.prisma.notifications_Producer.update({
+                    where:{ id:n.id },
+                    data:{
+                        isRead:true,
+                        timeLife:dayjs().format('YYYY-MM-DD'),
+                    },
+                });
+            }
         });
         return filtred;
     };

@@ -42,7 +42,7 @@ export class DeleteAccountImplementation implements ADeleteAccount {
                         create:{
                             title:'Seu curso será apagado!!',
                             content:`Seu curso será apagado em 10 dias`,
-                            timeLife:dayjs().format('DD/MM/YYYY'),
+                            timeLife:null,
                         },
                     },
                 },

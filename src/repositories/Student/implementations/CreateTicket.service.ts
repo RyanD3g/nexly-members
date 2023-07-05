@@ -3,6 +3,7 @@ import { ACreateTicket } from "../ICreateTicket.student";
 import { ICreateTicketDTO } from "../../../useCases/students/createTicket/CreateTicket.DTO";
 import { Student } from "@prisma/client";
 import { PrismaService } from "../../../database";
+import { v4 } from 'uuid';
 
 @Injectable()
 export class CreateTicketImplementation implements ACreateTicket {
@@ -26,6 +27,7 @@ export class CreateTicketImplementation implements ACreateTicket {
                         name,
                         number,
                         category,
+                        identity:v4(),
                         priority,
                         description,
                     },

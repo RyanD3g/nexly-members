@@ -13,7 +13,7 @@ export class NotificationsProducerInMemory implements AGetMyNotificationsProduce
         title:'Exemplo de titulo',
         content:'Exemplo de conteúdo',
         isRead:false,
-        timeLife:'2023-05-30',
+        timeLife:null,
         createdAt:new Date(),
         updatedAt:new Date(),
     },
@@ -22,8 +22,8 @@ export class NotificationsProducerInMemory implements AGetMyNotificationsProduce
         producerId:'456',
         title:'Exemplo de titulo 2',
         content:'Exemplo de conteúdo 2',
-        isRead:false,
-        timeLife:dayjs().format('YYYY-MM-DD'),
+        isRead:true,
+        timeLife:'2022-03-09',
         createdAt:new Date(),
         updatedAt:new Date(),
     },
@@ -44,7 +44,10 @@ export class NotificationsProducerInMemory implements AGetMyNotificationsProduce
         );
 
         const maped = await filtred.map(n =>{
-            n.isRead = true;
+            if(n.isRead == false){
+                n.isRead = true;
+                n.timeLife = dayjs().format('YYYY-MM-DD');
+            };
         });
         return filtred;
     };

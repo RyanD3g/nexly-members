@@ -9,7 +9,7 @@ export class AddMaterialController {
     ){};
 
     @Put('add/:lessonId')
-    @UseInterceptors(FileInterceptor('movie'))
+    @UseInterceptors(FileInterceptor('material'))
     async handle_addMaterial(
         @Param('lessonId') lessonId:string,
         @UploadedFile() file,

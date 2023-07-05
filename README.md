@@ -8,7 +8,7 @@
 ##### Rotas para alunos:
 - *Cadastro*: ` /student/register `
 -  *Login*: ` /student/login `
-#### 1. *Completar cadastro*: ` /create/data/student `
+#### 1. Completar cadastro: ` /create/data/student `
   ### Dados necessários: 
 `PUT`
 ```json
@@ -23,7 +23,7 @@
 ```
     - Precisa de token!
 
-#### 2. *Subir imagem de perfil*: ` /upload/image/profile/student  `
+#### 2. Subir imagem de perfil: ` /upload/image/profile/student  `
 ### Dados necessários:
 `PUT`
 ```json
@@ -32,7 +32,7 @@
 }
 ```
     - Precisa de token!
-#### 3. *Cadastrar endereço*: ` /create/address/student `
+#### 3. Cadastrar endereço: ` /create/address/student `
 ### Dados necessários: 
  `PUT`
 ```json
@@ -47,7 +47,7 @@
 ```
 
     - Precisa de token!
-#### 4. *Atualizar endereço*: ` /update/address/student/**Id do endereço** `
+#### 4. Atualizar endereço: ` /update/address/student/**Id do endereço** `
 ### Dados necessários:
 `PUT`
 
@@ -96,11 +96,153 @@
 	"confirmNewPassword":"teste"
 }
 ```
+
+#### 9. Escolher tags para perfil: ` /change/tags/student`
+### Dados necessários:
+` PUT ` 
+```json
+{
+	"tagname":"nome da tag",
+}
+```
+
+##### Observações:
+###### As tags tem que ser tags já prontas feitas pelo frontend, o usuário não pode criar tags próprias.
+.
+#### 10. Comprar curso: ` /buy/course/student/ id do curso`
+### Método:
+` Post ` 
+##### Observações:
+###### Ainda não foi implantado a função de pagamento real. 
+.
+#### 11. Ver cursos comprados: ` /courses/list-my-courses/student`
+### Método:
+` Get ` 
+```json
+ - Precisa de tocken!
+```
+
+#### 12. Favoritar aula: ` /change-favorite/lesson/student`
+### Método:
+` Post ` 
+```json
+ - Precisa de tocken!
+```
+```json
+{
+    "lessonId":"id da aula favoritada",
+    "lessonName":"Nome da aula favoritada",
+}
+```
+#### 13. Ver minhas notificações: ` /my/notifications/student`
+### Método:
+` Get ` 
+```json
+ - Precisa de tocken!
+```
+##### Observações:
+###### Após lidas, ela terão um tempo de 10 dias de vida. 
+.
+
+#### 14. Dar like em aula: ` /like/course`
+### Método:
+` Put ` 
+```json
+ - Precisa de tocken!
+```
+
+### Dados necessários:
+
+```json
+ {
+    "lessonId":"Id da aula",
+ }
+```
+#### 14. Pesquisar curso e filtrar: ` /search/courses`
+### Método:
+` Post ` 
+```json
+ - Precisa de tocken!
+```
+
+### Dados necessários:
+
+```json
+ {
+    "filterForCourseName":"Nome do curso (Opicional)",
+    "filterForProducer":"Nome do Produtor (Opicional)",
+    "filterForTag":"Nome da tag (Opicional)"
+ }
+```
+
+#### 15. Comentar em aula: ` /comment/lesson/ id do curso/ id da aula`
+### Método:
+` Post ` 
+```json
+ - Precisa de tocken!
+```
+
+### Dados necessários:
+
+```json
+ {
+    "commentContent":"Comentário",
+ }
+```
+
+#### 16. Pegar certificado: ` /courses/completed/`
+### Método:
+` Post ` 
+```json
+ - Precisa de tocken!
+```
+
+##### Observações:
+###### Retornará todos os cursos que estão completos. 
+.
+
+#### 17. Deletar conta: ` /delete/account/student`
+### Método:
+` Put ` 
+```json
+ - Precisa de tocken!
+```
+
+##### Observações:
+###### Aágará a conta em 10 dias. 
+.
+
+#### 18. Desfavoritar aula: ` /unfavorite/lesson/ id da aula`
+### Método:
+` Delete ` 
+```json
+ - Precisa de tocken!
+```
+
+#### 19. Criar Ticket: ` /create/ticket`
+### Método:
+` Delete ` 
+```json
+ - Precisa de tocken!
+```
+
+### Dados necessários:
+```json
+ {
+    "name":"Nome do usuário",
+    "number":"Número do usuário",
+    "category":"Categoria do problema (Tem que ser definida pelo Frontend)",
+    "description":"Descrição do problema",
+    "priority":"Prioridade do problema (Definida pelo frontend)"
+ }
+```
+
 ---
+## Funções para produtores 
 ##### Rotas para produtores:
 - *Cadastro*: ` /producer/register `
 -  *Login*: ` /producer/login `
-#### 1. *Completar cadastro*: ` /create/data/producer `
+#### 1. Completar cadastro: ` /create/data/producer `
   ### Dados necessários: 
 `PUT`
 ```json
@@ -115,7 +257,7 @@
 ```
     - Precisa de token!
 
-#### 2. *Subir imagem de perfil*: ` /upload/image/profile/producer  `
+#### 2. Subir imagem de perfil: ` /upload/image/profile/producer  `
 ### Dados necessários:
 `PUT`
 ```json
@@ -124,7 +266,7 @@
 }
 ```
     - Precisa de token!
-#### 3. *Cadastrar endereço*: ` /create/address/producer `
+#### 3. Cadastrar endereço: ` /create/address/producer `
 ### Dados necessários: 
  `PUT`
 ```json
@@ -139,7 +281,7 @@
 ```
 
     - Precisa de token!
-#### 4. *Atualizar endereço*: ` /update/address/producer/**Id do endereço** `
+#### 4. Atualizar endereço: ` /update/address/producer/**Id do endereço** `
 ### Dados necessários:
 `PUT`
 
@@ -234,3 +376,105 @@
 `GET`
 ```json
 - Precisa de token!
+```
+
+#### 13. Ver notificações recebidas: `/my/notifications/producer`
+
+### Método:
+`GET`
+
+
+``` json
+- Precisa de token!
+```
+
+##### **Observações:**
+###### Assim que a notificação é lida, automcaticamente vai ser salvo a data em que foi lida, e quando a caixa de notificações for aberta dnv, as notificações com mais de 10 dias serão apagadas
+.
+
+#### 14. Deletar um curso: `/delete/course/ id do curso`
+
+### Método:
+`Delete`
+``` json
+- Precisa de token!
+```
+##### **Observações:**
+###### Assim que o curso for apagado, ele dará um prazo de 10 dias. Por de baixo dos panos uma notidicação é enviada aos estudantes que possuem o curso, avisando eles que o curso será deletado. Caso o curso não seja seu, uma mensagem de erro virá como resposta do servidor, avisando que o curso não é seu.
+.
+
+#### 15. Cancelar deleção do curso: `/cancel/delete/course/ id do curso`
+
+### Método:
+`Put`
+``` json
+- Precisa de token!
+```
+
+##### **Observações:**
+###### Caso o curso não exista, ou já tenha sido apagado, ele retorna uma mensagem de erro, avisando que o curso não existe.
+.
+
+
+#### 16. Adicionar material ao curso: `/material/add/ id da aula`
+
+### Método:
+`Put`
+``` json
+- Precisa de token!
+```
+
+### Dados necessários:
+```json
+{
+    "material":"Arquivo PDF e/ou .Docx"
+}
+```
+
+##### **Observações:**
+###### Caso a aula não exista, ou já tenha sido apagada, ele retorna uma mensagem de erro, avisando que a aula não existe.
+.
+
+
+#### 17. Excluir material do curso: `/delete/material/ id da aula`
+
+### Método:
+`Delete`
+``` json
+- Precisa de token!
+```
+
+##### **Observações:**
+###### Caso a aula não exista, ou já tenha sido apagada, ele retorna uma mensagem de erro, avisando que a aula não existe.
+.
+
+#### 18. Trocar alguma aula do curso: `/swap/lesson/ id da aula`
+
+### Método:
+`Put`
+``` json
+- Precisa de token!
+```
+### Dados necessários:
+```json
+{
+    "urlMovie":"Arquivo de video mp4, wave",
+    "name":"Nome da aula",
+    "description":"Descrição da aula",
+    "duration":"8min"
+}
+```
+##### **Observações:**
+###### Caso a aula não exista, ou já tenha sido apagada, ele retorna uma mensagem de erro, avisando que a aula não existe. Em caso de erro, ele retornará o status `500`
+.
+
+#### 17. Deletar conta pessoal: `/delete/account/producer`
+
+### Método:
+`Delete`
+``` json
+- Precisa de token!
+```
+
+##### **Observações:**
+###### Caso a conta não exista, ou já tenha sido apagada, ele retorna uma mensagem de erro, avisando que a conta não existe. Por debaixo dos panos os alunos que possuem o curso dele, será avisado por notificação.

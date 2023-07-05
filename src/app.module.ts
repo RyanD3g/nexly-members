@@ -45,6 +45,7 @@ import { SwapLessonModule } from './useCases/producer/swapLesson/SwapLesson.modu
 import { UnfavoriteModule } from './useCases/students/unfavoriteLesson/Unfavorite.module';
 import { CreateTicketModule } from './useCases/students/createTicket/CreateTicket.module';
 import { WatchLessonModule } from './useCases/anyone/toWatchLesson/Watch.module';
+import { NewChatModule } from './useCases/producer/responseTicket/NewChat.module';
 
 @Module({
   imports: [
@@ -73,7 +74,7 @@ import { WatchLessonModule } from './useCases/anyone/toWatchLesson/Watch.module'
     UnfavoriteModule,
     CreateTicketModule,
 
-    //Producer Modules 
+    // //Producer Modules 
     RegisterProducerModule,
     LoginProducerModule,
     RecoverPassModuleProducer,
@@ -89,19 +90,17 @@ import { WatchLessonModule } from './useCases/anyone/toWatchLesson/Watch.module'
     NotificationsModule,
     DeleteCourseModel,
     CancelDeleteCourseModule,
-    DeleteAccountModule,
     AddMaterialModule,
     DeleteMaterialModule,
     SwapLessonModule,
+    DeleteAccountModule,
+    NewChatModule,
 
     //Outers modules
     GetAllCoursesModule,
     ReplyCommentModule,
     LikeCOmmentModule,
     WatchLessonModule,
-    // ToWatchLessonModule,
   ],
-  controllers: [],
-  providers: [],
 })
 export class AppModule {};

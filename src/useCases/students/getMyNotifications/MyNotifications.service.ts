@@ -14,11 +14,11 @@ export class MyNotificationsService {
     async getNotifications(data:IMyNotificationsDTO, isTest:boolean){
         if(isTest){
             const geted = await this.inMemory.myNotifications(data);
-            const forDelete = await this.inMemory.getLifeByNotification(dayjs().format('DD/MM/YYYY'), data.studentId);
+            const forDelete = await this.inMemory.getLifeByNotification(dayjs().format('YYYY-MM-DD'), data.studentId);
             return geted;
         };
         const getedReal = await this.implementation.myNotifications(data);
-        const forDelete = await this.implementation.getLifeByNotification(dayjs().format('DD/MM/YYYY'), data.studentId);
+        const forDelete = await this.implementation.getLifeByNotification(dayjs().format('YYYY-MM-DD'), data.studentId);
         return getedReal;
     };
 };
