@@ -468,7 +468,7 @@
 ###### Caso a aula não exista, ou já tenha sido apagada, ele retorna uma mensagem de erro, avisando que a aula não existe. Em caso de erro, ele retornará o status `500`
 .
 
-#### 17. Deletar conta pessoal: `/delete/account/producer`
+#### 19. Deletar conta pessoal: `/delete/account/producer`
 
 ### Método:
 `Delete`
