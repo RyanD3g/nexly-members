@@ -8,8 +8,8 @@ import { Request } from 'express';
 const s3_ = new S3Client({
     region: 'us-east-1',
     credentials:{
-        accessKeyId: 'AKIAW56V7J5TPFJPWHGN',
-        secretAccessKey: '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'
+        accessKeyId: 'AKIA3K76EFD66VGUZZHV',
+        secretAccessKey: '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'
     },
 });
 
@@ -17,7 +17,7 @@ export default{
     dest: './',
     storage: multer_s3({
         s3: s3_,
-        bucket: 'documents-by-lesson',
+        bucket: 'documents-by-lesson-01',
         contentType: multer_s3.AUTO_CONTENT_TYPE,
         acl: 'public-read',
         key: (req, file:Express.Multer.File, callback) =>{

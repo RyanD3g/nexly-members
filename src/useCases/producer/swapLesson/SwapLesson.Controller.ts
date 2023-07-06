@@ -10,8 +10,8 @@ import { Readable } from 'stream';
 const s3 = new aws.S3({
     region:'us-east-1',
     credentials:{
-        accessKeyId: 'AKIAW56V7J5TPFJPWHGN',
-        secretAccessKey: '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'
+        accessKeyId: 'AKIA3K76EFD66VGUZZHV',
+        secretAccessKey: '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'
     }
 })
 
@@ -37,7 +37,7 @@ export class SwapLessonController {
                 const hash = crypto.randomBytes(16).toString('hex');
                 const filenameHash = `lessons/${hash} - ${filename.filename}`;
                 s3.upload({
-                    Bucket:'lessons-nexly-members',
+                    Bucket:'lessons-nexly-01',
                     Key:filenameHash,
                     Body:file,
                     ACL:'public-read',
