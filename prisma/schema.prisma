@@ -34,6 +34,7 @@ model Student {
   favoriteLessons      Favorites[]
   notifications        Notifications_Students[]
   TicketSuport_Student TicketSuport_Student[]
+  roomTicket           RoomForTicket[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -133,6 +134,7 @@ model Producer {
   courses       Courses_Producer[]
   notifications Notifications_Producer[]
   address       AddressForProducers?
+  roomTicket    RoomForTicket[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -256,6 +258,8 @@ model Reply_Comment {
   updatedAt DateTime @updatedAt
 }
 
+// --------- T-Models ---------
+
 model TicketSuport_Student {
   id String @id @default(uuid())
 
@@ -267,9 +271,47 @@ model TicketSuport_Student {
   priority    String
   status      String @default("Em aberto")
 
+  ticketRoom RoomForTicket[]
+
   comment_  Student @relation(fields: [studentId], references: [id])
   studentId String
 
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  MessagesForRoom MessagesForRoom[]
+}
+
+model RoomForTicket {
+  id String @id @default(uuid())
+
+  nameRoom String
+
+  messages MessagesForRoom[]
+
+  ticket_  TicketSuport_Student @relation(fields: [ticketId], references: [id])
+  ticketId String
+
+  student   Student @relation(fields: [studentId], references: [id])
+  studentId String
+
+  producer   Producer @relation(fields: [producerId], references: [id])
+  producerId String
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model MessagesForRoom {
+  id String @id @default(uuid())
+
+  userMessage    String
+  contentMessage String
+
+  ticket_  TicketSuport_Student @relation(fields: [ticketId], references: [id])
+  ticketId String
+
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  RoomForTicket   RoomForTicket? @relation(fields: [roomForTicketId], references: [id])
+  roomForTicketId String?
 }

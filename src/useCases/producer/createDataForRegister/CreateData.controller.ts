@@ -13,9 +13,7 @@ export class CreateDataForProducerController {
     async handle_create(
         @Body() body:IDataByProducer,
         @Request() req?:CustomRequest,
-        @Response() res?,
         ){
-        try {
             const sendDataForInfra = await this.service.created({
                 producerId:req.producerId,
                 identity:body.identity,
@@ -25,9 +23,6 @@ export class CreateDataForProducerController {
                 sex:body.sex,
             });
 
-            return sendDataForInfra;
-        } catch (error) {
-            return res.status(500).json({ erro:error?.message });
-        };
+            return { register:'OK' };
     };
 };

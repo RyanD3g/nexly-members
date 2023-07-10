@@ -46,10 +46,12 @@ import { UnfavoriteModule } from './useCases/students/unfavoriteLesson/Unfavorit
 import { CreateTicketModule } from './useCases/students/createTicket/CreateTicket.module';
 import { WatchLessonModule } from './useCases/anyone/toWatchLesson/Watch.module';
 import { NewChatModule } from './useCases/producer/responseTicket/NewChat.module';
+import { ReturnTicketModule } from './useCases/anyone/returnAllTickets/ReturnTickets.module';
 
 @Module({
   imports: [
     //Student Modules
+    
     RegisterStudentModule,
     LoginStudentModule,
     RecoverPassModule,
@@ -75,6 +77,7 @@ import { NewChatModule } from './useCases/producer/responseTicket/NewChat.module
     CreateTicketModule,
 
     // //Producer Modules 
+
     RegisterProducerModule,
     LoginProducerModule,
     RecoverPassModuleProducer,
@@ -97,10 +100,12 @@ import { NewChatModule } from './useCases/producer/responseTicket/NewChat.module
     NewChatModule,
 
     //Outers modules
+
     GetAllCoursesModule,
     ReplyCommentModule,
     LikeCOmmentModule,
     WatchLessonModule,
+    ReturnTicketModule,
   ],
 })
 export class AppModule {};

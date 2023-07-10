@@ -18,6 +18,6 @@ export class CreateDataForProducerService {
             throw new HttpException('Identidade já cadastrada!', HttpStatus.BAD_REQUEST);
         };
         const sendData = await this.implementation.create(data);
-        return sendData;
+        return {ok:'OK'};
     };
 };

@@ -15,8 +15,9 @@ import {
     @WebSocketServer()
     server: Server;
   
-    @SubscribeMessage('events')
+    @SubscribeMessage('message')
     findAll(@MessageBody() data: any){
+      console.log(data)
       return 'ok';
     };
   }

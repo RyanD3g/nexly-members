@@ -13,8 +13,8 @@ export class MailProvider implements AMailProvider {
             host: "sandbox.smtp.mailtrap.io",
             port: 2525,
             auth: {
-              user: "bd4af977b9aa92",
-              pass: "56a65a710f20c8"
+              user: "42d208b3a801ae",
+              pass: "005550058319c0"
             },
         });
     };

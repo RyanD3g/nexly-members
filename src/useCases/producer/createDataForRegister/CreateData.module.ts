@@ -21,7 +21,7 @@ import { isSigned } from "src/middlewares/isSigned.middleware";
 export class CreateDataProducerModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {
         consumer
-            .apply(IsJwtMiddleware, IsProducer, isSigned)
+            .apply(IsJwtMiddleware)
             .forRoutes('create/data/producer')
     };
 };

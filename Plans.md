@@ -46,7 +46,8 @@
 - [ x ] O certificado tem que ser liberado ao final de cada curso (Completo)
 - [ x ] Os alunos tem que ser avisados caso um curso seja deletado -->
 
-- [ x ] Os tickets criados pelos alunos tem que ter "nome", "número(com DDD)", "Descrição do problema", "Categoria do problema (Assistência, problemas funcionais, Etc.)" e "Prioridade do problema(Média, alta e baixa)"     
+- [ x ] Os tickets criados pelos alunos tem que ter "nome", "número(com DDD)", "Descrição do problema", "Categoria do problema (Assistência, problemas funcionais, Etc.)" e "Prioridade do problema(Média, alta e baixa)"  
+- [ ] Rotas para mostrar todos os tickets    
 - [ ] O status do ticket tem que depender da solução da plataforma (Estado: Em andamento, ainda não resolvida, resolvida.)
 
 - [ ] Os recomendados devem ser baseado nas tags
