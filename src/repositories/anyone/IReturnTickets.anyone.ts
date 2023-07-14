@@ -1,5 +1,5 @@
-import { TicketSuport_Student } from "@prisma/client";
+import { TicketSuport_Student, Student } from "@prisma/client";
 
 export abstract class AReturnTickets {
-    abstract allTickets(): Promise<boolean[]> | TicketSuport_Student[]; 
+    abstract allTickets(): Promise<Student[]> | TicketSuport_Student[]; 
 };

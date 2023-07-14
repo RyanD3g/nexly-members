@@ -34,7 +34,6 @@ model Student {
   favoriteLessons      Favorites[]
   notifications        Notifications_Students[]
   TicketSuport_Student TicketSuport_Student[]
-  roomTicket           RoomForTicket[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -291,9 +290,6 @@ model RoomForTicket {
   ticket_  TicketSuport_Student @relation(fields: [ticketId], references: [id])
   ticketId String
 
-  student   Student @relation(fields: [studentId], references: [id])
-  studentId String
-
   producer   Producer @relation(fields: [producerId], references: [id])
   producerId String
 
@@ -307,11 +303,10 @@ model MessagesForRoom {
   userMessage    String
   contentMessage String
 
-  ticket_  TicketSuport_Student @relation(fields: [ticketId], references: [id])
-  ticketId String
-
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
-  RoomForTicket   RoomForTicket? @relation(fields: [roomForTicketId], references: [id])
-  roomForTicketId String?
+  createdAt              DateTime              @default(now())
+  updatedAt              DateTime              @updatedAt
+  RoomForTicket          RoomForTicket?        @relation(fields: [roomForTicketId], references: [id])
+  roomForTicketId        String?
+  TicketSuport_Student   TicketSuport_Student? @relation(fields: [ticketSuport_StudentId], references: [id])
+  ticketSuport_StudentId String?
 }
