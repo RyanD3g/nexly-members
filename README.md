@@ -478,3 +478,89 @@
 
 ##### **Observações:**
 ###### Caso a conta não exista, ou já tenha sido apagada, ele retorna uma mensagem de erro, avisando que a conta não existe. Por debaixo dos panos os alunos que possuem o curso dele, será avisado por notificação.
+
+
+## Novas Funções 
+### Tickets 🎫 (Chat de resposta com websocket)
+#### 1. Responder um ticket (Função apenas do produtor):  `/create/room/ ID DO TICKET`
+
+### Método:
+`Post`
+
+#### Dados nescessários:
+```json
+{
+    "nameRoom":"Nome da sala criada"
+}
+```
+
+```json
+- Precisa de Token!
+```
+
+##### **Observações:**
+###### Chame essa rota junto com os eventos socket descatados logo a seguir.
+
+#### 1.1 Emitir evento de entrada em uma sala: `Use o socket.io`
+
+### Evento de **emmit**: `selectRoom`
+### Dentro do emmit enviado ao backend, envie os seguimtes dados:
+
+
+
+```json
+{
+    nameRoom:"Nome da sala"
+}
+```
+
+```Use token!!```
+
+**Após emitir esse evento, emita o seguinte evento:** `enterRoom` **e não envie nenhum dado, apenas emita o evento.**
+
+##### **Observações:**
+###### Após emitir os eventos listados a cima, toda vez que um produtor ou aluno for entrar em uma sala, vai ser necessário esse processo, a unica diferença é que se a sala já existir, não precisa chamar no controller, apenas use o websocket para emitir os eventos e passar os nomes das salas. Não crie salas repetidas, se atente a isso.
+
+#### 1.2 Enviar mensagens (Produtor e aluno): `Use o socket.io`
+### Evento de **emmit**: `message`
+### Dentro do emmit enviado ao backend, envie os seguimtes dados:
+
+```json
+{
+    nameRoom:"Nome da sala",
+    message:"Menssagem",
+}
+```
+
+```Use token!!```
+
+### Após isso, escute o evento `newMessage`, para mostrar a mensagem retornada do backend.
+
+#### Após enviar essa mensagem com websocket, por debaixo dos panos, cadastre cada mensagem na rota: `/message/send/ ID DA SALA`
+
+### Método:
+`Post`
+
+```Use token!!```
+
+### Dados Nescessários:
+```json
+{
+    user:"Nome do usuário que enviou",
+    contentMessage:"Conteúdo da mensagem",
+}
+```
+
+#### 2. Pegar mensagens anteriormente enviadas naquela sala: `/messages/all/ ID DA SALA`:
+
+### Método:
+`Get`
+
+```Use token!!```
+
+#### 3. Listar todas as minhas salas (Produtor): `/room/all`:
+
+### Método:
+`Get`
+
+```Use token!!```

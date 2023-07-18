@@ -10,7 +10,7 @@ export class NewChatController {
         private service:ResponseTicketService,
     ){};
 
-    @Post('room')
+    @Post('room/:ticketId')
     async createRoom(
         @Body() body:IResponseTicketDTO,
         @Param('ticketId') ticketId:string,

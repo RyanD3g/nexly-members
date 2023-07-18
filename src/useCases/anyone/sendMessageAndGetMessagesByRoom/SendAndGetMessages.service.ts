@@ -18,4 +18,13 @@ export class SendAndGetMessagesService {
         const send = await this.implementation.sendMessage(data);
         return send;
     };
+
+    async allMessagesOfRoom(roomId:string, isTest:boolean){
+        if(isTest){
+            const all = this.inMemory.getMessages(roomId);
+            return all;
+        };
+        const all = await this.implementation.getMessages(roomId);
+        return all;
+    };
 };

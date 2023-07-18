@@ -1,4 +1,4 @@
-import { Body, Controller, Param, Post } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post } from "@nestjs/common";
 import { SendAndGetMessagesService } from "./SendAndGetMessages.service";
 import { ISendAndGetMessagesDTO } from "./SendAndGetMessages.DTO";
 
@@ -26,19 +26,15 @@ export class sendAndGetMessagesController {
         };
     };
 
-    @Post('all/:roomId')
+    @Get('all/:roomId')
     async messageAll(
-        @Body() body:ISendAndGetMessagesDTO,
+        @Body() body?:ISendAndGetMessagesDTO,
         isTest:boolean = false,
         @Param('roomId') roomId?:string,
     ){
         try {
-          const sendMessage = await this.service.sendMessages({ 
-            roomId: roomId || body.roomId,
-            user:body.user,
-            contentMessage:body.contentMessage,
-          }, isTest);  
-          return { created:true };
+          const allMessages = await this.service.allMessagesOfRoom(roomId || body.roomId, isTest);  
+          return allMessages;
         } catch (error) {
             return error;
         };
