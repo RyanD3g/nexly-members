@@ -564,3 +564,12 @@
 `Get`
 
 ```Use token!!```
+
+
+#### 4. Listar todas as minhas salas e tickets (Estudante): `/ticketsAndRoom/all`:
+
+### Método:
+`Get`
+
+```Use token!!```
+
