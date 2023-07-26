@@ -44,10 +44,11 @@
 - [ x ] As notificações tem q serem marcadas como lidas.
 - [ x ] Os alunos só podem comentar se fazerem parte do curso 
 - [ x ] O certificado tem que ser liberado ao final de cada curso (Completo)
-- [ x ] Os alunos tem que ser avisados caso um curso seja deletado -->
-
+- [ x ] Os alunos tem que ser avisados caso um curso seja deletado
 - [ x ] Os tickets criados pelos alunos tem que ter "nome", "número(com DDD)", "Descrição do problema", "Categoria do problema (Assistência, problemas funcionais, Etc.)" e "Prioridade do problema(Média, alta e baixa)"  
-- [ ] Rotas para mostrar todos os tickets    
+- [ x ] Rotas para mostrar todos os tickets -->
+
+
 - [ ] O status do ticket tem que depender da solução da plataforma (Estado: Em andamento, ainda não resolvida, resolvida.)
 
 - [ ] Os recomendados devem ser baseado nas tags
@@ -70,9 +71,9 @@
 - [ x ] O material do curso pode ser disponibilizados para seus alunos
 - [ x ] Os produtores podem apagar suas contas
 - [ +/- ] Os produtores podem alterar os dados dos cursos (Módulos, aulas, e cursos....)
+- [ x ] Os produtores podem apagar os dados dos cursos (Módulos, aulas, e cursos....)
  -->
 
-- [ ] Os produtores podem apagar os dados dos cursos (Módulos, aulas, e cursos....)
 ### RN
 <!-- - [ x ] Os produtores não podem se cadastrar com um email existente
 - [ x ] Os produtores tem que estar com o cadastro completo para poder avançar na plataforma

@@ -21,6 +21,7 @@ export class TicketsAndRoomInMemory implements ATicketsAndRoom {
         },
     ];
     myTickets(data: ITicketsDTO): TicketSuport_Student[] {
+        console.log("AQYEUEUDFNUB", data.ticketId)
         const searchAllTickets = this.ticketModel.filter(e => e.id === data.ticketId && e.studentId === data.studentId);
         return searchAllTickets;
     };

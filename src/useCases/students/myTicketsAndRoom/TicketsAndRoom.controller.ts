@@ -18,7 +18,7 @@ export class TicketsAndRoomController {
         try {
             const myAll = await this.service.myData({
                 studentId: req?.studentId || body.studentId,
-                ticketId: body.studentId || undefined,
+                ticketId: body.ticketId || undefined,
             }, isTest);
             return myAll;
         } catch (error) {
