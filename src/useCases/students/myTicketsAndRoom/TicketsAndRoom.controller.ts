@@ -17,7 +17,7 @@ export class TicketsAndRoomController {
     ){
         try {
             const myAll = await this.service.myData({
-                studentId: req?.studentId || body.studentId,
+                studentId: req.studentId || body.studentId,
                 ticketId: body.ticketId || undefined,
             }, isTest);
             return myAll;

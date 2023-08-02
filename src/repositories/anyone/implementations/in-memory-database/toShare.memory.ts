@@ -12,6 +12,7 @@ export class ToShareInMemory implements AToSharePost {
             likes:234,
             momentPost:'Teste de momento de postagem de post',
             share:567,
+            userLike:'2345689',
             urlPhotoPost:'Teste de url',
             producerId:'670',
             studentId:null,

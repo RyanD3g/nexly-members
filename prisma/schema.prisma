@@ -322,7 +322,6 @@ model Posts {
   contentPost  String?
   momentPost   String?
   urlPhotoPost String?
-  likes        Int?
   share        Int?
 
   Comments Comments_Post[]
@@ -332,6 +331,23 @@ model Posts {
 
   student   Student @relation(fields: [studentId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   studentId String
+
+  likes Likes_By_Posts[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([id])
+}
+
+model Likes_By_Posts {
+  id String @id @default(uuid())
+
+  qntLikes Int
+  userLike String
+
+  post   Posts  @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  postId String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

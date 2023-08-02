@@ -22,15 +22,16 @@ export class ToShareImplementation implements AToSharePost {
                     },
                 },
             });
-            if(!returnPost){
+            if(!returnPost.posts){
                 throw new HttpException('Post inexistente', 404);
             };
-            const updateNumberShare = await this.prisma.posts.update({
+            await this.prisma.posts.update({
                 where:{ id:data.postId },
                 data:{
                     share: + 1,
                 },
             });
+            await this.prisma.$disconnect();
             return returnPost;
         };
         const returnPost = await this.prisma.producer.findUnique({
@@ -44,15 +45,16 @@ export class ToShareImplementation implements AToSharePost {
                 },
             },
         });
-        if(!returnPost){
+        if(!returnPost.posts){
             throw new HttpException('Post inexistente', 404);
         };
-        const updateNumberShare = await this.prisma.posts.update({
+        await this.prisma.posts.update({
             where:{ id:data.postId },
             data:{
                 share: + 1,
             },
         });
+        await this.prisma.$disconnect();
         return returnPost;
     };
 };

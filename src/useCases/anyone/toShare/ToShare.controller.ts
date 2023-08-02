@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param } from "@nestjs/common";
+import { Body, Controller, Get, HttpException, Param } from "@nestjs/common";
 import { ToSharePostService } from "./ToShare.service";
 import { IToShareDTO } from "./ToShare.DTO";
 
@@ -22,7 +22,7 @@ export class ToShareController {
           }, isTest, true);
           return share;  
         } catch (error) {
-           return error; 
+           return error as HttpException; 
         };
     };
 
@@ -40,7 +40,7 @@ export class ToShareController {
           }, isTest, false);
           return share;  
         } catch (error) {
-           return error; 
+           return error as HttpException; 
         };
     };
 };

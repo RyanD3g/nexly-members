@@ -11,7 +11,6 @@ export class CreateAPosProducertInMemory implements ACreatePost {
         const createPost = this.postModel.push(
             {
                 id:'123',
-                likes:null,
                 createdAt:new Date(),
                 updatedAt:new Date(),
                 share:null,

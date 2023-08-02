@@ -20,6 +20,6 @@ export class TicketsAndRoomModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {
         consumer
             .apply(IsJwtMiddleware)
-                .forRoutes('ticketsAndRoom/all');
+                .forRoutes('ticketsAndRoom/all/student');
     };
 };

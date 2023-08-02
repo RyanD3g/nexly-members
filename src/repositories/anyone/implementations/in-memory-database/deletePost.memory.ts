@@ -8,7 +8,6 @@ export class DeletePostInMemory implements ADeletePost {
     private postModel: Posts[] = [
         {
             id:'123',
-            likes:2,
             createdAt:new Date(),
             updatedAt:new Date(),
             share:2,
