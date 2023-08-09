@@ -54,6 +54,9 @@ import { CreateAPostModule } from './useCases/students/createPost/CreatePost.mod
 import { CreateAPostProducerModule } from './useCases/producer/createPost/CreatePost.module';
 import { DeletePostModule } from './useCases/anyone/deletePost/DeletePost.module';
 import { ToShareModule } from './useCases/anyone/toShare/ToShare.module';
+import { CommentInPostModule } from './useCases/anyone/commentInPost/Comment.module';
+import { CreatePollModule } from './useCases/producer/CreatePoll/CreatePoll.module';
+import { AllPostsAndPollsModule } from './useCases/anyone/returnAllPostsAndPolls/All.module';
 
 @Module({
   imports: [
@@ -109,6 +112,7 @@ import { ToShareModule } from './useCases/anyone/toShare/ToShare.module';
     // AllRoomsModule,
     // NewChatModule,
     CreateAPostProducerModule,
+    CreatePollModule,
 
     //Outers modules
 
@@ -120,6 +124,8 @@ import { ToShareModule } from './useCases/anyone/toShare/ToShare.module';
     // SendAndGetMessagesModule,
     DeletePostModule,
     ToShareModule,
+    CommentInPostModule,
+    AllPostsAndPollsModule,
   ],
 })
 export class AppModule {};

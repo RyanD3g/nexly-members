@@ -6,7 +6,7 @@ import { CustomRequest } from "src/interfaces/Request.interface";
 export class IsProducer implements NestMiddleware {
     use(req: CustomRequest, res: Response, next:NextFunction) {
         if(!req.isProducer){
-            throw new HttpException('Vc não pode acessar essa rota, apenas para produtores!!', HttpStatus.UNAUTHORIZED);
+            throw new HttpException('Vc não pode efetuar essa funcionalidade, apenas para produtores!!', HttpStatus.UNAUTHORIZED);
         };
         next();
     };
