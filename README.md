@@ -573,3 +573,116 @@
 
 ```Use token!!```
 
+### Comunidade 
+#### 1. Criar um post (Estudante):  `create/post/student`
+
+### Método:
+`Post`
+
+### Dados Nescessários:
+```json
+{
+    "contentPost":"Conteúdo do post (!Opcional)",
+    "urlPhotoPost":"Upload de foto (!Opcional)",
+}
+```
+
+```Use token!!```
+
+#### 2. Criar um post (Produtor):  `create/post/producer`
+
+### Método:
+`Post`
+
+### Dados Nescessários:
+```json
+{
+    "contentPost":"Conteúdo do post (!Opcional)",
+    "urlPhotoPost":"Upload de foto (!Opcional)",
+}
+```
+```Use token!!```
+
+
+#### 2. Deletar um post:  `delete/post/ ID DO POST`
+
+### Método:
+`Delete`
+
+```Use token!!```
+
+#### 3. Compartilhar um post (Estudante):  `share/student/post/ ID DO POST / ID DO ESTUDANTE`
+
+### Método:
+`Get`
+
+```Use token!!```
+
+#### 4. Compartilhar um post (Produtor):  `share/student/post/ ID DO POST / ID DO PRODUTOR`
+
+### Método:
+`Get`
+
+```Use token!!```
+
+#### 5. Dar like em Post:  `like/post/ ID DO POST`
+
+### Método:
+`Post`
+
+### Dados Nescessários:
+```json
+{
+    "isLike":true,
+}
+```
+
+```Use token!!```
+
+#### 6. Comentar:  `/comment/post/ ID DO POST`
+
+### Método:
+`Post`
+
+### Dados Nescessários:
+```json
+{
+    "contentComment":"Conteúdo do comentário",
+    "nameUserComment":"Nome do usuário (Puxe da API)",
+}
+```
+
+```Use token!!```
+
+#### 7. Responder comentário:  `/reply/comment/ ID DO COMENTÁRIO`
+
+### Método:
+`Post`
+
+### Dados Nescessários:
+```json
+{
+    "contentReplyComment":"Conteúdo do comentário",
+    "nameUserReplyComment":"Nome do usuário (Puxe da API)",
+}
+```
+
+```Use token!!```
+
+#### 8. Criar enquete (Apenas produtor):  `/create/poll`
+
+### Método:
+`Post`
+
+### Dados Nescessários:
+```json
+{
+    "titleQuestion":"Titulo da enquete",
+    "descriptionQuestion":"Descrição da enquete (!Opcional)",
+    "options":{
+        "nameSelection":"Opção (Crie apenas uma de primeira)",
+    },
+}
+```
+
+```Use token!!```

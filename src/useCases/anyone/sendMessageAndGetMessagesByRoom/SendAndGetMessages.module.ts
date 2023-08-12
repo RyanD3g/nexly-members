@@ -4,6 +4,7 @@ import { PrismaService } from "src/database";
 import { SendMessageAndGetMessagesImplementation } from "src/repositories/anyone/implementations/sendAndGetMessages.service";
 import { SendMessageAndGetMessagesInMemory } from "src/repositories/anyone/implementations/in-memory-database/sendAndGetMessages.memory";
 import { IsJwtMiddleware } from "src/middlewares/isJwt.middleware";
+import { SendAndGetMessagesService } from "./SendAndGetMessages.service";
 
 @Module({
     controllers: [sendAndGetMessagesController],
@@ -11,6 +12,7 @@ import { IsJwtMiddleware } from "src/middlewares/isJwt.middleware";
         PrismaService,
         SendMessageAndGetMessagesImplementation,
         SendMessageAndGetMessagesInMemory,
+        SendAndGetMessagesService,
         IsJwtMiddleware,
     ],
 })

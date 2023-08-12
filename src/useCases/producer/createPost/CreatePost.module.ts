@@ -24,6 +24,6 @@ export class CreateAPostProducerModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {
         consumer
             .apply(IsJwtMiddleware, isSigned, IsProducer)
-                .forRoutes('create/post/student');
+                .forRoutes('create/post/producer');
     };
 };

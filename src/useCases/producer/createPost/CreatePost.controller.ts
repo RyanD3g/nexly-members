@@ -23,7 +23,7 @@ export class CreatePostProducerController {
                 producerId:req?.producerId || body.producerId,
                 contentPost:body?.contentPost || undefined,
                 momentPost:body?.momentPost || undefined,
-                urlPhotoPost:file || body?.urlPhotoPost,
+                urlPhotoPost:file?.location || body?.urlPhotoPost,
             }, isTest);
 
             return created;
