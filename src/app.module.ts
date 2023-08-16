@@ -58,6 +58,8 @@ import { CommentInPostModule } from './useCases/anyone/commentInPost/Comment.mod
 import { CreatePollModule } from './useCases/producer/CreatePoll/CreatePoll.module';
 import { AllPostsAndPollsModule } from './useCases/anyone/returnAllPostsAndPolls/All.module';
 import { LikeAPostModule } from './useCases/anyone/likeAPost/LikePost.module';
+import { VoteInPollModule } from './useCases/anyone/voteInPoll/Vote.module';
+import { ExchangeModule } from './useCases/anyone/exchangeVote/Exchange.module';
 
 @Module({
   imports: [
@@ -128,6 +130,8 @@ import { LikeAPostModule } from './useCases/anyone/likeAPost/LikePost.module';
     CommentInPostModule,
     AllPostsAndPollsModule,
     LikeAPostModule,
+    VoteInPollModule,
+    ExchangeModule,
   ],
 })
 export class AppModule {};
