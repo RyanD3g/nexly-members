@@ -6,6 +6,7 @@ import { AllRoomsByProducerService } from "./AllRooms.service";
 import { IsJwtMiddleware } from "src/middlewares/isJwt.middleware";
 import { isSigned } from "src/middlewares/isSigned.middleware";
 import { IsProducer } from "src/middlewares/isProducer.middleware";
+import { CacheImplementation } from "src/providers/implementations/Redis.service";
 
 @Module({
     imports: [],
@@ -14,6 +15,7 @@ import { IsProducer } from "src/middlewares/isProducer.middleware";
         PrismaService,
         AllRoomsByProducerImplementation,
         AllRoomsByProducerService,
+        CacheImplementation,
     ],
 })
 export class AllRoomsModule implements NestModule {

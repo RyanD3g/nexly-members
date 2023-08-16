@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Request } from "@nestjs/common";
+import { Body, Controller, Get, Param, Request } from "@nestjs/common";
 import { TicketsAndRoomService } from "./TicketsAndRoom.service";
 import { CustomRequest } from "src/interfaces/Request.interface";
 import { ITicketsDTO } from "./TicketsAndRoom.DTO";
@@ -9,7 +9,7 @@ export class TicketsAndRoomController {
         private service:TicketsAndRoomService,
     ){};
 
-    @Get('all')
+    @Get('all/student')
     async allMyData(
         @Body() body:ITicketsDTO,
         isTest:boolean = false,
@@ -17,8 +17,8 @@ export class TicketsAndRoomController {
     ){
         try {
             const myAll = await this.service.myData({
-                studentId: req.studentId || body.studentId,
-                ticketId: body.ticketId || undefined,
+                studentId: req?.studentId || body?.studentId,
+                ticketId: body?.ticketId,
             }, isTest);
             return myAll;
         } catch (error) {

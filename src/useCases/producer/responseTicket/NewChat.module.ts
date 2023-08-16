@@ -7,6 +7,7 @@ import { PrismaService } from "src/database";
 import { IsJwtMiddleware } from "src/middlewares/isJwt.middleware";
 import { isSigned } from "src/middlewares/isSigned.middleware";
 import { IsProducer } from "src/middlewares/isProducer.middleware";
+import { CacheImplementation } from "src/providers/implementations/Redis.service";
 
 @Module({
     controllers:[NewChatController],
@@ -15,9 +16,10 @@ import { IsProducer } from "src/middlewares/isProducer.middleware";
         NewChatGateway,
         ResponseTicketService,
         ResponseTicketImplementation,
+        CacheImplementation,
         IsJwtMiddleware, 
         isSigned,
-         IsProducer,
+        IsProducer,
     ],
 })
 export class NewChatModule implements NestModule{
