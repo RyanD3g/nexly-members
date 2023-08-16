@@ -180,7 +180,8 @@ model Post_Polls {
   titleQuestion       String
   descriptionQuestion String?
 
-  option Option_Poll[]
+  option    Option_Poll[]
+  usersVote IdUserVote[]
 
   producer Producer @relation(fields: [pollsId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   pollsId  String
@@ -194,10 +195,21 @@ model Option_Poll {
 
   nameSelection String
   qntVotes      Int
-  userIdVote    String[]
 
   postPoll Post_Polls @relation(fields: [optionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   optionId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model IdUserVote {
+  id String @id @default(uuid())
+
+  idUser String
+
+  poll   Post_Polls @relation(fields: [pollId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  pollId String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
