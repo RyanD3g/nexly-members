@@ -35,7 +35,7 @@ export class ExchangeVoteInMemory implements AExchange {
         const removeVote = this.optionModel.filter(e => e.id === data.oldOptionId);
         removeVote[0].qntVotes = - 1;
         const addOtherVote = this.optionModel.filter(e => e.id === data.newOptionId);
-        addOtherVote[0].qntVotes = + 1;
+        addOtherVote[0].qntVotes++;
         return { newOption:addOtherVote[0], oldOption:removeVote[0], };
     };
 };
