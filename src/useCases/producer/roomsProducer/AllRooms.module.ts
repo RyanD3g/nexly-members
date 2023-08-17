@@ -7,21 +7,27 @@ import { IsJwtMiddleware } from "src/middlewares/isJwt.middleware";
 import { isSigned } from "src/middlewares/isSigned.middleware";
 import { IsProducer } from "src/middlewares/isProducer.middleware";
 import { CacheImplementation } from "src/providers/implementations/Redis.service";
+import { AlsModule } from "src/als.module";
+import { UserIdContext } from "src/contexts/userId.context";
 
 @Module({
-    imports: [],
+    imports: [AlsModule],
     controllers: [AllRoomsByProducerController],
     providers:[
         PrismaService,
         AllRoomsByProducerImplementation,
         AllRoomsByProducerService,
         CacheImplementation,
+        UserIdContext,
+        IsJwtMiddleware, 
+        isSigned, 
+        IsProducer,
     ],
 })
 export class AllRoomsModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {
         consumer
-            .apply(IsJwtMiddleware, isSigned, IsProducer)
+            .apply(IsJwtMiddleware, isSigned, IsProducer, UserIdContext)
                 .forRoutes('room/all');
     };
 };
