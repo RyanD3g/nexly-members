@@ -22,7 +22,7 @@ describe('Should to create data to complete the register', ()=>{
 
     describe('Should to create data to complete the register', ()=>{
         it('Should to create', async ()=>{
-            const spy = jest.spyOn(createDatController, 'handle_create').mockResolvedValue({ created:true })
+            const spy = jest.spyOn(createDatController, 'handle_create').mockResolvedValue({ register:'OK' })
             const created = await createDatController.handle_create({
                 identity:'Teste-Teste-Teste-Teste-Teste-Teste',
                 lastname:'Teste',
@@ -31,7 +31,7 @@ describe('Should to create data to complete the register', ()=>{
                 sex:'Masculino',
                 producerId:'24bbab80-9236-431c-85a0-bee140922ef4'
             });
-            expect(created.created).toBeDefined();
+            expect(created.register).toBeDefined();
         });
     });
 });

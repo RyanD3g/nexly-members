@@ -14,10 +14,10 @@ export class BuyCourseService {
     ){};
     async buyCourse(data:IBuyCourse, isTest:boolean){
         if(!isTest){
+            const isDelete = await this.isDeleteCourse.isDelete(dayjs().format('DD/MM/YYYY'));
             const buyed = await this.implementation.buy(data);
             return buyed;
         };
-        const isDelete = await this.isDeleteCourse.isDelete(dayjs().format('DD/MM/YYYY'));
         const buyedInMemory = await this.inMemory.buy(data);
         return buyedInMemory;
     };

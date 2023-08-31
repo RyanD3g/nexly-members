@@ -22,7 +22,6 @@ export class CreatePollAndAddOneQuestionOptionalInMemory implements ACreatePollP
                 nameSelection:options.nameSelection,
                 optionId:this.postPoll_Model[0].id || options.pollId,
                 qntVotes:0,
-                userIdVote:null,
                 createdAt:new Date(),
                 updatedAt:new Date(),
             });
@@ -41,7 +40,6 @@ export class CreatePollAndAddOneQuestionOptionalInMemory implements ACreatePollP
             nameSelection,
             optionId,
             qntVotes,
-            userIdVote:null,
             createdAt:new Date(),
             updatedAt:new Date(),
         });

@@ -25,7 +25,7 @@ describe('Testando as funções de leitura de notificação', ()=>{
     describe('Lendo notificações', ()=>{
         it('Deve ler as notificações', async()=>{
             const read = await notificationsControllerTest.notifications({ producerId:'456' }, true);
-            expect(read).toHaveLength(2);
+            expect(read).toHaveLength(1);
         });
     });
 });

@@ -10,8 +10,8 @@ export class BuyCourseController {
     ){};
     @Post('course/student/:courseId')
     async createChecoutForBuyCourse(
-        isTest:boolean = false,
         @Body() body:IBuyCourse,
+        isTest:boolean = false,
         @Request() req?:CustomRequest,
         @Param('courseId') courseId?:string,
     ){

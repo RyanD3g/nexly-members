@@ -3,6 +3,7 @@ import { sendAndGetMessagesController } from "./SendAndGetMessages.controller";
 import { PrismaService } from "../../../database";
 import { SendMessageAndGetMessagesImplementation } from "../../../repositories/anyone/implementations/sendAndGetMessages.service";
 import { SendMessageAndGetMessagesInMemory } from "../../../repositories/anyone/implementations/in-memory-database/sendAndGetMessages.memory";
+import { SendAndGetMessagesService } from "./SendAndGetMessages.service";
 
 describe('Aqui será testado as funções de criar e retornar mensagen', ()=>{
     let sendAndGetController:sendAndGetMessagesController;
@@ -12,6 +13,7 @@ describe('Aqui será testado as funções de criar e retornar mensagen', ()=>{
             providers: [
                 PrismaService,
                 SendMessageAndGetMessagesImplementation,
+                SendAndGetMessagesService,
                 SendMessageAndGetMessagesInMemory,
             ],
         }).compile();

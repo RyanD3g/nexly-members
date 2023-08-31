@@ -24,7 +24,7 @@ describe('Aqui será testado funções de buscar post por id', ()=>{
             postId:'123',
             userId:'34567',
         }, true);
-        expect(teste.id).toBeDefined;
+        expect(teste[0].id).toBeDefined;
     });
     it('Deveria dar erro por não achar o post', async ()=>{
         const teste = await controller.shareProducer({

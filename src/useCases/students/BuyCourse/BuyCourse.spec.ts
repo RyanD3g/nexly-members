@@ -26,10 +26,10 @@ describe('Should buy a course', ()=>{
 
     describe('Should buy a course', ()=>{
         it('should be buyed', async()=>{
-            const create = await createBuyControllerTest.createChecoutForBuyCourse(true,{
+            const create = await createBuyControllerTest.createChecoutForBuyCourse({
                 courseId:'123',
                 studentId:'123'
-            });
+            }, true);
             
             expect(create).toEqual({ buyed:true });
         });
