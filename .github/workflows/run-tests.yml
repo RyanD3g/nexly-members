@@ -14,4 +14,4 @@ jobs:
           node-version: 18
           cache: 'yarn'
       - run: yarn
-      - run: yarn test
+      - run: yarn test:workflow
