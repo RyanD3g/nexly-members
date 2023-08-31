@@ -35,6 +35,7 @@ model Student {
   notifications        Notifications_Students[]
   TicketSuport_Student TicketSuport_Student[]
   posts                Posts[]
+  eventsSaved          String[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -131,12 +132,13 @@ model Producer {
   code     String?
   codeDate String?
 
-  courses       Courses_Producer[]
-  notifications Notifications_Producer[]
-  address       AddressForProducers?
-  roomTicket    RoomForTicket[]
-  posts         Posts[]
-  polls         Post_Polls[]
+  courses         Courses_Producer[]
+  notifications   Notifications_Producer[]
+  address         AddressForProducers?
+  roomTicket      RoomForTicket[]
+  posts           Posts[]
+  polls           Post_Polls[]
+  SchedulingEvent SchedulingEvent[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -422,6 +424,23 @@ model ReplyComment_Posts {
 
   comments Comments_Post @relation(fields: [replyId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   replyId  String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// --------- E-Models ---------
+model SchedulingEvent {
+  id String @id @default(uuid())
+
+  titleEvent            String
+  dataOfEvent           String
+  isHappened            Boolean @default(false)
+  hourOfEvent           String
+  descriptionAboutEvent String
+
+  producer   Producer @relation(fields: [producerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  producerId String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

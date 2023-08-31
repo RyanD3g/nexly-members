@@ -60,6 +60,9 @@ import { AllPostsAndPollsModule } from './useCases/anyone/returnAllPostsAndPolls
 import { LikeAPostModule } from './useCases/anyone/likeAPost/LikePost.module';
 import { VoteInPollModule } from './useCases/anyone/voteInPoll/Vote.module';
 import { ExchangeModule } from './useCases/anyone/exchangeVote/Exchange.module';
+import { DeleteCommentInPostModule } from './useCases/anyone/deleteOneCommentInPost/DeleteComment.module';
+import { DeleteReplyCommentModule } from './useCases/anyone/deleteReplyComment/DeleteReply.module';
+import { CreateEventScheluledModule } from './useCases/producer/createEventScheduled/CreateEvent.module';
 
 @Module({
   imports: [
@@ -116,6 +119,7 @@ import { ExchangeModule } from './useCases/anyone/exchangeVote/Exchange.module';
     NewChatModule,
     CreateAPostProducerModule,
     CreatePollModule,
+    CreateEventScheluledModule,
 
     //Outers modules
 
@@ -132,6 +136,9 @@ import { ExchangeModule } from './useCases/anyone/exchangeVote/Exchange.module';
     LikeAPostModule,
     VoteInPollModule,
     ExchangeModule,
+    DeleteCommentInPostModule,
+    DeleteReplyCommentModule,
+    
   ],
 })
 export class AppModule {};
