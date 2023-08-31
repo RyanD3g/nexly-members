@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpException, Param } from "@nestjs/common";
+import { Body, Controller, Get, HttpException, Param, ParseIntPipe, ParseUUIDPipe } from "@nestjs/common";
 import { ToSharePostService } from "./ToShare.service";
 import { IToShareDTO } from "./ToShare.DTO";
 
@@ -12,8 +12,8 @@ export class ToShareController {
     async shareStudent(
         @Body() body?:IToShareDTO,
         isTest:boolean = false,
-        @Param('studentId') studentId?:string,
-        @Param('postId') postId?:string,
+        @Param('studentId', new ParseUUIDPipe({ errorHttpStatusCode:400, })) studentId?:string,
+        @Param('postId', new ParseUUIDPipe({ errorHttpStatusCode:400, })) postId?:string,
     ){
         try {
           const share = await this.service.execute({

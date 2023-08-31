@@ -22,7 +22,7 @@ export class ToShareImplementation implements AToSharePost {
                     },
                 },
             });
-            if(!returnPost.posts){
+            if(!returnPost.posts.some(e => e.id === data.postId)){
                 throw new HttpException('Post inexistente', 404);
             };
             await this.prisma.posts.update({
@@ -45,7 +45,7 @@ export class ToShareImplementation implements AToSharePost {
                 },
             },
         });
-        if(!returnPost.posts){
+        if(!returnPost.posts.some(e => e.id === data.postId)){
             throw new HttpException('Post inexistente', 404);
         };
         await this.prisma.posts.update({
