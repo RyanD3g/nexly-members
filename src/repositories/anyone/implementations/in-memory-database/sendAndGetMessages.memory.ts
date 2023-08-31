@@ -16,7 +16,7 @@ export class SendMessageAndGetMessagesInMemory implements ASendMessage {
         },
     ];
     private MessagesModel: MessagesForRoom[] = [];
-    sendMessage(data: ISendAndGetMessagesDTO): void {
+    sendMessage(data: ISendAndGetMessagesDTO): MessagesForRoom[] {
         const createMessage = this.MessagesModel.push({
             id:'267',
             contentMessage:data.contentMessage,
@@ -26,6 +26,7 @@ export class SendMessageAndGetMessagesInMemory implements ASendMessage {
             updatedAt:new Date(),
             ticketSuport_StudentId:'',
         });
+        return this.MessagesModel;
     };
     getMessages(roomId: string): MessagesForRoom[] {
         return this.MessagesModel;

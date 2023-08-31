@@ -20,7 +20,7 @@ export class sendAndGetMessagesController {
             user:body.user,
             contentMessage:body.contentMessage,
           }, isTest);  
-          return { created:true, };
+          return sendMessage;
         } catch (error) {
             return error;
         };

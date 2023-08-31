@@ -26,7 +26,7 @@ describe('Aqui será testado as funções de criar e retornar mensagen', ()=>{
             user:'Teste de usuário',
             contentMessage:'Teste de conteúdo',
         }, true);
-        expect(createMessage[0].user).toEqual('Teste de usuário');
+        expect(createMessage[0].userMessage).toEqual('Teste de usuário');
     });
 
     it('Deveria retornar todas as mensagens', async ()=>{
