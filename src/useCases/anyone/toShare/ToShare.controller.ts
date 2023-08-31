@@ -30,8 +30,8 @@ export class ToShareController {
     async shareProducer(
         @Body() body?:IToShareDTO,
         isTest:boolean = false,
-        @Param('producerId') producerId?:string,
-        @Param('postId') postId?:string,
+        @Param('producerId', new ParseIntPipe({ errorHttpStatusCode:400, })) producerId?:string,
+        @Param('postId', new ParseIntPipe({ errorHttpStatusCode:400, })) postId?:string,
     ){
         try {
           const share = await this.service.execute({
