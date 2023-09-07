@@ -7,10 +7,10 @@ import { FileFilterCallback } from 'multer';
 import { Request, Response } from 'express';
 
 const s3_ = new S3Client({
-    region: 'us-east-1',
+    region: 'sa-east-1',
     credentials:{
-        accessKeyId: 'AKIA3K76EFD66VGUZZHV',
-        secretAccessKey: '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'
+        accessKeyId: 'AKIAYGC2ET2OSDQ6LBJ5',
+        secretAccessKey: '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'
     },
 });
 

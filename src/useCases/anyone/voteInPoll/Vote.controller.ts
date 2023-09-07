@@ -1,4 +1,4 @@
-import { Body, Controller, Param, Post, Request } from "@nestjs/common";
+import { BadRequestException, Body, Controller, Param, ParseUUIDPipe, Post, Request } from "@nestjs/common";
 import { VoteInPollService } from "./Vote.service";
 import { CustomRequest } from "src/interfaces/Request.interface";
 import { IVoteInPollDTO } from "./Vote.DTO";
@@ -14,8 +14,12 @@ export class VoteInPollController {
         @Body() body?:IVoteInPollDTO,
         isTest:boolean = false,
         @Request() req?:CustomRequest,
-        @Param('optionId') optionId?:string,
-        @Param('postId') postId?:string,
+        @Param('optionId', new ParseUUIDPipe({ errorHttpStatusCode:400, exceptionFactory(errors) {
+            throw new BadRequestException('Id Inválido!');
+        },})) optionId?:string,
+        @Param('postId', new ParseUUIDPipe({ errorHttpStatusCode:400, exceptionFactory(errors) {
+            throw new BadRequestException('Id Inválido!');
+        },})) postId?:string,
     ){
         try {
             const vote = await this.service.execute_vote({

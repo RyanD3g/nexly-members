@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from "@nestjs/common";
+import { BadRequestException, Body, Controller, Get, HttpException, Param, ParseUUIDPipe, Post } from "@nestjs/common";
 import { SendAndGetMessagesService } from "./SendAndGetMessages.service";
 import { ISendAndGetMessagesDTO } from "./SendAndGetMessages.DTO";
 
@@ -12,7 +12,9 @@ export class sendAndGetMessagesController {
     async messageSend(
         @Body() body:ISendAndGetMessagesDTO,
         isTest:boolean = false,
-        @Param('roomId') roomId?:string,
+        @Param('roomId', new ParseUUIDPipe({ errorHttpStatusCode:400, exceptionFactory(errors) {
+            throw new BadRequestException('Id inválido!!');
+        }, })) roomId?:string,
     ){
         try {
           const sendMessage = await this.service.sendMessages({ 
