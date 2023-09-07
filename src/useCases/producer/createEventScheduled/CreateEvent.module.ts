@@ -9,9 +9,9 @@ import { PrismaService } from "src/database";
 import { CreateEventOnCalendarImplementation } from "src/repositories/Producer/implementations/CreateEventOnCalendar.service";
 import { CreateEventOnCalendarInMemory } from "src/repositories/Producer/implementations/in-memory-database/createEventOnCalendar.memory";
 import { CreateEventSheduledService } from "./CreateEvent.service";
+import { AsyncLocalStorage } from "async_hooks";
 
 @Module({
-    imports: [AlsModule],
     controllers: [CreateNewEventOnCalendarController],
     providers: [
         PrismaService,
@@ -21,13 +21,12 @@ import { CreateEventSheduledService } from "./CreateEvent.service";
         IsJwtMiddleware, 
         IsProducer, 
         isSigned, 
-        UserIdContext,
     ],
 })
 export class CreateEventScheluledModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {
         consumer
-            .apply(IsJwtMiddleware, IsProducer, isSigned, UserIdContext)
+            .apply(IsJwtMiddleware, IsProducer, isSigned)
                 .forRoutes('create/newEvent');
     };
 };

@@ -1,6 +1,7 @@
-import { Body, Controller, Delete, Param } from "@nestjs/common";
+import { Body, Controller, Delete, Param, Request } from "@nestjs/common";
 import { DeleteReplyCommentService } from "./DeleteReply.service";
 import { IDeleteReplyCommentDTO } from "./DeleteReply.DTO";
+import { CustomRequest } from "src/interfaces/Request.interface";
 
 @Controller('delete')
 export class DeleteReplyCommentController {
@@ -12,11 +13,12 @@ export class DeleteReplyCommentController {
         @Body() body?:IDeleteReplyCommentDTO,
         isTest:boolean = false,
         @Param('replyId') replyId?:string,
+        @Request() req?:CustomRequest,
     ){
         try {
             const deleteWithService = await this.service.executeDelete({
                 replyCommentId:replyId || body?.replyCommentId,
-                userId:body?.userId,
+                userId:body?.userId || req?.producerId || req?.studentId,
             }, isTest);
             return deleteWithService;
         } catch (error) {

@@ -10,13 +10,9 @@ export class CreateEventSheduledService {
     constructor(
         private implementation:CreateEventOnCalendarImplementation,
         private inMemory:CreateEventOnCalendarInMemory,
-        private context:AsyncLocalStorage<dataForStorage>,
     ){};
 
     async executeEventCreationInMemoryAndInDB(data:IDataNecessaryToSheduleEvent, isTest:boolean){
-        if(!data.producerId){
-            data.producerId = this.context.getStore()["producer"];
-        };
         if(isTest){
             const createEventInMemory = this.inMemory.createEventOnCalendar(data);
             return createEventInMemory;

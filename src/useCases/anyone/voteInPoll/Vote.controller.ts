@@ -23,7 +23,7 @@ export class VoteInPollController {
     ){
         try {
             const vote = await this.service.execute_vote({
-                idUser:body?.idUser,
+                idUser:body?.idUser || req?.producerId || req?.studentId,
                 optionId:optionId || body?.optionId,
                 pollId:postId || body?.pollId,
             }, isTest);

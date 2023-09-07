@@ -12,12 +12,8 @@ export class ResponseTicketImplementation implements AResponseTicket {
     constructor(
         private prisma:PrismaService,
         private cache:CacheImplementation,
-        private context:AsyncLocalStorage<dataForStorage>,
     ){};
     async createNewRoom(data: IResponseTicketDTO): Promise<RoomForTicket[]> {
-        if(!data){
-            data.producerId = this.context.getStore()["producer"];
-        };
         const create = await this.prisma.ticketSuport_Student.update({
             where:{ id:data.ticketId, },
             include:{ ticketRoom:true },

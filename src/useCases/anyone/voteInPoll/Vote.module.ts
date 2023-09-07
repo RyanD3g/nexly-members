@@ -9,7 +9,6 @@ import { IsJwtMiddleware } from "src/middlewares/isJwt.middleware";
 import { UserIdContext } from "src/contexts/userId.context";
 
 @Module({
-    imports: [AlsModule],
     controllers: [VoteInPollController],
     providers: [
         PrismaService,
@@ -17,13 +16,12 @@ import { UserIdContext } from "src/contexts/userId.context";
         VoteInPollInMemory,
         VoteInPollService,
         IsJwtMiddleware, 
-        UserIdContext,
     ],
 })
 export class VoteInPollModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {
         consumer
-            .apply(IsJwtMiddleware, UserIdContext)
+            .apply(IsJwtMiddleware)
                 .forRoutes('vote/poll');
     };
 };

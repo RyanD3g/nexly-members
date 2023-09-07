@@ -10,13 +10,9 @@ export class DeleteReplyCommentService {
     constructor(
         private implementation:DeleteReplyCommentImplementation,
         private inMemory:DeleteReplyCommentInMemory,
-        private context:AsyncLocalStorage<dataForStorage>,
     ){};
 
     async executeDelete(data:IDeleteReplyCommentDTO, isTest:boolean){
-        if(!data.userId){
-            data.userId = this.context.getStore()["userId"];
-        };
         if(isTest){
             const IsMyComment = this.inMemory.isExistsCourse(data.replyCommentId);
             if(!IsMyComment){

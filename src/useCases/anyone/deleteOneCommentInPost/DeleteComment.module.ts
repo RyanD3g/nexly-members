@@ -9,7 +9,6 @@ import { IsJwtMiddleware } from "src/middlewares/isJwt.middleware";
 import { UserIdContext } from "src/contexts/userId.context";
 
 @Module({
-    imports: [AlsModule],
     controllers: [DeleteCommentInPostController],
     providers: [
         PrismaService,
@@ -24,7 +23,6 @@ export class DeleteCommentInPostModule implements NestModule {
         consumer
             .apply(
                 IsJwtMiddleware,
-                UserIdContext,
             )
                 .forRoutes('delete/comment/post');
     };

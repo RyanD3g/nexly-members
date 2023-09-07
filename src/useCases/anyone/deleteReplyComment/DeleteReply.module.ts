@@ -6,12 +6,13 @@ import { DeleteReplyCommentController } from "./DeleteReply.controller";
 import { PrismaService } from "src/database";
 import { DeleteReplyCommentImplementation } from "src/repositories/anyone/implementations/DeleteReplyComment.service";
 import { DeleteReplyCommentInMemory } from "src/repositories/anyone/implementations/in-memory-database/deleteReplyComment.memory";
+import { DeleteReplyCommentService } from "./DeleteReply.service";
 
 @Module({
-    imports: [AlsModule],
     controllers: [DeleteReplyCommentController],
     providers: [
         PrismaService,
+        DeleteReplyCommentService,
         DeleteReplyCommentImplementation,
         DeleteReplyCommentInMemory,
         IsJwtMiddleware,
@@ -22,7 +23,6 @@ export class DeleteReplyCommentModule implements NestModule {
         consumer
             .apply(
                 IsJwtMiddleware,
-                UserIdContext,
             )
                 .forRoutes('delete/replyComment');
     };

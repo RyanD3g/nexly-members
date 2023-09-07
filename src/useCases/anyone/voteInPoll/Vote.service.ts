@@ -10,13 +10,9 @@ export class VoteInPollService {
     constructor(
         private inMemory:VoteInPollInMemory,
         private implementation:VoteInPollImplementation,
-        private readonly context:AsyncLocalStorage<dataForStorage>,
     ){};
 
     async execute_vote(data:IVoteInPollDTO, isTest:boolean){
-        if(!data.idUser){
-            data.idUser = !this.context.getStore()["producer"]? this.context.getStore()["student"]:this.context.getStore()["producer"];
-        };
         if(isTest){
             const optionIsExists = this.inMemory.optionExists(data.optionId);
             if(!optionIsExists){

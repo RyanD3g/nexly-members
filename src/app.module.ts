@@ -63,6 +63,7 @@ import { ExchangeModule } from './useCases/anyone/exchangeVote/Exchange.module';
 import { DeleteCommentInPostModule } from './useCases/anyone/deleteOneCommentInPost/DeleteComment.module';
 import { DeleteReplyCommentModule } from './useCases/anyone/deleteReplyComment/DeleteReply.module';
 import { CreateEventScheluledModule } from './useCases/producer/createEventScheduled/CreateEvent.module';
+import { AsyncLocalStorage } from 'async_hooks';
 
 @Module({
   imports: [

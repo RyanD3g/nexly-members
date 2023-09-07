@@ -11,14 +11,12 @@ import { AlsModule } from "src/als.module";
 import { UserIdContext } from "src/contexts/userId.context";
 
 @Module({
-    imports: [AlsModule],
     controllers: [AllRoomsByProducerController],
     providers:[
         PrismaService,
         AllRoomsByProducerImplementation,
         AllRoomsByProducerService,
         CacheImplementation,
-        UserIdContext,
         IsJwtMiddleware, 
         isSigned, 
         IsProducer,
@@ -27,7 +25,7 @@ import { UserIdContext } from "src/contexts/userId.context";
 export class AllRoomsModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {
         consumer
-            .apply(IsJwtMiddleware, isSigned, IsProducer, UserIdContext)
+            .apply(IsJwtMiddleware, isSigned, IsProducer)
                 .forRoutes('room/all');
     };
 };

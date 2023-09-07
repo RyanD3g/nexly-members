@@ -16,11 +16,13 @@ export class UserIdContext {
     ){};
 
     getId(req:CustomRequest, res:Response, next:NextFunction){
+        const context = new AsyncLocalStorage<dataForStorage>();
         const objectUsers: dataForStorage = {
             student:req.studentId,
             producer:req.producerId,
             userId: req?.studentId || req?.producerId,
         };
+    
         this.als.run(objectUsers, ()=> next());
     };
 };
