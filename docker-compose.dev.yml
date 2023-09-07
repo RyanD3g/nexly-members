@@ -22,11 +22,8 @@ services:
     image: nginx
     ports:
       - "80:80"
-      - "443:443"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - /etc/letsencrypt/live/costaweb.dev.br/fullchain.pem:/etc/nginx/certificates/fullchain.pem
-      - /etc/letsencrypt/live/costaweb.dev.br/privkey.pem:/etc/nginx/certificates/privkey.pem
+      - ./nginx.dev.conf:/etc/nginx/nginx.dev.conf:ro
     networks:
       - app-network
     depends_on:
