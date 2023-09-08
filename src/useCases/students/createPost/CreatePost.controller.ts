@@ -22,7 +22,7 @@ export class CreatePostController {
                 studentId:req?.studentId || body.studentId,
                 contentPost:body?.contentPost || undefined,
                 momentPost:body?.momentPost || undefined,
-                urlPhotoPost:file.location || body?.urlPhotoPost,
+                urlPhotoPost:file?.location || body?.urlPhotoPost,
             }, isTest);
 
             return created;
