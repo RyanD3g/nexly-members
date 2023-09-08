@@ -18,17 +18,13 @@ export class CreatePostController {
         @Request() req?:CustomRequest,
         @UploadedFile() file?,
     ){
-        try {
             const created = await this.service.create({
                 studentId:req?.studentId || body.studentId,
                 contentPost:body?.contentPost || undefined,
                 momentPost:body?.momentPost || undefined,
-                urlPhotoPost:file || body?.urlPhotoPost,
+                urlPhotoPost:file.location || body?.urlPhotoPost,
             }, isTest);
 
             return created;
-        } catch (error) {
-            return error;
-        };
     }
 };

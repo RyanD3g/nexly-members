@@ -5,8 +5,15 @@ import { PrismaService } from "src/database";
 import { CreateAPostInMemory } from "src/repositories/Student/implementations/in-memory-database/createAPost.memory";
 import { CreatePostImplementation } from "src/repositories/Student/implementations/CreatePost.service";
 import { CreateAPostService } from "./CreatePost.service";
+import { MulterModule } from "@nestjs/platform-express";
+import { configsMulterStudentImages } from "src/middlewares/uploadImages.middleware";
 
 @Module({
+    imports: [
+        MulterModule.registerAsync({
+            useFactory: ()=> (configsMulterStudentImages),
+        }),
+    ],
     controllers: [CreatePostController],
     providers: [
         PrismaService,

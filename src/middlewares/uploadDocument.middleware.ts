@@ -17,7 +17,7 @@ export default{
     dest: './',
     storage: multer_s3({
         s3: s3_,
-        bucket: 'documents-by-lesson-01',
+        bucket: 'nexly-documents-001',
         contentType: multer_s3.AUTO_CONTENT_TYPE,
         acl: 'public-read',
         key: (req, file:Express.Multer.File, callback) =>{

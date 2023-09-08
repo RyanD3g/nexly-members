@@ -1,6 +1,6 @@
 import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
 import { MulterModule } from "@nestjs/platform-express";
-import configsMulter from '../../../middlewares/uploadImages.middleware';
+import { configsMulterStudentImages } from '../../../middlewares/uploadImages.middleware';
 import { ProfileImageStudentController } from "./ProfileImage.controller";
 import { PrismaService } from "src/database";
 import { ProfileImageStudentImplementation } from "src/repositories/Student/implementations/ProfileImageStudent.service";
@@ -10,7 +10,7 @@ import { IsJwtMiddleware } from "src/middlewares/isJwt.middleware";
 @Module({
     imports: [
         MulterModule.registerAsync({
-            useFactory: ()=> (configsMulter),
+            useFactory: ()=> (configsMulterStudentImages),
         }),
     ],
     controllers:[ProfileImageStudentController],

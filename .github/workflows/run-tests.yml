@@ -15,3 +15,9 @@ jobs:
           cache: 'yarn'
       - run: yarn
       - run: yarn test:workflow
+      - run: ssh -i "NEXLY_EC2.pem" admin@ec2-54-145-251-235.compute-1.amazonaws.com
+      - run: sudo su 
+      - run: cd nexly-members
+      - run: git pull origin main 
+      - run: exit
+      - run: exit
