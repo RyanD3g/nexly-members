@@ -22,4 +22,4 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - run: ssh -o StrictHostKeyChecking=no -i "NEXLY_EC2.pem" -p 22 admin@ec2-54-145-251-235.compute-1.amazonaws.com "ls"
+      - run: chmod 400 NEXLY_EC2.pem && ssh -o StrictHostKeyChecking=no -i "NEXLY_EC2.pem" -p 22 admin@ec2-54-145-251-235.compute-1.amazonaws.com "ls"
