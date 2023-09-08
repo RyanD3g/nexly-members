@@ -15,6 +15,12 @@ jobs:
           cache: 'yarn'
       - run: yarn
       - run: yarn test:workflow
+  
+  run-machine-prod:
+    name: Run Ec2
+    runs-on: ubuntu-latest
+
+    steps:
       - run: ssh -i "NEXLY_EC2.pem" admin@ec2-54-145-251-235.compute-1.amazonaws.com
       - run: sudo su 
       - run: cd nexly-members
