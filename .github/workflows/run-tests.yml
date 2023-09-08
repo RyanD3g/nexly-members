@@ -29,4 +29,4 @@ jobs:
           key: NEXLY_EC2.pem 
           port: 22
           script:
-            ssh  -o StrictHostKeyChecking=no -i "NEXLY_EC2.pem" -p 22 admin@ec2-54-145-251-235.compute-1.amazonaws.com "ls"
+            ssh  -o StrictHostKeyChecking=no -i /tmp/deploy_key -p 22 admin@ec2-54-145-251-235.compute-1.amazonaws.com "ls"
