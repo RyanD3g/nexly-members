@@ -22,11 +22,4 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: appleboy/ssh-action@master
-        with:
-          host: ec2-54-145-251-235.compute-1.amazonaws.com
-          username: admin
-          key: NEXLY_EC2.pem 
-          port: 22
-          script:
-            ssh  -o StrictHostKeyChecking=no -i /tmp/deploy_key -p 22 admin@ec2-54-145-251-235.compute-1.amazonaws.com "ls"
+      - run: ssh -o StrictHostKeyChecking=no -i "NEXLY_EC2.pem" -p 22 admin@ec2-54-145-251-235.compute-1.amazonaws.com "ls"
