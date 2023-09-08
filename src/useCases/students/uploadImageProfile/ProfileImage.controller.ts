@@ -15,7 +15,7 @@ export class ProfileImageStudentController {
         try {
             const uploaded_sucesfully = await this.service.uploadedPhotos({
                 studentId:req.studentId,
-                urlPhoto:file.location,
+                urlPhoto:file?.location,
             });
             return uploaded_sucesfully;
         } catch (error) {
