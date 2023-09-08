@@ -21,6 +21,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v3
+      
       - run: ssh -i "NEXLY_EC2.pem" admin@ec2-54-145-251-235.compute-1.amazonaws.com
       - run: sudo su 
       - run: cd nexly-members
