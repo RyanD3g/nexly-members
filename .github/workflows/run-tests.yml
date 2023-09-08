@@ -23,4 +23,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
+      - run: chmod 400 NEXLY_EC2.pem
       - run: ssh -T -i "NEXLY_EC2.pem" -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null admin@ec2-54-145-251-235.compute-1.amazonaws.com "sudo su && cd nexly-members && git pull origin main && exit && exit"
