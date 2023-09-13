@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: |
-         chmod 400 NEXLY_EC2.pem && ssh -o StrictHostKeyChecking=no -i "NEXLY_EC2.pem" -p 22 admin@ec2-54-145-251-235.compute-1.amazonaws.com "
-          cd nexly-members
+         chmod 400 NEXLY_EC2.pem && ssh -o StrictHostKeyChecking=no -i "NEXLY_EC2.pem" -p 22 admin@ec2-100-26-120-174.compute-1.amazonaws.com "
+          cd nexly-members &&
           git pull origin main
          "
