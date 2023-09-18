@@ -370,11 +370,11 @@ model Posts {
 
   Comments Comments_Post[]
 
-  producer   Producer @relation(fields: [producerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  producerId String
+  producer   Producer? @relation(fields: [producerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  producerId String?
 
-  student   Student @relation(fields: [studentId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  studentId String
+  student   Student? @relation(fields: [studentId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  studentId String?
 
   likes Likes_By_Posts[]
 

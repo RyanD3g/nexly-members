@@ -16,17 +16,17 @@ jobs:
       - run: yarn
       - run: yarn test:workflow
   
-  run-machine-prod:
-    name: Run Ec2 Prod
-    runs-on: ubuntu-latest
+  # run-machine-prod:
+  #   name: Run Ec2 Prod
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v3
-      - run: |
-         chmod 400 NEXLY_EC2.pem && ssh -o StrictHostKeyChecking=no -i "NEXLY_EC2.pem" -p 22 admin@ec2-18-207-235-117.compute-1.amazonaws.com "
-          sudo su &&
-          cd nexly-members &&
-          ./gitp.bash
-         "
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - run: |
+  #        chmod 400 NEXLY_EC2.pem && ssh -o StrictHostKeyChecking=no -i "NEXLY_EC2.pem" -p 22 admin@ec2-18-207-235-117.compute-1.amazonaws.com "
+  #         sudo su &&
+  #         cd nexly-members &&
+  #         ./gitp.bash
+  #        "
 
 
