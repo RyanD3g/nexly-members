@@ -1,4 +1,4 @@
-import { Body, Controller, Put, Request } from "@nestjs/common";
+import { Body, Controller, Post, Put, Request } from "@nestjs/common";
 import { CreateAddressService } from "./CreateAddress.service";
 import { IAddressByProducer } from "./CreateAddress.DTO";
 import { CustomRequest } from "src/interfaces/Request.interface";
@@ -9,7 +9,7 @@ export class AddressCreateController {
         private service:CreateAddressService,
     ){};
 
-    @Put('address/producer')
+    @Post('address/producer')
     async createAddress(@Body() body:IAddressByProducer, @Request() req?:CustomRequest){
             const createAddressForProducer = await this.service.created({
                 city:body.city,

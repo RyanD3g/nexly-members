@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Posts" ALTER COLUMN "producerId" DROP NOT NULL,
+ALTER COLUMN "studentId" DROP NOT NULL;
