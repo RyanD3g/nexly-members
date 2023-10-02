@@ -14,6 +14,7 @@ export class CreateEventOnCalendarInMemory implements AModelSchedulingEvent {
                 hourOfEvent:data.hourOfEvent,
                 titleEvent:data.titleEvent,
                 descriptionAboutEvent:data?.descriptionAboutEvent,
+                calendarId:null,
                 isHappened:null,
                 producerId:data.producerId,
                 createdAt:new Date(),
