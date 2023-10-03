@@ -12,16 +12,15 @@ export class AllRoomsByProducerImplementation implements ARoomByProducer {
         private cache:CacheImplementation,
     ){}
     async myRooms(data: IAllRoomsDTO): Promise<Object[] | Producer> {
-        const isExistsCache = await this.cache.isCached(`DetailsAboutRoomsProducer - ${data.producerId}`);
+        // const isExistsCache = await this.cache.isCached(`DetailsAboutRoomsProducer - ${data.producerId}`);
         // if(!isExistsCache){
-            const details = await this.prisma.producer.findUnique({
-                where:{ id:data.producerId, },
-                include:{ roomTicket:true, },
-            });
-            const toCache = await this.cache.cache<Producer>(details, `DetailsAboutRoomsProducer - ${data.producerId}`, 600);
-            await this.prisma.$disconnect();
-            return details;
-        // };
+            // };
+        const details = await this.prisma.producer.findUnique({
+            where:{ id:data.producerId, },
+            include:{ roomTicket:true, },
+        });
+            // const toCache = await this.cache.cache<Producer>(details, `DetailsAboutRoomsProducer - ${data.producerId}`, 600);
+        await this.prisma.$disconnect();
         return details;
     };
 };
