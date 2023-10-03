@@ -8,10 +8,11 @@ export class CacheImplementation implements ARedisProvider {
         const updateData = await redis.set(nameCamp, JSON.stringify(data), "EX", time);
         await redis.quit();
     };
-    async isCached(nameCamp: string): Promise<Object[] | null> {
+    async isCached(nameCamp: string): Promise<Object[] | boolean> {
         const isCached = await redis.get(nameCamp);
-        if(isCached) JSON.parse(isCached);
-        return null;
+        if(isCached) 
+            return JSON.parse(isCached);
+        return false;
     };
     async cache<T extends any>(data: T, nameCamp: string, time?:number): Promise<T> {
         const saveData = await redis.set(nameCamp, JSON.stringify(data), "EX", time);
