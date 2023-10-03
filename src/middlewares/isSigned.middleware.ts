@@ -5,6 +5,7 @@ import { CustomRequest } from "src/interfaces/Request.interface";
 @Injectable()
 export class isSigned implements NestMiddleware {
     use(req: CustomRequest, res: Response, next:NextFunction) {
+        if(!req.producerId) next();
         if(!req.signed){
             throw new HttpException('Assinatura pendente!!', HttpStatus.UNAUTHORIZED);
         };
