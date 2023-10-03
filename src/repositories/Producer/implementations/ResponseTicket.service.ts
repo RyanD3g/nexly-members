@@ -28,10 +28,10 @@ export class ResponseTicketImplementation implements AResponseTicket {
             },
         });
 
-        const setNewAllTicketsInCache = await this.cache.updateDataCache<Producer>(await this.prisma.producer.findUnique({
-            where:{ id:data.producerId, },
-            include:{ roomTicket:true, },
-        }), `DetailsAboutRoomsProducer - ${data.producerId}`, 600);
+        // const setNewAllTicketsInCache = await this.cache.updateDataCache<Producer>(await this.prisma.producer.findUnique({
+        //     where:{ id:data.producerId, },
+        //     include:{ roomTicket:true, },
+        // }), `DetailsAboutRoomsProducer - ${data.producerId}`, 600);
 
         return create.ticketRoom;
     };
