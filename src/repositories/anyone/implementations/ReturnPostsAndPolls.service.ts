@@ -12,7 +12,7 @@ export class ReturnAllDataImplementation implements AReturnPostsAndPolls {
             include:{ posts:true, },
         });
         const retornado = await this.prisma.posts.findMany({
-            include:{ producer:true, },
+            include:{ student:true, },
         });
         return { posts:retornado };
     };
