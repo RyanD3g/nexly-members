@@ -16,7 +16,8 @@ export class SaveEventCalendarController {
         @Request() req?:CustomRequest,
     ){
         try {
-        //   const sendDataForService = await  
+          const sendDataForService = await this.service.executeCreation({ studentId:req.studentId, ...body }, isTest);
+          return sendDataForService;
         } catch (error) {
             return error;
         };
