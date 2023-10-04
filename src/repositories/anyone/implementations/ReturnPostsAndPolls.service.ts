@@ -8,37 +8,33 @@ export class ReturnAllDataImplementation implements AReturnPostsAndPolls {
         private prisma:PrismaService,
     ){};
     async returnAll(): Promise<Object> {
-        const returnPostsOfProducers = await this.prisma.producer.findMany({
-            include:{ posts:true, },
+        const returnAllPosts = await this.prisma.posts.findMany({
+            include:{ producer:true, student:true, Comments:true, likes:true },
         });
-        const returnPostsOfStudents = await this.prisma.student.findMany({
-            include:{
-                posts:true,
-            },
-        })
-        const dataFilterProducer = returnPostsOfProducers.map(e => {
-            delete e.email;
-            delete e.delDate;
-            delete e.identity;
-            delete e.isAccountActive;
-            delete e.isProducer;
-            delete e.password;
-            delete e.codeDate;
-            delete e.code;
-            delete e.phone;
-            delete e.sex;
-        });
-        const dataFilterStudent = returnPostsOfStudents.map(e => {
-            delete e.email;
-            delete e.delDate;
-            delete e.cpf;
-            delete e.password;
-            delete e.codeDate;
-            delete e.code;
-            delete e.phone;
-            delete e.sex;
+        const dataFilterProducer = returnAllPosts.map(e => {
+            if(e.producer){
+                delete e.producer.email;
+                delete e.producer.delDate;
+                delete e.producer.identity;
+                delete e.producer.isAccountActive;
+                delete e.producer.isProducer;
+                delete e.producer.password;
+                delete e.producer.codeDate;
+                delete e.producer.code;
+                delete e.producer.phone;
+                delete e.producer.sex;
+            }else{
+                delete e.student.email;
+                delete e.student.delDate;
+                delete e.student.cpf;
+                delete e.student.password;
+                delete e.student.codeDate;
+                delete e.student.code;
+                delete e.student.phone;
+                delete e.student.sex;
+            };
         });
         await this.prisma.$disconnect();
-        return { postsProducer:returnPostsOfProducers, postsStudents:returnPostsOfStudents };
+        return { postsProducer:returnAllPosts };
     };
 };
