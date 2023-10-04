@@ -10,7 +10,7 @@ export class ReturnAllDataImplementation implements AReturnPostsAndPolls {
     async returnAll(): Promise<Object> {
         const returnPostsOfProducers = await this.prisma.producer.findMany({
             include:{
-                posts:true,
+                address:true
             },
         });
         const retornado = await this.prisma.posts.findMany({
@@ -31,6 +31,6 @@ export class ReturnAllDataImplementation implements AReturnPostsAndPolls {
             delete e.sex;
         });
         await this.prisma.$disconnect();
-        return { posts:returnPostsOfProducers, gustavoGay: retornado };
+        return returnPostsOfProducers;
     };
 };
