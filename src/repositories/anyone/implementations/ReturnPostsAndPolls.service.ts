@@ -9,7 +9,7 @@ export class ReturnAllDataImplementation implements AReturnPostsAndPolls {
     ){};
     async returnAll(): Promise<Object> {
         const returnPostsOfProducers = await this.prisma.producer.findMany({
-            include:{ posts:true, },
+            
         });
         const retornado = await this.prisma.posts.findMany({
             include:{ student:true, },
