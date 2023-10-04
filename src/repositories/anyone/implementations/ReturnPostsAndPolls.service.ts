@@ -35,6 +35,6 @@ export class ReturnAllDataImplementation implements AReturnPostsAndPolls {
             };
         });
         await this.prisma.$disconnect();
-        return { postsProducer:returnAllPosts };
+        return { posts:returnAllPosts };
     };
 };
