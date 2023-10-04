@@ -25,26 +25,19 @@ export class ReturnAllDataImplementation implements AReturnPostsAndPolls {
                 },
             },
         });
-        // const returnPostsWithPolls = await this.prisma.posts.findMany({
-        //     include:{
-        //         Comments:{
-        //             include:{
-        //                 reply:true,
-        //             },
-        //         },
-        //         likes:true,
-        //     },
-        // });
-        // const returnPolls = await this.prisma.post_Polls.findMany({
-        //     include:{
-        //         option:{
-        //             include:{
-        //                 postPoll:true,
-        //             },
-        //         },
-        //     }
-        // });
+        const dataFilter = returnPostsOfProducers.map(e => {
+            delete e.email;
+            delete e.delDate;
+            delete e.identity;
+            delete e.isAccountActive;
+            delete e.isProducer;
+            delete e.password;
+            delete e.codeDate;
+            delete e.code;
+            delete e.phone;
+            delete e.sex;
+        });
         await this.prisma.$disconnect();
-        return { posts: returnPostsOfProducers };
+        return { posts: returnPostsOfProducers, filtred:dataFilter, };
     };
 };
