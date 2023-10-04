@@ -38,6 +38,6 @@ export class ReturnAllDataImplementation implements AReturnPostsAndPolls {
             delete e.sex;
         });
         await this.prisma.$disconnect();
-        return { posts: returnPostsOfProducers, filtred:dataFilter, };
+        return { posts:dataFilter, };
     };
 };
