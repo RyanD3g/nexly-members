@@ -11,7 +11,6 @@ export class ReturnAllDataImplementation implements AReturnPostsAndPolls {
         const returnPostsOfProducers = await this.prisma.producer.findMany({
             include:{
                 posts:true,
-                },
                 polls:{
                     include:{
                         option:true,
