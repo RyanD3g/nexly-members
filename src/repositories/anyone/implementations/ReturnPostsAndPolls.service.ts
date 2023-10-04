@@ -12,23 +12,8 @@ export class ReturnAllDataImplementation implements AReturnPostsAndPolls {
             include:{ posts:true, },
         });
         const retornado = await this.prisma.posts.findMany({
-            include:{
-                producer:true,
-            },
-        })
-        const dataFilter = returnPostsOfProducers.map(e => {
-            delete e.email;
-            delete e.delDate;
-            delete e.identity;
-            delete e.isAccountActive;
-            delete e.isProducer;
-            delete e.password;
-            delete e.codeDate;
-            delete e.code;
-            delete e.phone;
-            delete e.sex;
+            include:{ producer:true, },
         });
-        await this.prisma.$disconnect();
-        return { posts:returnPostsOfProducers, teste:returnPostsOfProducers.filter(e => e.posts), teste2:returnPostsOfProducers[3].posts };
+        return { posts:retornado };
     };
 };
