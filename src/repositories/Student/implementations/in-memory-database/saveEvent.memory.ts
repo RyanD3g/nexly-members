@@ -5,14 +5,13 @@ import { IAddItemCalendarDTO } from "src/useCases/students/addItemInMyCalendar/a
 
 @Injectable()
 export class SaveEventInMemory implements ACreateItemCalendar {
-    private eventsModel:SchedulingEvent[] = [{
+    private eventsModel:Partial<SchedulingEvent>[] = [{
         id:'123',
         isHappened:false,
         dataOfEvent:'23/11/23',
         titleEvent:'Aula de trafego pago ao vivo',
         hourOfEvent:'13 - 22',
         descriptionAboutEvent:'Teste de descrição',
-        calendarId:'123',
         producerId:'324',
         createdAt:new Date(),
         updatedAt:new Date(),
@@ -24,7 +23,6 @@ export class SaveEventInMemory implements ACreateItemCalendar {
         titleEvent:'Aula de typescript ao vivo',
         hourOfEvent:'13 - 22',
         descriptionAboutEvent:'Teste de descrição 2',
-        calendarId:'123',
         producerId:'324',
         createdAt:new Date(),
         updatedAt:new Date(),
@@ -33,10 +31,23 @@ export class SaveEventInMemory implements ACreateItemCalendar {
     private caledarModel:CalendarForStudents[] = [];
 
     eventExists(eventId: string): boolean | Promise<SchedulingEvent> {
-        throw new Error("Method not implemented.");
+       const eventIsExistsOrNo = this.eventsModel.some(e => e.id === eventId);
+       if(eventIsExistsOrNo){
+           const filterOfEvent = this.eventsModel.filter(e => e.id === eventId);
+           if(!filterOfEvent[0].isHappened) throw new Error('Evento já passou!!');
+       };
+       return eventIsExistsOrNo;
     }
-    createDataInCalendar(data: IAddItemCalendarDTO): void | Promise<void | Object> {
-        throw new Error("Method not implemented.");
-    }
+    createDataInCalendar(data: IAddItemCalendarDTO): Object | Promise<void | Object> {
+        const addEventInCalendar = this.caledarModel.push({
+            id:'123',
+            studentId:data.studentId,
+            createdAt:new Date(),
+            updatedAt:new Date(),
+        });
+        const getEvent = this.eventsModel.filter(e => e.id === data.eventId);
+        getEvent[0].calendarId = this.caledarModel[0].id;
+        return { created:true, };
+    };
 
 };

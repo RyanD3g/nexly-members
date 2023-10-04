@@ -3,5 +3,5 @@ import { IAddItemCalendarDTO } from "src/useCases/students/addItemInMyCalendar/a
 
 export abstract class ACreateItemCalendar {
     abstract eventExists(eventId:string): Promise<SchedulingEvent> | boolean;
-    abstract createDataInCalendar(data:IAddItemCalendarDTO): Promise<void | Object> | void;
+    abstract createDataInCalendar(data:IAddItemCalendarDTO): Promise<void | Object> | Object;
 };
