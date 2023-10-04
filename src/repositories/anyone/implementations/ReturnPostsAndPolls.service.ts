@@ -8,26 +8,43 @@ export class ReturnAllDataImplementation implements AReturnPostsAndPolls {
         private prisma:PrismaService,
     ){};
     async returnAll(): Promise<Object> {
-        const returnPostsWithPolls = await this.prisma.posts.findMany({
+        const returnPostsOfProducers = await this.prisma.producer.findMany({
             include:{
-                Comments:{
+                posts:{
                     include:{
-                        reply:true,
+                        Comments:{
+                            include: { reply:true },
+                        },
+                        likes:true,
                     },
                 },
-                likes:true,
+                polls:{
+                    include:{
+                        option:true,
+                    },
+                },
             },
         });
-        const returnPolls = await this.prisma.post_Polls.findMany({
-            include:{
-                option:{
-                    include:{
-                        postPoll:true,
-                    },
-                },
-            }
-        });
+        // const returnPostsWithPolls = await this.prisma.posts.findMany({
+        //     include:{
+        //         Comments:{
+        //             include:{
+        //                 reply:true,
+        //             },
+        //         },
+        //         likes:true,
+        //     },
+        // });
+        // const returnPolls = await this.prisma.post_Polls.findMany({
+        //     include:{
+        //         option:{
+        //             include:{
+        //                 postPoll:true,
+        //             },
+        //         },
+        //     }
+        // });
         await this.prisma.$disconnect();
-        return { posts: returnPostsWithPolls, polls: returnPolls, };
+        return { posts: returnPostsOfProducers };
     };
 };
