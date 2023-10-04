@@ -21,6 +21,23 @@ export class SaveEventImplementation implements ACreateItemCalendar {
         return eventExists;
     };
     async createDataInCalendar(data: IAddItemCalendarDTO): Promise<void | Object> {
-        throw new Error("Method not implemented.");
+        const eventForAdd = await this.prisma.schedulingEvent.findUnique({
+            where:{ id:data.eventId },
+        });
+        const studentAssociate = await this.prisma.student.findUnique({
+            where:{ id:data.studentId, },
+        });
+        const addItemInCalendar = await this.prisma.calendarForStudents.create({
+            data:{
+                Student:{
+                    connect:studentAssociate,
+                },
+                Event:{
+                    connect: eventForAdd,
+                },
+            },
+        });
+
+        return { added:true };
     };
 }
