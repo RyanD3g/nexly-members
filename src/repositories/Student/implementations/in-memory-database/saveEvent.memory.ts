@@ -18,7 +18,7 @@ export class SaveEventInMemory implements ACreateItemCalendar {
     },
     {
         id:'321',
-        isHappened:false,
+        isHappened:true,
         dataOfEvent:'23/03/23',
         titleEvent:'Aula de typescript ao vivo',
         hourOfEvent:'13 - 22',
@@ -31,10 +31,10 @@ export class SaveEventInMemory implements ACreateItemCalendar {
     private caledarModel:CalendarForStudents[] = [];
 
     eventExists(eventId: string): boolean | Promise<SchedulingEvent> {
-       const eventIsExistsOrNo = this.eventsModel.some(e => e.id === eventId);
+       const filterOfEvent = this.eventsModel.filter(e => e.id === eventId);
+       const eventIsExistsOrNo = filterOfEvent.length>0;
        if(eventIsExistsOrNo){
-           const filterOfEvent = this.eventsModel.filter(e => e.id === eventId);
-           if(!filterOfEvent[0].isHappened) throw new Error('Evento já passou!!');
+           if(filterOfEvent[0].isHappened) throw new Error('Evento já passou!!');
        };
        return eventIsExistsOrNo;
     }

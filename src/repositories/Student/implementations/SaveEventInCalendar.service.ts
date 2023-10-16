@@ -16,7 +16,7 @@ export class SaveEventImplementation implements ACreateItemCalendar {
             where:{ id:eventId, },
         });
         if(eventExists){
-            if(!eventExists.isHappened) throw new HttpException('Evento passado!!', 400);
+            if(eventExists.isHappened) throw new HttpException('Evento passado!!', 400);
         };
         return eventExists;
     };
