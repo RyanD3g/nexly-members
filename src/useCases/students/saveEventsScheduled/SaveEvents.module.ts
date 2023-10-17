@@ -4,10 +4,12 @@ import { SaveEventImplementation } from "src/repositories/Student/implementation
 import { SaveEventInCalendarService } from "./SaveEvents.service";
 import { SaveEventInMemory } from "src/repositories/Student/implementations/in-memory-database/saveEvent.memory";
 import { IsJwtMiddleware } from "src/middlewares/isJwt.middleware";
+import { PrismaService } from "src/database";
 
 @Module({
     controllers: [SaveEventCalendarController],
     providers: [
+        PrismaService,
         SaveEventImplementation,
         SaveEventInCalendarService,
         SaveEventInMemory,
