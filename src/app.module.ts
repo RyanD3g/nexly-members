@@ -65,6 +65,7 @@ import { DeleteReplyCommentModule } from './useCases/anyone/deleteReplyComment/D
 import { CreateEventScheluledModule } from './useCases/producer/createEventScheduled/CreateEvent.module';
 import { AsyncLocalStorage } from 'async_hooks';
 import { GetEventsModel } from './useCases/students/getMyEventsSaved/GetEvents.module';
+import { ReturnAllEventsModule } from './useCases/anyone/allEvents/AllEvents.module';
 
 @Module({
   imports: [
@@ -141,6 +142,7 @@ import { GetEventsModel } from './useCases/students/getMyEventsSaved/GetEvents.m
     ExchangeModule,
     DeleteCommentInPostModule,
     DeleteReplyCommentModule,
+    ReturnAllEventsModule,
     
   ],
 })
