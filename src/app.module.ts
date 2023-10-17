@@ -66,6 +66,7 @@ import { CreateEventScheluledModule } from './useCases/producer/createEventSched
 import { AsyncLocalStorage } from 'async_hooks';
 import { GetEventsModel } from './useCases/students/getMyEventsSaved/GetEvents.module';
 import { ReturnAllEventsModule } from './useCases/anyone/allEvents/AllEvents.module';
+import { SaveEventModule } from './useCases/students/saveEventsScheduled/SaveEvents.module';
 
 @Module({
   imports: [
@@ -96,6 +97,7 @@ import { ReturnAllEventsModule } from './useCases/anyone/allEvents/AllEvents.mod
     CreateTicketModule,
     TicketsAndRoomModule,
     CreateAPostModule,
+    SaveEventModule,
     GetEventsModel,
 
     // //Producer Modules 

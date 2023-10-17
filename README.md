@@ -686,3 +686,42 @@
 ```
 
 ```Use token!!```
+
+### Eventos
+#### 1. Criar evento (Apenas produtor):  `/create/newEvent`
+
+### Método:
+`Post`
+
+### Dados Nescessários:
+```json
+{
+    "titleEvent":"Titulo do evento",
+    "descriptionAboutEvent":"Descrição do evento",
+    "dataOfEvent":"Data do evento (A Data tem que estar no padrão: YYYY-MM-DD)",
+    "hourOfEvent":"Hora do evento (EX: 13h - 18h)",
+}
+```
+
+```Use token!!```
+
+#### 2. Adicionar evento ao calendário (Apenas estudante):  `/save/event/calendar/ ID DO EVENTO`
+
+### Método:
+`Post`
+
+```Use token!!```
+
+#### 3. retornar eventos do calendário (Apenas estudante):  `/events/calendar`
+
+### Método:
+`Get`
+
+```Use token!!```
+
+#### 4. retornar todos os eventos:  `/all/events`
+
+### Método:
+`Get`
+
+```Use token!!```
