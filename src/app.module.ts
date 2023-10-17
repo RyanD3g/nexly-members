@@ -64,6 +64,7 @@ import { DeleteCommentInPostModule } from './useCases/anyone/deleteOneCommentInP
 import { DeleteReplyCommentModule } from './useCases/anyone/deleteReplyComment/DeleteReply.module';
 import { CreateEventScheluledModule } from './useCases/producer/createEventScheduled/CreateEvent.module';
 import { AsyncLocalStorage } from 'async_hooks';
+import { GetEventsModel } from './useCases/students/getMyEventsSaved/GetEvents.module';
 
 @Module({
   imports: [
@@ -94,6 +95,7 @@ import { AsyncLocalStorage } from 'async_hooks';
     CreateTicketModule,
     TicketsAndRoomModule,
     CreateAPostModule,
+    GetEventsModel,
 
     // //Producer Modules 
 

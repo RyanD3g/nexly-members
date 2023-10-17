@@ -10,7 +10,7 @@ export class getAllCoursesService {
         private isDeleteCourse:IsDeleteCourseImplementation,
     ){};
     async getAll(){
-        const deleteCourse = await this.isDeleteCourse.isDelete(dayjs().format('DD/MM/YYYY'));
+        const deleteCourse = await this.isDeleteCourse.isDelete(dayjs().format('YYYY-MM-DD'));
         const all = await this.implementation.getAll();
         return all;
     };
