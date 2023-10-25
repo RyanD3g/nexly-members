@@ -11,4 +11,6 @@ export class IReplyCommentPostDTO {
     userUrlPhoto:string;       
     
     commentId:string;
+
+    isProducer?:boolean;
 };

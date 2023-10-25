@@ -5,10 +5,11 @@ import { CustomRequest } from "src/interfaces/Request.interface";
 
 @Controller('reply')
 export class ReplyCommentPostController {
+    private userId:string;
+    private isProducer:boolean;
     constructor(
         private service:ReplyCommentPostService,
     ){};
-
     @Post('comment/post/:commentId')
     async handle_comment(
         @Body() body:IReplyCommentPostDTO,
@@ -16,18 +17,22 @@ export class ReplyCommentPostController {
         @Param('commentId') commentId?:string,
         @Request() req?:CustomRequest,
     ){
-        try {
+       
+            if(!req.producerId){
+                this.userId = req.studentId;
+                this.isProducer = false;
+            }else{
+                this.userId = req.producerId;
+                this.isProducer = true;
+            };
             const sendReplyComment = await this.service.execute({
                 commentId: commentId || body?.commentId,
                 contentReplyComment:body.contentReplyComment,
                 nameUserReplyComment:body?.nameUserReplyComment,
-                userId: req?.studentId || req?.producerId || body?.userId,
+                userId: body?.userId || this?.userId,
                 userUrlPhoto:body?.userUrlPhoto,
+                isProducer:this?.isProducer,
             }, isTest);
-            return sendReplyComment;  
-        } catch (error) {
-            console.log(error)
-            return error;
-        };
+            return sendReplyComment;
     };
 };
