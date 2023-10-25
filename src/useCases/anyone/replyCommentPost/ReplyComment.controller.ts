@@ -18,11 +18,11 @@ export class ReplyCommentPostController {
         @Request() req?:CustomRequest,
     ){
        
-            if(!req.producerId){
-                this.userId = req.studentId;
+            if(!req?.producerId){
+                this.userId = req?.studentId;
                 this.isProducer = false;
             }else{
-                this.userId = req.producerId;
+                this.userId = req?.producerId;
                 this.isProducer = true;
             };
             const sendReplyComment = await this.service.execute({
