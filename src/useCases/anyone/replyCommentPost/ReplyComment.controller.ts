@@ -17,7 +17,7 @@ export class ReplyCommentPostController {
         @Param('commentId') commentId?:string,
         @Request() req?:CustomRequest,
     ){
-       
+       try{
             if(!req?.producerId){
                 this.userId = req?.studentId;
                 this.isProducer = false;
@@ -34,5 +34,8 @@ export class ReplyCommentPostController {
                 isProducer:this?.isProducer,
             }, isTest);
             return sendReplyComment;
+       }catch(err){
+            return err;
+       };
     };
 };

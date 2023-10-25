@@ -17,14 +17,14 @@ export class ReplyCommentPostImplementation implements AReplyCommentPost {
         });
         return isExists;
     };
-    async replyComment({ commentId, contentReplyComment, userId, isProducer }: IReplyCommentPostDTO): Promise<Comments_Post> {
+    async replyComment({ commentId, contentReplyComment, userId, isProducer, nameUserReplyComment}: IReplyCommentPostDTO): Promise<Comments_Post> {
         let typeUser: Student | Producer;
 
         const validatonIsStudentOrProducer = !isProducer? typeUser = await this.prisma.student.findUnique({
             where:{ id:userId, },
         }) : typeUser = await this.prisma.producer.findUnique({
             where:{ id:userId, },
-        });; 
+        });
     
         const sendReplyComment = await this.prisma.comments_Post.update({
             where:{
@@ -34,7 +34,7 @@ export class ReplyCommentPostImplementation implements AReplyCommentPost {
                 reply:{
                     create:{
                         contentReplyComment,
-                        nameUserReplyComment: typeUser.name,
+                        nameUserReplyComment,
                         userUrlPhoto: typeUser.photo,
                         userId:typeUser.id,
                     },
