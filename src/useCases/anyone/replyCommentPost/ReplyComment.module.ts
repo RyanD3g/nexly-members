@@ -20,6 +20,6 @@ export class ReplyCommentPostModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {
         consumer
             .apply(IsJwtMiddleware)
-                .forRoutes('reply/comment');
+                .forRoutes('reply/comment/post');
     };
 };

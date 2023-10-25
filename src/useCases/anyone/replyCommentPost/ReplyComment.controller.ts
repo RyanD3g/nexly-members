@@ -9,7 +9,7 @@ export class ReplyCommentPostController {
         private service:ReplyCommentPostService,
     ){};
 
-    @Post('comment/:commentId')
+    @Post('comment/post/:commentId')
     async handle_comment(
         @Body() body:IReplyCommentPostDTO,
         isTest:boolean = false,
