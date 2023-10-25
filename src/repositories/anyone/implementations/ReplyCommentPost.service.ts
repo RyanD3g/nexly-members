@@ -30,6 +30,9 @@ export class ReplyCommentPostImplementation implements AReplyCommentPost {
             where:{
                 id:commentId,
             },
+            include:{
+                reply:true,
+            },
             data:{
                 reply:{
                     create:{
