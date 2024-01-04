@@ -68,6 +68,7 @@ import { GetEventsModel } from './useCases/students/getMyEventsSaved/GetEvents.m
 import { ReturnAllEventsModule } from './useCases/anyone/allEvents/AllEvents.module';
 import { SaveEventModule } from './useCases/students/saveEventsScheduled/SaveEvents.module';
 import { ReplyCommentPostModule } from './useCases/anyone/replyCommentPost/ReplyComment.module';
+import { LoginOAuthModule } from './useCases/producer/OAuth/LoginOauth.module';
 
 @Module({
   imports: [
@@ -127,6 +128,7 @@ import { ReplyCommentPostModule } from './useCases/anyone/replyCommentPost/Reply
     CreateAPostProducerModule,
     CreatePollModule,
     CreateEventScheluledModule,
+    LoginOAuthModule,
 
     //Outers modules
 

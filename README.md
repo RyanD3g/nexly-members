@@ -725,3 +725,62 @@
 `Get`
 
 ```Use token!!```
+
+## NOVAS FUNÇÕES DE CURSOS DO YOUTUBE 
+#### 1. Logar com o google (Apenas produtor):  `/Oauth/getUrl`
+
+### Método:
+`Get`
+
+##### Observação:
+Ele vai retornar uma url que leva o usuário até as telas de contas dele, use esse link para redirecionar o usuário.
+
+```Use token!!```
+
+#### 2. Listar canais da conta (Apenas produtor):  `/Oauth/listChannels`
+
+### Método:
+`Post`
+
+### Dados Nescessários:
+```json
+{
+    "id":"Aquele id que eu vou passar como parametro (Ele serve pra reconhecer a tabela)"
+}
+```
+##### Observação:
+Pegue o id do parametrô que eu passei na url.
+
+```Use token!!```
+
+#### 2. Escolher um dos canais listados e listagem de playlists (Apenas produtor):  `/Oauth/listPlaylists/setChannels`
+
+### Método:
+`Post`
+
+### Dados Nescessários:
+```json
+{
+    "id":"Aquele id que eu vou passar como parametro (Ele serve pra reconhecer a tabela)",
+    "channelId":"Id do canal escolhido"
+}
+```
+##### Observação:
+Após escolher o canal, ele retorna as playlist do canal.
+
+```Use token!!```
+
+#### 3. Escolher playlist (Apenas produtor):  `/Oauth/setPlaylist`
+
+### Método:
+`Post`
+
+### Dados Nescessários:
+```json
+{
+    "id":"Aquele id que eu vou passar como parametro (Ele serve pra reconhecer a tabela)",
+    "playlistId":"Id da playlist escolhida"
+}
+```
+
+```Use token!!```

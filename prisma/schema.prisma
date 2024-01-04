@@ -140,8 +140,9 @@ model Producer {
   polls           Post_Polls[]
   SchedulingEvent SchedulingEvent[]
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  Courses_For_Youtube Courses_For_Youtube[]
 }
 
 model AddressForProducers {
@@ -218,6 +219,28 @@ model IdUserVote {
 }
 
 // --------- C-Models ---------
+
+model Courses_For_Youtube {
+  id String @id @default(uuid())
+
+  name           String?
+  urlThumbCourse String?
+  description    String?
+  categorysTag   String[] @default(["outros"])
+  cretificate    Boolean  @default(true)
+  delDate        String?
+
+  // Configs for channel and playlists
+  channelIdChanged  String?
+  playlistIdChanged String?
+  refreshToken      String?
+
+  producer   Producer? @relation(fields: [producerId], references: [id])
+  producerId String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
 
 model Courses_Producer {
   id String @id @default(uuid())
