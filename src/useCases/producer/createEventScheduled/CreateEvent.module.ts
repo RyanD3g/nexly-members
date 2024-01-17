@@ -1,5 +1,4 @@
 import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
-import { AlsModule } from "src/als.module";
 import { UserIdContext } from "src/contexts/userId.context";
 import { IsJwtMiddleware } from "src/middlewares/isJwt.middleware";
 import { IsProducer } from "src/middlewares/isProducer.middleware";

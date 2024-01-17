@@ -1,5 +1,4 @@
 import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
-import { AlsModule } from "src/als.module";
 import { DeleteCommentInPostController } from "./DeleteComment.controller";
 import { PrismaService } from "src/database";
 import { DeleteCommentInPostImplementation } from "src/repositories/anyone/implementations/DeleteCommentInPost.service";
