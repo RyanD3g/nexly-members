@@ -1,5 +1,4 @@
 import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
-import { AlsModule } from "src/als.module";
 import { VoteInPollController } from "./Vote.controller";
 import { PrismaService } from "src/database";
 import { VoteInPollImplementation } from "src/repositories/anyone/implementations/VoteInPoll.service";

@@ -1,6 +1,6 @@
 import { IDataOAuth } from "src/useCases/producer/OAuth/LoginOauth.DTO";
 import { OAuthClientProvider } from "../IAuth.provider";
-import OAuth from 'googleapis';
+import * as OAuth from 'googleapis';
 import { HttpException, Injectable } from "@nestjs/common";
 import { PrismaService } from "src/database";
 const OAuthV2 = OAuth.google.auth.OAuth2;
