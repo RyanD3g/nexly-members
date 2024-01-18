@@ -10,7 +10,7 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
     private Client = new OAuthV2(
         "1026375848206-btmu3lvn7d4hhhscc1spn2u0a9bnfrct.apps.googleusercontent.com",
         "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",
-        "https://costaweb.dev.br/Oauth/producer",
+        "http://localhost:5173/producer/cursos",
     );
     constructor(
         private prisma:PrismaService,

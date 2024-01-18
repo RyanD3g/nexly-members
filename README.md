@@ -737,6 +737,26 @@ Ele vai retornar uma url que leva o usuário até as telas de contas dele, use e
 
 ```Use token!!```
 
+#### OBSERVAÇÃO 
+Vou configurar o google para retornar para o frontend, na rota: /producer/cursos.
+Antes eu ia para o backend, mas não vou mais ir para o backend, vou ir direto para o front. O parametro que vc deve pegar é o parametro **code**, o google retorna ele na url, após isso, vá para a seguinte rota...
+
+#### 1.1 Cadastrar token do google: `/Oauth/producer`
+
+### Método:
+`Post`
+
+### Dados Nescessários:
+```json
+{
+    "code":"Token do google, que vai para a url",
+}
+```
+##### Observação:
+Por de baixo dos panos, faça essa request e já faça a próxima (Passo 2, a seguir) com a resposta dessa (1.1).
+
+```Use token!!```
+
 #### 2. Listar canais da conta (Apenas produtor):  `/Oauth/listChannels`
 
 ### Método:
@@ -745,7 +765,7 @@ Ele vai retornar uma url que leva o usuário até as telas de contas dele, use e
 ### Dados Nescessários:
 ```json
 {
-    "id":"Aquele id que eu vou passar como parametro (Ele serve pra reconhecer a tabela)"
+    "id":"Id da tabela (Ele serve pra reconhecer a tabela)"
 }
 ```
 ##### Observação:

@@ -27,8 +27,8 @@ export class LoginAndSetItemsProvidersController {
         @Res() res:Response,
     ){
         try {
-            const dataOFRegisterToken = await this.service.returnTokenOAuth({ id:null, producerId:req?.producerId, token:req.query?.code as string }) as Courses_For_Youtube;
-            res.redirect(301,`https://nexlymembers.netilify.app/producer/canais/${dataOFRegisterToken.id}`);
+            const dataOFRegisterToken = await this.service.returnTokenOAuth({ id:null, producerId:req?.producerId, token:req.body?.code as string }) as Courses_For_Youtube;
+            return res.json({ data:dataOFRegisterToken });
         } catch (error) {
             return error;
         };

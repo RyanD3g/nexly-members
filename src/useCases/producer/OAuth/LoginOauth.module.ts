@@ -25,6 +25,6 @@ export class LoginOAuthModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {
         consumer
         .apply(IsJwtMiddleware, isSigned, IsProducer)
-            .forRoutes('/Oauth/listChannels', '/Oauth/listPlaylists/setChannels', '/Oauth/setPlaylist');
+            .forRoutes('/Oauth');
     };
 };
