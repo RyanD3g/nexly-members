@@ -5,13 +5,11 @@ import { VoteInPollImplementation } from "src/repositories/anyone/implementation
 import { VoteInPollInMemory } from "src/repositories/anyone/implementations/in-memory-database/voteInPoll.memory";
 import { VoteInPollService } from "./Vote.service";
 import { UserIdContext } from "src/contexts/userId.context";
-import { AlsModule } from "src/als.module";
 
 describe('Aqui será testado todas as funcões de votar em uma enquete', ()=>{
     let controller:VoteInPollController;
     beforeAll(async ()=>{
         const moduleRef = await Test.createTestingModule({
-            imports: [AlsModule],
             controllers: [VoteInPollController],
             providers: [
                 PrismaService,
