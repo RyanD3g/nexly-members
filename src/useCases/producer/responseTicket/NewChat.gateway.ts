@@ -36,9 +36,9 @@ import { Server, Socket } from 'socket.io';
     };
 
     handleConnection(client: any) {
-      console.log(`Usuário conectado`);
+      // console.log(`Usuário conectado`);
     };
     handleDisconnect(client: Socket) {
-      console.log(`Usuário desconectado`);
+      // console.log(`Usuário desconectado`);
     };
   };

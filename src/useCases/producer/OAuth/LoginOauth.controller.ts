@@ -27,6 +27,7 @@ export class LoginAndSetItemsProvidersController {
         @Res() res:Response,
     ){
         try {
+            console.log("TOKEN AQUI!!!: ", req.body?.code)
             const dataOFRegisterToken = await this.service.returnTokenOAuth({ id:null, producerId:req?.producerId, token:req.body?.code as string }) as Courses_For_Youtube;
             return res.json({ data:dataOFRegisterToken });
         } catch (error) {
