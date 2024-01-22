@@ -23,9 +23,10 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
         return url;
     };
     async getTokenClient(data: IDataOAuth): Promise<any> {
-        console.log("TOKEN AQUI!!!: ", data.token)
+        // console.log("TOKEN AQUI!!!: ", data.token)
         const tokens = this.Client.getToken(data.token, async (err, tokens)=>{
             if(err) throw new HttpException(`Erro ao pegar token: ${err}`, 400);
+            console.log(tokens.refresh_token)
             const tokenForAccess = await this.prisma.producer.update({
                 where: { id:data?.producerId },
                 data:{
