@@ -21,7 +21,7 @@ export class LoginAndSetItemsProvidersController {
             return error;
         };
     };
-    @Get("/producer")
+    @Post("/producer")
     async getAllToken(
         @Request() req:CustomRequest,
         @Res() res:Response,
