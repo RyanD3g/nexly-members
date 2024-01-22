@@ -8,7 +8,7 @@ async function bootstrap() {
     const app = await NestFactory.create(AppModule);
     app.useGlobalPipes(new ValidationPipe());
     app.enableCors({
-      origin:['http://localhost:5173', 'https://nexlymembers.netlify.com']
+      origin:'*'
     });
     await app.listen(3000);
   } catch (error) {
