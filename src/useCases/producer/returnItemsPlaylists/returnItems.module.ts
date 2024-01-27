@@ -1,5 +1,4 @@
 import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
-import { ReturnAllEventsController } from "src/useCases/anyone/allEvents/AllEvents.controller";
 import { ReturnItemsPlaylistService } from "./returnItems.service";
 import { IReturnItemsPlaylist } from "./returnItems.DTO";
 import { OAuthProviderFunctions } from "src/providers/implementations/OAuth.provider";
@@ -7,6 +6,7 @@ import { PrismaService } from "src/database";
 import { IsJwtMiddleware } from "src/middlewares/isJwt.middleware";
 import { isSigned } from "src/middlewares/isSigned.middleware";
 import { IsProducer } from "src/middlewares/isProducer.middleware";
+import { ReturnItemsController } from "./returnItems.controller";
 
 @Module({
     providers:[
@@ -17,7 +17,7 @@ import { IsProducer } from "src/middlewares/isProducer.middleware";
         isSigned, 
         IsProducer,
     ],
-    controllers:[ReturnAllEventsController],
+    controllers:[ReturnItemsController],
 })
 export class ReturnItemsPlaylistModel implements NestModule {
     configure(consumer: MiddlewareConsumer) {
