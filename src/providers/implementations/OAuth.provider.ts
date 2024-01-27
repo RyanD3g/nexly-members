@@ -3,6 +3,7 @@ import { OAuthClientProvider } from "../IAuth.provider";
 import * as OAuth from 'googleapis';
 import { HttpException, Injectable } from "@nestjs/common";
 import { PrismaService } from "src/database";
+import { IReturnItemsPlaylist } from "src/useCases/producer/returnItemsPlaylists/returnItems.DTO";
 const OAuthV2 = OAuth.google.auth.OAuth2;
 
 @Injectable()
@@ -100,9 +101,20 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
         });
         return setPlaylistId;
     };
-    async returnContentInPlaylist(data:IDataOAuth){
+    async returnContentInPlaylist(data:IReturnItemsPlaylist){
         try {
-            
+            const { refreshToken, playlistIdChanged, } = await this.prisma.courses_For_Youtube.findUnique({
+                where:{ id:data.courseYtId, },
+            });
+            return OAuth.google.youtube({ version:'v3', auth:refreshToken, }).playlistItems.list({
+                part:['snippet'],
+                playlistId:playlistIdChanged,
+            }, (err, response)=>{
+                if(err){
+                    throw new HttpException(`Erro ao listar items da playlist: ${err}`, 400);
+                };
+                return response.data.items;
+            });
         } catch (error) {
             return error;
         };
