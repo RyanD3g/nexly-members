@@ -13,7 +13,11 @@ export class GetAllCoursesImplementation implements AGetAllCourse {
             include:{
                 modules:{
                     include:{
-                        movies:true,
+                        course:{
+                            include:{
+                                youtubePlaylist:true,
+                            }
+                        },
                     },
                 },
             },

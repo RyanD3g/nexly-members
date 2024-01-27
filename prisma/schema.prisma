@@ -140,9 +140,8 @@ model Producer {
   polls           Post_Polls[]
   SchedulingEvent SchedulingEvent[]
 
-  createdAt           DateTime              @default(now())
-  updatedAt           DateTime              @updatedAt
-  Courses_For_Youtube Courses_For_Youtube[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model AddressForProducers {
@@ -235,8 +234,8 @@ model Courses_For_Youtube {
   playlistIdChanged String?
   refreshToken      String?
 
-  producer   Producer? @relation(fields: [producerId], references: [id])
-  producerId String?
+  producer   Courses_Producer? @relation(fields: [courseYtId], references: [id])
+  courseYtId String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -256,7 +255,8 @@ model Courses_Producer {
   producer   Producer? @relation(fields: [producerId], references: [id])
   producerId String?
 
-  modules Modules_Courses[]
+  modules         Modules_Courses?
+  youtubePlaylist Courses_For_Youtube[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -269,8 +269,8 @@ model Modules_Courses {
   description String?
   duration    String
 
-  course   Courses_Producer @relation(fields: [courseId], references: [id])
-  courseId String
+  course   Courses_Producer? @relation(fields: [courseId], references: [id])
+  courseId String?           @unique
 
   movies Movies_Modules[]
 

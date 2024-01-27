@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Redirect, Request, Res } from "@nestjs/common";
+import { Body, Controller, Get, Post, Put, Redirect, Request, Res } from "@nestjs/common";
 import { LoginOAuthService } from "./LoginOauth.service";
 import { IDataOAuth } from "./LoginOauth.DTO";
 import { CustomRequest } from "src/interfaces/Request.interface";
@@ -25,10 +25,11 @@ export class LoginAndSetItemsProvidersController {
     async getAllToken(
         @Request() req:CustomRequest,
         @Res() res:Response,
+        @Body() body:IDataOAuth,
     ){
         try {
             console.log("TOKEN AQUI!!!: ", req.body?.code)
-            const dataOFRegisterToken = await this.service.returnTokenOAuth({ id:null, producerId:req?.producerId, token:req.body?.code as string }) as Courses_For_Youtube;
+            const dataOFRegisterToken = await this.service.returnTokenOAuth({ courseYtId:body?.courseYtId, courseId:body?.courseId, token:req.body?.code as string }) as Courses_For_Youtube;
             return res.json({ data:dataOFRegisterToken });
         } catch (error) {
             return error;
@@ -39,20 +40,20 @@ export class LoginAndSetItemsProvidersController {
         @Body() body:IDataOAuth,
         @Request() req:CustomRequest,
     ){
-        return await this.service.listChannels({ id:body.id, producerId:req.producerId });
+        return await this.service.listChannels({ courseYtId:body.id, producerId:req.producerId });
     };
     @Post("/listPlaylists/setChannels")
     async lisAllPlaylistsAndSetChannelInMyAccount(
         @Body() body:IDataOAuth,
         @Request() req:CustomRequest,
     ){
-        return await this.service.setChannelsAndListPlaylists({ id:body.id, producerId:req.producerId, channelId:body.channelId });
+        return await this.service.setChannelsAndListPlaylists({ courseYtId:body.id, producerId:req.producerId, channelId:body.channelId });
     };
     @Post("/setPlaylist")
     async SetPlaylistInMyAccount(
         @Body() body:IDataOAuth,
         @Request() req:CustomRequest,
     ){
-        return await this.service.setPlaylist({ id:body.id, producerId:req.producerId, playlistId:body.playlistId });
+        return await this.service.setPlaylist({ courseId:body.courseId, producerId:req.producerId, playlistId:body.playlistId });
     };
 };
