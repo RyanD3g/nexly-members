@@ -804,3 +804,11 @@ Após escolher o canal, ele retorna as playlist do canal.
 ```
 
 ```Use token!!```
+<!-- 
+#### OBSERVAÇÃO GERAL: CASO VÁ  -->
+#### 4. Retornar dados - Videos e detalhes dos videos de uma playlist (Apenas produtor):  `/return/items/playlist/:Id da tabela criada (TABELA: "YOUTUBE_COURSE)`
+
+### Método:
+`GET`
+
+```Use token!!```
