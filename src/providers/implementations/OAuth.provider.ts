@@ -9,8 +9,8 @@ const OAuthV2 = OAuth.google.auth.OAuth2;
 @Injectable()
 export class OAuthProviderFunctions implements OAuthClientProvider {
     private Client = new OAuthV2(
-        "1026375848206-btmu3lvn7d4hhhscc1spn2u0a9bnfrct.apps.googleusercontent.com",
-        "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",
+        "689795171746-91m11arq9q8bgq53q8dalromrfakksam.apps.googleusercontent.com",
+        "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",
         "http://localhost:5173/producer/cursos",
     );
     constructor(
