@@ -750,6 +750,7 @@ Antes eu ia para o backend, mas não vou mais ir para o backend, vou ir direto p
 ```json
 {
     "code":"Token do google, que vai para a url",
+    "courseId":"ID do curso (CRIE UM CURSO DE FORMA NORMAL NO INDICE 9)"
 }
 ```
 ##### Observação:
@@ -804,8 +805,7 @@ Após escolher o canal, ele retorna as playlist do canal.
 ```
 
 ```Use token!!```
-<!-- 
-#### OBSERVAÇÃO GERAL: CASO VÁ  -->
+
 #### 4. Retornar dados - Videos e detalhes dos videos de uma playlist (Apenas produtor):  `/return/items/playlist/:Id da tabela criada (TABELA: "YOUTUBE_COURSE)`
 
 ### Método:
