@@ -7,8 +7,7 @@ export class ICreateCourse {
     
     @IsNotEmpty()
     name:string;
-
-    @IsNotEmpty()
+    
     urlThumbCourse:string;
 
     @IsNotEmpty()
