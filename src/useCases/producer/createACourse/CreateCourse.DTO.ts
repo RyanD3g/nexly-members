@@ -1,13 +1,14 @@
-import { IsNotEmpty } from "class-validator";
+import { IsBoolean, IsNotEmpty } from "class-validator";
 
 export class ICreateCourse {
     producerId?:string;
 
+    @IsBoolean()
     certificate?:boolean;
     
     @IsNotEmpty()
     name:string;
-    
+
     urlThumbCourse:string;
 
     @IsNotEmpty()
