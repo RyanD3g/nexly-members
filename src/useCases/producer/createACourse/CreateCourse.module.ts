@@ -7,9 +7,15 @@ import { CreateCourseImplementation } from "src/repositories/Producer/implementa
 import { CreateCourseService } from "./CreateCourse.service";
 import { CreateCourseInMemory } from "src/repositories/Producer/implementations/in-memory-database/createCourse.memory";
 import { isSigned } from "src/middlewares/isSigned.middleware";
+import { MulterModule } from "@nestjs/platform-express";
+import { configsMulterCourseImages } from "src/middlewares/uploadImages.middleware";
 
 @Module({
-    imports: [],
+    imports: [
+        MulterModule.registerAsync({
+            useFactory: ()=> (configsMulterCourseImages),
+        })
+    ],
     controllers: [CreateCourseController],
     providers: [
         PrismaService,
@@ -19,6 +25,7 @@ import { isSigned } from "src/middlewares/isSigned.middleware";
         IsJwtMiddleware,
         IsProducer,
         isSigned,
+        MulterModule,
     ],
 })
 export class CreateCourseModule implements NestModule {

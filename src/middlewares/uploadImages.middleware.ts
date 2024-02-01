@@ -65,3 +65,29 @@ export const configsMulterProducerImages = {
         fileSize: 50 * 1024 * 1024,
     },
 };
+
+export const configsMulterCourseImages = {
+    dest: './',
+    storage: multer_s3({
+        s3: s3_,
+        bucket: 'nexly-course-images-producer-001',
+        contentType: multer_s3.AUTO_CONTENT_TYPE,
+        acl: 'public-read',
+        key: (req, file, callback) =>{
+            const hash = crypto.randomBytes(16).toString('hex');
+            const filename = `${hash} - ${file.originalname}`;
+            callback(null, filename);
+        },
+    }),
+    fileFilter: (req:Request, file:Express.Multer.File, cb:FileFilterCallback) => {
+        const allowFiles = ['image/png','image/jpg', 'image/jpeg'];
+        if(!allowFiles.includes(file.mimetype)){
+            cb(new Error('Invalid file types'));
+        }else{
+            cb(null, true);
+        };
+    },
+    limits:{
+        fileSize: 50 * 1024 * 1024,
+    },
+}

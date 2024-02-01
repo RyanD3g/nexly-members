@@ -1,7 +1,8 @@
-import { Body, Controller, Post, Request } from "@nestjs/common";
+import { Body, Controller, Post, Request, UploadedFile, UseInterceptors } from "@nestjs/common";
 import { CreateCourseService } from "./CreateCourse.service";
 import { ICreateCourse } from "./CreateCourse.DTO";
 import { CustomRequest } from "src/interfaces/Request.interface";
+import { FileInterceptor } from "@nestjs/platform-express";
 
 @Controller('course')
 export class CreateCourseController {
@@ -10,13 +11,14 @@ export class CreateCourseController {
     ){};
 
     @Post('create/producer')
-    async createCourseC(isTest:boolean = false, @Body() body:ICreateCourse, @Request() req?:CustomRequest){
+    @UseInterceptors(FileInterceptor('file'))
+    async createCourseC(isTest:boolean = false, @Body() body:ICreateCourse, @Request() req?:CustomRequest, @UploadedFile() file?){
         const created = await this.service.createCourse({
             categorysTag:body.categorysTag,
             description:body.description,
             duration:body.duration,
             name:body.name,
-            urlThumbCourse:body.urlThumbCourse,
+            urlThumbCourse:file?.location,
             certificate:body.certificate,
             producerId:req?.producerId || body.producerId,
         }, isTest);
