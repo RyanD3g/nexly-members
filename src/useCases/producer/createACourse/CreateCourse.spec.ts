@@ -24,7 +24,7 @@ describe('Should create a course', ()=>{
 
     describe('Should to create a course', ()=>{
         it('Create course', async()=>{
-            const create = await createCourseControllerTest.createCourseC(true, {
+            const create = await createCourseControllerTest.createCourseC("",true, {
                 name:'Teste de node de curso',
                 urlThumbCourse:'TestedeUrl.com',
                 description:'Teste de descrição',

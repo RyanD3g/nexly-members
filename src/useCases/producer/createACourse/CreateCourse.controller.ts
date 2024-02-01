@@ -12,7 +12,8 @@ export class CreateCourseController {
 
     @Post('create/producer')
     @UseInterceptors(FileInterceptor('file'))
-    async createCourseC(isTest:boolean = false, @Body() body:ICreateCourse, @Request() req?:CustomRequest, @UploadedFile() file?){
+    async createCourseC( @UploadedFile() file?, isTest:boolean = false, @Body() body?:ICreateCourse, @Request() req?:CustomRequest){
+        console.log(`S3 MULTER: ${file?.location}`)
         const created = await this.service.createCourse({
             categorysTag:body.categorysTag,
             description:body.description,
