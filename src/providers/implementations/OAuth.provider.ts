@@ -36,10 +36,12 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
                     }
                 }
             });
-            console.log("OLHE ME", tokenForAccess)
             return tokenForAccess;
         });
-        return tokens;
+        return await this.prisma.courses_Producer.findUnique({
+            where:{ id:data?.courseId },
+            include:{ youtubePlaylist:true, },
+        });
     };
     async getChannelsClient(data: IDataOAuth): Promise<any> {
         const token = await this.prisma.courses_For_Youtube.findUnique({
