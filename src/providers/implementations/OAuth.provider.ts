@@ -24,6 +24,7 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
         return url;
     };
     async getTokenClient(data: IDataOAuth): Promise<any> {
+        let playlistCreated:any;
         const tokens = this.Client.getToken(data.token, async (err, tokens)=>{
             if(err) throw new HttpException(`Erro ao pegar token: ${err}`, 400);
             const tokenForAccess = await this.prisma.courses_Producer.update({
@@ -37,13 +38,10 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
                     }
                 },
             });
-            console.log("OLHE PRA CA: ", tokenForAccess)
-            return tokenForAccess;
+            playlistCreated = tokenForAccess;
         });
-        return this.prisma.courses_Producer.findUnique({
-            where:{ id:data?.courseId },
-            include:{ youtubePlaylist:true, },
-        }).then(r => r);
+        console.log("OLHE PRA CA: ", playlistCreated)
+        return playlistCreated;
     };
     async getChannelsClient(data: IDataOAuth): Promise<any> {
         const token = await this.prisma.courses_For_Youtube.findUnique({
