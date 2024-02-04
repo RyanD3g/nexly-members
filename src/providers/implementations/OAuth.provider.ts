@@ -97,7 +97,8 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
             this.Client.setCredentials({
                 refresh_token: refresh_token,
             });
-           return await returnDataChannels.call(this);
+            console.log("VEJAME: ", await returnDataChannels.call(this))
+            return await returnDataChannels.call(this);
         } catch (error) {
             return error;
         };
