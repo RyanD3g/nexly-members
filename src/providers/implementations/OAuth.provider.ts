@@ -55,19 +55,25 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
         if(!token || !token.refreshToken){
             throw new HttpException("Ainda não possui login!!", 403);
         };
+        const returnDataChannel = ()=>{
+            return new Promise((resolve, reject) =>{
+                OAuth.google.youtube({ version:"v3", auth:this.Client, }).channels.list({
+                    part:['snippet,contentDetails,statistics'],
+                    mine:true,
+                }, (err, response)=>{
+                    if(err){
+                        reject(new HttpException(`Erro ao chamar canais: ${err}`, 400));
+                    };
+                    resolve(response.data.items);
+                });
+            });
+        };
         try {
             this.Client.setCredentials({ 
                 refresh_token: token?.refreshToken,
             },);
-            console.log(OAuth.google.youtube({ version:"v3", auth:this.Client, }).channels.list({
-                part:['snippet,contentDetails,statistics'],
-                mine:true,
-            }, (err, response)=>{
-                if(err){
-                    throw new HttpException(`Erro ao chamar canais: ${err}`, 400);
-                };
-                return response.data.items;
-            }));
+            const returnItemsChannel = await returnDataChannel.call(this);
+            return returnDataChannel;
         } catch (error) {
             return error;
         };
