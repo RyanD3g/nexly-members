@@ -73,7 +73,8 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
                 refresh_token: token?.refreshToken,
             },);
             const returnItemsChannel = await returnDataChannel.call(this);
-            return returnDataChannel;
+            console.log("RESULTADO: ", returnItemsChannel);
+            return returnItemsChannel;
         } catch (error) {
             return error;
         };
