@@ -38,7 +38,7 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
                     }
                 },
             });
-            playlistCreated = tokenForAccess;
+            return tokenForAccess;
         });
         console.log("OLHE PRA CA: ", tokens)
         return playlistCreated;
