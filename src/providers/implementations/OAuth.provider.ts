@@ -59,7 +59,7 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
             this.Client.setCredentials({ 
                 refresh_token: token?.refreshToken,
             },);
-            OAuth.google.youtube({ version:"v3", auth:this.Client, }).channels.list({
+            console.log(OAuth.google.youtube({ version:"v3", auth:this.Client, }).channels.list({
                 part:['snippet,contentDetails,statistics'],
                 mine:true,
             }, (err, response)=>{
@@ -67,7 +67,7 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
                     throw new HttpException(`Erro ao chamar canais: ${err}`, 400);
                 };
                 return response.data.items;
-            });
+            }));
         } catch (error) {
             return error;
         };
