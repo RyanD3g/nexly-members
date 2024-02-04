@@ -40,7 +40,7 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
             });
             playlistCreated = tokenForAccess;
         });
-        console.log("OLHE PRA CA: ", playlistCreated)
+        console.log("OLHE PRA CA: ", tokens)
         return playlistCreated;
     };
     async getChannelsClient(data: IDataOAuth): Promise<any> {
