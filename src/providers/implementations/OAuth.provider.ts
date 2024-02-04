@@ -80,19 +80,24 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
         };
     };
     async getPlaylist(data:IDataOAuth):Promise<any>{
+        const returnDataChannels = ()=>{
+            return new Promise((resolve, reject)=>{
+                OAuth.google.youtube({ version:'v3', auth:this.Client, }).playlists.list({
+                    part: ['snippet,contentDetails'],
+                    channelId: data.channelId,
+                }, async (err, response)=>{
+                    if(err) reject(new HttpException(`Erro ao listar playlists ${err}`, 400));
+                    resolve(response.data.items); 
+                });
+            });
+        }
         try {
             const refresh_token = (await this.prisma.courses_For_Youtube.findUnique({ where: { id:data.courseYtId } })).refreshToken;
             if(!refresh_token) throw new HttpException('Curso inexistente!!', 404);
             this.Client.setCredentials({
                 refresh_token: refresh_token,
             });
-            OAuth.google.youtube({ version:'v3', auth:this.Client, }).playlists.list({
-                part: ['snippet,contentDetails'],
-                channelId: data.channelId,
-            }, async (err, response)=>{
-                if(err) throw new HttpException(`Erro ao listar playlists ${err}`, 400);
-                return response.data.items; 
-            });
+           return await returnDataChannels.call(this);
         } catch (error) {
             return error;
         };
