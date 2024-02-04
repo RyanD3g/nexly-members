@@ -28,13 +28,14 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
             if(err) throw new HttpException(`Erro ao pegar token: ${err}`, 400);
             const tokenForAccess = await this.prisma.courses_Producer.update({
                 where: { id:data?.courseId },
+                include:{ youtubePlaylist:true, },
                 data:{
                     youtubePlaylist:{
                         create:{
                             refreshToken:tokens.refresh_token
                         }
                     }
-                }
+                },
             });
             console.log("OLHE PRA CA: ", tokenForAccess)
             return tokenForAccess;
