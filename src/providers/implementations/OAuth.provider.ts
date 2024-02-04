@@ -36,6 +36,7 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
                     }
                 }
             });
+            console.log("OLHE PRA CA: ", tokenForAccess)
             return tokenForAccess;
         });
         return await this.prisma.courses_Producer.findUnique({
