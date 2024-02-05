@@ -93,12 +93,12 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
         }
         try {
             const refresh_token = (await this.prisma.courses_For_Youtube.findUnique({ where: { id:data.courseYtId } })).refreshToken;
+            console.log("REFRESH: ", refresh_token)
             if(!refresh_token) throw new HttpException('Curso inexistente!!', 404);
             this.Client.setCredentials({
                 refresh_token: refresh_token,
             });
             console.log("VEJAME: ", await returnDataChannels.call(this));
-            console.log("CARREGOU PRA CA")
             return await returnDataChannels.call(this);
         } catch (error) {
             console.log("ERRO AQUI: ", error)
