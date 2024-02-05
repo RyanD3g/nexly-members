@@ -10,7 +10,7 @@ export class ReturnItemsController {
 
     @Get('items/playlist/:courseYtId')
     async returnItems(
-        @Param('courseYtId') { courseYtId }:IReturnItemsPlaylist,
+        @Param('courseYtId') courseYtId:string,
     ){
         try {
             return this.service.returnItems({ courseYtId, });
