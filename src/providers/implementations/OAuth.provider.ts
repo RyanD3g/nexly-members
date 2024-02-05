@@ -79,7 +79,7 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
             return error;
         };
     };
-    async getPlaylist(data:IDataOAuth):Promise<any>{
+    async getPlaylist(data:any):Promise<any>{
         const returnDataChannels = ()=>{
             return new Promise((resolve, reject)=>{
                 OAuth.google.youtube({ version:'v3', auth:this.Client, }).playlists.list({
@@ -92,16 +92,13 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
             });
         }
         try {
-            const refresh_token = await this.prisma.courses_For_Youtube.findUnique({ where: { id:data.courseYtId } });
-            console.log("REFRESH: ", refresh_token.refreshToken)
-            if(!refresh_token) throw new HttpException('Curso inexistente!!', 404);
+            if(!data?.refreshToken) throw new HttpException('Curso inexistente!!', 404);
             this.Client.setCredentials({
-                refresh_token: refresh_token.refreshToken,
+                refresh_token: data?.refreshToken,
             });
             console.log("VEJAME: ", await returnDataChannels.call(this));
             return await returnDataChannels.call(this);
         } catch (error) {
-            console.log(data)
             return error;
         }
     };
