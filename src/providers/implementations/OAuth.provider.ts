@@ -91,14 +91,18 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
                 });
             });
         }
-            const refresh_token = (await this.prisma.courses_For_Youtube.findUnique({ where: { id:data.courseYtId } })).refreshToken;
-            console.log("REFRESH: ", refresh_token)
+        try {
+            const refresh_token = await this.prisma.courses_For_Youtube.findUnique({ where: { id:data.courseYtId } });
+            console.log("REFRESH: ", refresh_token.refreshToken)
             if(!refresh_token) throw new HttpException('Curso inexistente!!', 404);
             this.Client.setCredentials({
-                refresh_token: refresh_token,
+                refresh_token: refresh_token.refreshToken,
             });
             console.log("VEJAME: ", await returnDataChannels.call(this));
             return await returnDataChannels.call(this);
+        } catch (error) {
+            return error;
+        }
     };
     async setChannel(data:IDataOAuth):Promise<any>{
         const channelChanged = await this.prisma.courses_For_Youtube.update({
