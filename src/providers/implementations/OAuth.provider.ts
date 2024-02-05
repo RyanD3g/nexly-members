@@ -85,7 +85,7 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
                 OAuth.google.youtube({ version:'v3', auth:this.Client, }).playlists.list({
                     part: ['snippet,contentDetails'],
                     channelId: data.channelId,
-                }, async (err, response)=>{
+                }, (err, response)=>{
                     if(err) reject(new HttpException(`Erro ao listar playlists ${err}`, 400));
                     resolve(response.data.items); 
                 });
@@ -97,9 +97,11 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
             this.Client.setCredentials({
                 refresh_token: refresh_token,
             });
-            console.log("VEJAME: ", await returnDataChannels.call(this))
+            console.log("VEJAME: ", await returnDataChannels.call(this));
+            console.log("CARREGOU PRA CA")
             return await returnDataChannels.call(this);
         } catch (error) {
+            console.log("ERRO AQUI: ", error)
             return error;
         };
     };

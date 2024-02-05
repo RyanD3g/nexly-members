@@ -18,6 +18,7 @@ export class LoginOAuthService {
     };
     async setChannelsAndListPlaylists(data:IDataOAuth){
         const setChannel = await this.providers.setChannel(data);
+        console.log("Passou aqui")
         return await this.providers.getPlaylist(setChannel);
     };
     async setPlaylist(data:IDataOAuth){
