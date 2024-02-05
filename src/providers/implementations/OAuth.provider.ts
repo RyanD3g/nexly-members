@@ -20,6 +20,7 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
         const url = this.Client.generateAuthUrl({
             access_type: 'offline',
             scope: ['https://www.googleapis.com/auth/youtube'],
+            prompt:'select_account',
         });
         return url;
     };
