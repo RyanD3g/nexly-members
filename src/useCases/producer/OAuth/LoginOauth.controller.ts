@@ -54,6 +54,6 @@ export class LoginAndSetItemsProvidersController {
         @Body() body:IDataOAuth,
         @Request() req:CustomRequest,
     ){
-        return await this.service.setPlaylist({ courseId:body.courseId, producerId:req.producerId, playlistId:body.playlistId });
+        return await this.service.setPlaylist({ courseYtId:body.courseYtId, producerId:req.producerId, playlistId:body.playlistId });
     };
 };
