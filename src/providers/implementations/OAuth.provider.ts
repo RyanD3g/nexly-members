@@ -84,6 +84,7 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
             return new Promise((resolve, reject)=>{
                 OAuth.google.youtube({ version:'v3', auth:this.Client, }).playlists.list({
                     part: ['snippet,contentDetails'],
+                    mine:true,
                     channelId: data.channelId,
                 }, (err, response)=>{
                     if(err) reject(new HttpException(`Erro ao listar playlists ${err}`, 400));
