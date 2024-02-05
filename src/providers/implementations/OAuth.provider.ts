@@ -126,8 +126,11 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
             const { refreshToken, playlistIdChanged, } = await this.prisma.courses_For_Youtube.findUnique({
                 where:{ id:data.courseYtId, },
             });
+            this.Client.setCredentials({ 
+                refresh_token: refreshToken,
+            },);
             return await new Promise((resolve, reject)=>{
-                OAuth.google.youtube({ version:'v3', auth:refreshToken, }).playlistItems.list({
+                OAuth.google.youtube({ version:'v3', auth:this.Client, }).playlistItems.list({
                     part:['snippet'],
                     playlistId:playlistIdChanged,
                 }, (err, response)=>{
