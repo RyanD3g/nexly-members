@@ -126,14 +126,16 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
             const { refreshToken, playlistIdChanged, } = await this.prisma.courses_For_Youtube.findUnique({
                 where:{ id:data.courseYtId, },
             });
-            return OAuth.google.youtube({ version:'v3', auth:refreshToken, }).playlistItems.list({
-                part:['snippet'],
-                playlistId:playlistIdChanged,
-            }, (err, response)=>{
-                if(err){
-                    throw new HttpException(`Erro ao listar items da playlist: ${err}`, 400);
-                };
-                return response.data.items;
+            return await new Promise((resolve, reject)=>{
+                OAuth.google.youtube({ version:'v3', auth:refreshToken, }).playlistItems.list({
+                    part:['snippet'],
+                    playlistId:playlistIdChanged,
+                }, (err, response)=>{
+                    if(err){
+                        reject(new HttpException(`Erro ao listar items da playlist: ${err}`, 400));
+                    };
+                    resolve(response.data.items);
+                });
             });
         } catch (error) {
             return error;
