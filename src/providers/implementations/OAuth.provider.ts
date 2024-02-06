@@ -4,6 +4,7 @@ import * as OAuth from 'googleapis';
 import { HttpException, Injectable } from "@nestjs/common";
 import { PrismaService } from "src/database";
 import { IReturnItemsPlaylist } from "src/useCases/producer/returnItemsPlaylists/returnItems.DTO";
+import { logger } from "winston.preload";
 const OAuthV2 = OAuth.google.auth.OAuth2;
 
 @Injectable()
@@ -41,21 +42,22 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
                             }
                         },
                     });
+                    if(!tokenForAccess) {
+                        logger.warn(`Impossível criar um curso. Dica: Verifique se o ID está correto. Função: Cadastrar token do OAuth`);
+                        reject(new HttpException('Impossível criar um curso. Dica: Verifique se o ID está correto', 400));
+                    }
                     resolve(tokenForAccess);
                 });
             });
         };
         const registred = await tokenRegistred();
-        console.log("REGISTRADO: ", registred)
         return registred;
     };
     async getChannelsClient(data: IDataOAuth): Promise<any> {
         const token = await this.prisma.courses_For_Youtube.findUnique({
             where: { id:data?.courseYtId },
         });
-        if(!token || !token.refreshToken){
-            throw new HttpException("Ainda não possui login!!", 403);
-        };
+        if(!token || !token.refreshToken) throw new HttpException("Ainda não possui login!!", 403);
         const returnDataChannel = ()=>{
             return new Promise((resolve, reject) =>{
                 OAuth.google.youtube({ version:"v3", auth:this.Client, }).channels.list({
@@ -63,21 +65,18 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
                     mine:true,
                 }, (err, response)=>{
                     if(err){
+                        logger.error(`Houve um erro ao listar canais do YouTube: ${err}`);
                         reject(new HttpException(`Erro ao chamar canais: ${err}`, 400));
                     };
                     resolve(response.data.items);
                 });
             });
         };
-        try {
-            this.Client.setCredentials({ 
-                refresh_token: token?.refreshToken,
-            },);
-            const returnItemsChannel = await returnDataChannel.call(this);
-            return returnItemsChannel;
-        } catch (error) {
-            return error;
-        };
+        this.Client.setCredentials({ 
+            refresh_token: token?.refreshToken,
+        },);
+        const returnItemsChannel = await returnDataChannel.call(this);
+        return returnItemsChannel;
     };
     async getPlaylist(data:any):Promise<any>{
         const returnDataChannels = ()=>{
@@ -87,21 +86,19 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
                     mine:true,
                     channelId: data.channelId,
                 }, (err, response)=>{
-                    if(err) reject(new HttpException(`Erro ao listar playlists ${err}`, 400));
+                    if(err) {
+                        logger.error(`Houve um erro ao listar playlists do YouTube: ${err}`);
+                        reject(new HttpException(`Erro ao listar playlists ${err}`, 400));
+                    }
                     resolve(response.data.items); 
                 });
             });
         }
-        try {
-            if(!data?.refreshToken) throw new HttpException('Curso inexistente!!', 404);
-            this.Client.setCredentials({
-                refresh_token: data?.refreshToken,
-            });
-            console.log("VEJAME: ", await returnDataChannels.call(this));
-            return await returnDataChannels.call(this);
-        } catch (error) {
-            return error;
-        }
+        if(!data?.refreshToken) throw new HttpException('Curso inexistente!!', 404);
+        this.Client.setCredentials({
+            refresh_token: data?.refreshToken,
+        });
+        return await returnDataChannels.call(this);
     };
     async setChannel(data:IDataOAuth):Promise<any>{
         const channelChanged = await this.prisma.courses_For_Youtube.update({
@@ -110,6 +107,10 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
                 channelIdChanged:data.channelId,
             },
         });
+        if(!channelChanged) {
+            logger.error(`Houve um erro ao cadastrar ID do canal no YouTube. ${channelChanged}`);
+            throw new HttpException(`Erro ao cadastrar canal escolhido, verifique os dados enviados. ${channelChanged}`, 400);
+        }
         return channelChanged;
     };
     async setPlaylist(data:IDataOAuth):Promise<any>{
@@ -119,6 +120,10 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
                 playlistIdChanged:data?.playlistId
             }
         });
+        if(!setPlaylistId) {
+            logger.error(`Houve um erro ao cadastrar ID da playlist no YouTube. ${setPlaylistId}`);
+            throw new HttpException(`Erro ao cadastrar playlist escolhida, verifique os dados enviados. ${setPlaylistId}`, 400);
+        };
         return setPlaylistId;
     };
     async returnContentInPlaylist(data:IReturnItemsPlaylist){
@@ -135,6 +140,7 @@ export class OAuthProviderFunctions implements OAuthClientProvider {
                     playlistId:playlistIdChanged,
                 }, (err, response)=>{
                     if(err){
+                        logger.error(`Erro ao listar items da playlist: ${err}`);
                         reject(new HttpException(`Erro ao listar items da playlist: ${err}`, 400));
                     };
                     resolve(response.data.items);
