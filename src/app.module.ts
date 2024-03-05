@@ -70,6 +70,7 @@ import { SaveEventModule } from './useCases/students/saveEventsScheduled/SaveEve
 import { ReplyCommentPostModule } from './useCases/anyone/replyCommentPost/ReplyComment.module';
 import { LoginOAuthModule } from './useCases/producer/OAuth/LoginOauth.module';
 import { ReturnItemsPlaylistModel } from './useCases/producer/returnItemsPlaylists/returnItems.module';
+import { NewMemberModule } from './useCases/producer/addMember/NewMember.module';
 
 @Module({
   imports: [
@@ -131,6 +132,7 @@ import { ReturnItemsPlaylistModel } from './useCases/producer/returnItemsPlaylis
     CreateEventScheluledModule,
     LoginOAuthModule,
     ReturnItemsPlaylistModel,
+    NewMemberModule,
 
     //Outers modules
 

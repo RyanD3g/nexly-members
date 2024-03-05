@@ -218,6 +218,42 @@ model IdUserVote {
 }
 
 // --------- C-Models ---------
+model Courses_Producer {
+  id String @id @default(uuid())
+
+  name           String
+  urlThumbCourse String
+  description    String
+  categorysTag   String[] @default(["outros"])
+  duration       String
+  cretificate    Boolean  @default(true)
+  delDate        String?
+
+  producer   Producer? @relation(fields: [producerId], references: [id])
+  producerId String?
+
+  modules         Modules_Courses?
+  youtubePlaylist Courses_For_Youtube[]
+  members         Members_my_course[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Members_my_course {
+  id String @id @default(uuid())
+
+  idUser    String          @unique()
+  stateUser StateUserMember
+  cpfUser   String          @unique()
+  nameUser  String
+
+  course   Courses_Producer @relation(fields: [courseId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  courseId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
 
 model Courses_For_Youtube {
   id String @id @default(uuid())
@@ -236,27 +272,6 @@ model Courses_For_Youtube {
 
   producer   Courses_Producer? @relation(fields: [courseYtId], references: [id])
   courseYtId String?
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model Courses_Producer {
-  id String @id @default(uuid())
-
-  name           String
-  urlThumbCourse String
-  description    String
-  categorysTag   String[] @default(["outros"])
-  duration       String
-  cretificate    Boolean  @default(true)
-  delDate        String?
-
-  producer   Producer? @relation(fields: [producerId], references: [id])
-  producerId String?
-
-  modules         Modules_Courses?
-  youtubePlaylist Courses_For_Youtube[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -486,4 +501,11 @@ model CalendarForStudents {
   updatedAt DateTime @updatedAt
 
   @@index([id])
+}
+
+// ----------- Enums -----------
+enum StateUserMember {
+  BLOQUEADO
+  ATIVO
+  COLABORADOR
 }
