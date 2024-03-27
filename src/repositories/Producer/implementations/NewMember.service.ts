@@ -15,7 +15,7 @@ export class NewMemberRepositorie implements ANewMember {
         });
         return userExists;
     }
-    async createNewMember({ courseId, idendidty, name, typeUser }: INewMemberDTO, id:string): Promise<Courses_Producer> {
+    async createNewMember({ courseId, idendidty, name, emailUser, typeUser, idUser }: Partial<INewMemberDTO>): Promise<Courses_Producer> {
         const createNewMember = await this.prisma.courses_Producer.update({
             where:{
                 id:courseId,
@@ -23,12 +23,13 @@ export class NewMemberRepositorie implements ANewMember {
             data:{
                 members:{
                     create:{
-                        idUser:id,
                         stateUser:typeUser,
                         cpfUser:idendidty,
                         nameUser:name,
+                        idUser,
+                        emailUser,
                     }
-                }
+                },
             }
         });
         return createNewMember;

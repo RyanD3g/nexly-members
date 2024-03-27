@@ -7,10 +7,10 @@ export class NewMemberService {
     constructor(
         private NewMemberRepositorie:NewMemberRepositorie,
     ){};
-    async createNewMemberAndUserExists(data:INewMemberDTO){
+    async createNewMemberAndUserExists(data:Partial<INewMemberDTO>){
         const memberExists = await this.NewMemberRepositorie.memberExists(data.emailUser);
         if(!memberExists) throw new HttpException("Usuário inexistente!!", 404);
-        const setNewMember = await this.NewMemberRepositorie.createNewMember(data, memberExists.id);
+        const setNewMember = await this.NewMemberRepositorie.createNewMember({ idUser:memberExists.id, ...data });
         return setNewMember;
     };
 };

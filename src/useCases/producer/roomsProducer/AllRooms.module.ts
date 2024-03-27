@@ -6,7 +6,7 @@ import { AllRoomsByProducerService } from "./AllRooms.service";
 import { IsJwtMiddleware } from "src/middlewares/isJwt.middleware";
 import { isSigned } from "src/middlewares/isSigned.middleware";
 import { IsProducer } from "src/middlewares/isProducer.middleware";
-import { CacheImplementation } from "src/providers/implementations/Redis.service";
+// import { CacheImplementation } from "src/providers/implementations/Redis.service";
 import { UserIdContext } from "src/contexts/userId.context";
 
 @Module({
@@ -15,7 +15,7 @@ import { UserIdContext } from "src/contexts/userId.context";
         PrismaService,
         AllRoomsByProducerImplementation,
         AllRoomsByProducerService,
-        CacheImplementation,
+        // CacheImplementation,
         IsJwtMiddleware, 
         isSigned, 
         IsProducer,

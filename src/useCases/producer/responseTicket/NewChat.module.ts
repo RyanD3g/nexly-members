@@ -7,7 +7,7 @@ import { PrismaService } from "src/database";
 import { IsJwtMiddleware } from "src/middlewares/isJwt.middleware";
 import { isSigned } from "src/middlewares/isSigned.middleware";
 import { IsProducer } from "src/middlewares/isProducer.middleware";
-import { CacheImplementation } from "src/providers/implementations/Redis.service";
+// import { CacheImplementation } from "src/providers/implementations/Redis.service";
 import { UserIdContext } from "src/contexts/userId.context";
 import { AsyncLocalStorage } from "async_hooks";
 
@@ -18,7 +18,7 @@ import { AsyncLocalStorage } from "async_hooks";
         NewChatGateway,
         ResponseTicketService,
         ResponseTicketImplementation,
-        CacheImplementation,
+        // CacheImplementation,
         IsJwtMiddleware, 
         isSigned,
         IsProducer,

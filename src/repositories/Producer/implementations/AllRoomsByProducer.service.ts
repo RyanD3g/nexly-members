@@ -3,13 +3,13 @@ import { ARoomByProducer } from "../IRoomByProducer.producer";
 import { IAllRoomsDTO } from "src/useCases/producer/roomsProducer/AllRooms.DTO";
 import { Producer } from "@prisma/client";
 import { Injectable } from "@nestjs/common";
-import { CacheImplementation } from "src/providers/implementations/Redis.service";
+// import { CacheImplementation } from "src/providers/implementations/Redis.service";
 
 @Injectable()
 export class AllRoomsByProducerImplementation implements ARoomByProducer {
     constructor(
         private prisma:PrismaService,
-        private cache:CacheImplementation,
+        // private cache:CacheImplementation,
     ){}
     async myRooms(data: IAllRoomsDTO): Promise<Object[] | Producer> {
         // const isExistsCache = await this.cache.isCached(`DetailsAboutRoomsProducer - ${data.producerId}`);
