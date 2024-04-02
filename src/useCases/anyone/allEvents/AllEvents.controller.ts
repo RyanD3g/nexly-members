@@ -4,7 +4,7 @@ import { ApiQuery, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { SchedulingEventOutput, SchedulingEventPagination } from "./AllEvents.dto";
 import { SchedulingEvent } from "@prisma/client";
 import { returnEvents } from "src/repositories/anyone/implementations/ReturnAllEvents.service";
-@ApiTags("Producer")
+@ApiTags("Anyone")
 @Controller('all')
 export class ReturnAllEventsController {
     constructor(
