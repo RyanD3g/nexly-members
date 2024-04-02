@@ -2,7 +2,11 @@ import { Injectable } from "@nestjs/common";
 import { AAllEvents } from "../IAllEvents.anyone";
 import { SchedulingEvent } from "@prisma/client";
 import { PrismaService } from "src/database";
-
+import { SchedulingEventPagination } from "src/useCases/anyone/allEvents/AllEvents.dto";
+export class returnEvents {
+    allPosts:SchedulingEvent[];
+    totalPagination:number;
+};
 @Injectable()
 export class ReturnAllEventsImplementation implements AAllEvents {
     constructor(
@@ -17,10 +21,12 @@ export class ReturnAllEventsImplementation implements AAllEvents {
         });
         await this.prisma.$disconnect();
     };
-    async returnAllEventsNoPast(): Promise<SchedulingEvent[]> {
+    async returnAllEventsNoPast(querys:SchedulingEventPagination): Promise<returnEvents> {
         const allPosts = await this.prisma.schedulingEvent.findMany({
             where:{ isHappened:false, },
+            skip:querys.skip? querys.skip:0,
+            take:querys.take? querys.take:0,
         });
-        return allPosts;
+        return { allPosts, totalPagination:allPosts.length };
     };
 };
