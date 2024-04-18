@@ -3,6 +3,7 @@ version: '3'
 services:
   app:
     build: .
+    entrypoint: dockerize --wait tcp://db:5432 -timeout 120s
     command: yarn start:dev
     ports:
       - "3000:3000"
@@ -12,6 +13,7 @@ services:
       - app-network
   db:
     image: postgres
+    restart: always
     ports:
       - "5432:5432"
     environment:
@@ -33,7 +35,10 @@ services:
       - app
   in_memory:
     image: redis
-    command: redis-server --requirepass admin
+    restart: always
+    env_file:
+      - .env
+    command: redis-server --requirepass ${PASS} --maxmemory 3gb --maxmemory-policy allkeys-lru
     hostname: redis
     ports:
       - "6379:6379"
