@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { HttpException, MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ProducerModules } from './useCases/producer/producer.module';
 import { StudentsModule } from './useCases/students/students.module';
 import { AnyoneModules } from './useCases/anyone/anyone.module';
@@ -6,6 +6,8 @@ import { ConfigModule } from '@nestjs/config';
 import { plainToClass } from 'class-transformer';
 import { env } from './@shared/env';
 import { validateSync } from 'class-validator';
+import * as toobusy from "toobusy-js";
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -27,4 +29,12 @@ import { validateSync } from 'class-validator';
     AnyoneModules,
   ],
 })
-export class AppModule {};
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(()=>{
+      if(toobusy()){
+        throw new HttpException("Server is ocuped in moment. Try again...", 400);
+      };
+    }).forRoutes("*") ;
+  }
+};

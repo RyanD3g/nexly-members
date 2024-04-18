@@ -20,7 +20,8 @@ async function bootstrap() {
     app.enableCors({
       origin:'*'
     });
-    await app.listen(3000);
+    app.enableShutdownHooks();
+    await app.listen(3030);
   } catch (error) {
     if(error instanceof PrismaClientKnownRequestError || error instanceof PrismaClientUnknownRequestError){
       return error.message;

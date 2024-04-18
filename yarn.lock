@@ -2299,6 +2299,11 @@
   dependencies:
     "@types/superagent" "*"
 
+"@types/toobusy-js@^0.5.4":
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/@types/toobusy-js/-/toobusy-js-0.5.4.tgz#b602a4bff968c9dd449b7c66b623f5f296f7d6df"
+  integrity sha512-hsKMbYiaL3ZWx7B3FYyN0rEJexw7I1HgKbNToX3ZZJv6373to954wlA7zrXR3/XoVwZnFwWqFguBs91sNzJGKQ==
+
 "@types/tough-cookie@*":
   version "4.0.2"
   resolved "https://registry.npmjs.org/@types/tough-cookie/-/tough-cookie-4.0.2.tgz"
@@ -7059,6 +7064,11 @@ toidentifier@1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/toidentifier/-/toidentifier-1.0.1.tgz"
   integrity sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==
+
+toobusy-js@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/toobusy-js/-/toobusy-js-0.5.1.tgz#5511f78f6a87a6a512d44fdb0efa13672217f659"
+  integrity sha512-GiCux/c8G2TV0FTDgtxnXOxmSAndaI/9b1YxT14CqyeBDtTZAcJLx9KlXT3qECi8D0XCc78T4sN/7gWtjRyCaA==
 
 tough-cookie@~2.5.0:
   version "2.5.0"
