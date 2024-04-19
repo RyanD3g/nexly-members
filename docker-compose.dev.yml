@@ -19,8 +19,6 @@ services:
       - "5432:5432"
     environment:
       POSTGRES_PASSWORD: admin
-    volumes:
-      - database
     networks:
       - app-network
   nginx:
@@ -28,24 +26,21 @@ services:
     ports:
       - "80:80"
     restart: always
-    env_file:
-      - .env
-    command: redis-server --requirepass ${PASS} --maxmemory 3gb --maxmemory-policy allkeys-lru
     volumes:
-      - ./nginx.dev.conf:/etc/nginx/nginx.dev.conf:ro
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro
     networks:
       - app-network
     depends_on:
       - app
   in_memory:
     image: redis
-    command: redis-server --requirepass admin
+    env_file:
+     - .env
+    command: redis-server --requirepass ${PASS} --maxmemory 3gb --maxmemory-policy allkeys-lru
     hostname: redis
     ports:
       - "6379:6379"
     networks:
       - app-network
-volumes:
-  database:
 networks:
   app-network:
