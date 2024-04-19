@@ -14,7 +14,7 @@
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest --config /home/ryandias/Documentos/www/Works/nexly-members/jest.config.ts --max_old_space_size=4096",
-    "test:workflow": "jest --config /home/runner/work/nexly-members/nexly-members/jest.config.ts",
+    "test:workflow": "jest --config /home/runner/work/nexly-members/nexly-members/jest.config.ts --max_old_space_size=4096",
     "test:path": "jest --testPathPattern=",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
