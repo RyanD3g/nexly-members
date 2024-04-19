@@ -1,6 +1,5 @@
 import { Test } from "@nestjs/testing";
 import { CreateNewEventOnCalendarController } from "./CreateEvent.controller";
-import { AlsModule } from "src/als.module";
 import { PrismaService } from "src/database";
 import { CreateEventSheduledService } from "./CreateEvent.service";
 import { CreateEventOnCalendarInMemory } from "src/repositories/Producer/implementations/in-memory-database/createEventOnCalendar.memory";
@@ -10,7 +9,6 @@ describe('Aqui será testado a função de criar um evento agendado', ()=>{
     let controller:CreateNewEventOnCalendarController;
     beforeAll(async ()=>{
         const moduleRef = await Test.createTestingModule({
-            imports: [AlsModule],
             controllers: [CreateNewEventOnCalendarController],
             providers: [
                 PrismaService,

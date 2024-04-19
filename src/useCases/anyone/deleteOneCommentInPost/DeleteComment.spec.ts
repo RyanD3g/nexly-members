@@ -1,6 +1,5 @@
 import { Test } from "@nestjs/testing";
 import { DeleteCommentInPostController } from "./DeleteComment.controller";
-import { AlsModule } from "src/als.module";
 import { PrismaService } from "src/database";
 import { DeleteCommentInPostImplementation } from "src/repositories/anyone/implementations/DeleteCommentInPost.service";
 import { DeleteCommentInPostInMemory } from "src/repositories/anyone/implementations/in-memory-database/deleteCommentInPost.memory";
@@ -10,7 +9,6 @@ describe('Aqui será testado funções de deleção de comentário de um post', 
     let controller:DeleteCommentInPostController;
     beforeAll(async ()=>{
         const moduleRef = await Test.createTestingModule({
-            imports: [AlsModule],
             controllers: [DeleteCommentInPostController],
             providers: [
                 PrismaService,

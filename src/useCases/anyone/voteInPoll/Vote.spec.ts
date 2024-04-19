@@ -4,7 +4,6 @@ import { PrismaService } from "src/database";
 import { VoteInPollImplementation } from "src/repositories/anyone/implementations/VoteInPoll.service";
 import { VoteInPollInMemory } from "src/repositories/anyone/implementations/in-memory-database/voteInPoll.memory";
 import { VoteInPollService } from "./Vote.service";
-import { UserIdContext } from "src/contexts/userId.context";
 
 describe('Aqui será testado todas as funcões de votar em uma enquete', ()=>{
     let controller:VoteInPollController;
@@ -16,7 +15,6 @@ describe('Aqui será testado todas as funcões de votar em uma enquete', ()=>{
                 VoteInPollImplementation,
                 VoteInPollInMemory,
                 VoteInPollService,
-                UserIdContext,
             ],
         }).compile();
         controller = moduleRef.get<VoteInPollController>(VoteInPollController);
