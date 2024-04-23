@@ -3,7 +3,5 @@ export default {
     moduleNameMapper:{
         '^src/(.*)$':'<rootDir>/src/$1',
     },
-    afterEach: ()=>{
-        jest
-    }
+    workerIdleMemoryLimit:"1024MB"
 };
