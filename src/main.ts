@@ -21,7 +21,7 @@ async function bootstrap() {
       origin:'*'
     });
     app.enableShutdownHooks();
-    await app.listen(3030);
+    await app.listen(3000);
   } catch (error) {
     if(error instanceof PrismaClientKnownRequestError || error instanceof PrismaClientUnknownRequestError){
       return error.message;
