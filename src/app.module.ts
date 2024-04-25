@@ -7,6 +7,7 @@ import { plainToClass } from 'class-transformer';
 import { env } from './@shared/env';
 import { validateSync } from 'class-validator';
 import * as toobusy from "toobusy-js";
+import { NextFunction, Request, Response } from 'express';
 
 @Module({
   imports: [
@@ -31,10 +32,11 @@ import * as toobusy from "toobusy-js";
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(()=>{
+    consumer.apply((req:Request, res:Response, next:NextFunction)=>{
       if(toobusy()){
         throw new HttpException("Server is ocuped in moment. Try again...", 400);
       };
+      next();
     }).forRoutes("*") ;
   }
 };
